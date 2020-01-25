@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def production
-    Rails.env.production
+  def production?
+    Rails.env.production?
   end
 
   def basic_auth
