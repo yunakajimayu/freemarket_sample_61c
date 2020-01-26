@@ -14,6 +14,7 @@
 |birthday_month|date|null: false|
 |birthday_day|date|null:false|
 |profile|text||
+|profile_image|string||
 |tel|reference|null: false, foreign_key: true|
 |address|reference|null: false, foreign_key: true|
 |comment|reference|foreign_key: true|
@@ -21,8 +22,9 @@
 - has_many: comments
 - has_many: items
 - has_one: address
-- has_one: credit
+- has_many: credits
 - has_one: tel
+- has_many: user_ratings
 
 ## Addressテーブル
 |Colimn|Type|Options|
@@ -61,6 +63,7 @@
 |status|reference|null: false, foreugn_key: true|
 |dalivery_status|reference|null: false, foreugn_key: true|
 |delivery_days|reference|null: false, foreugn_key: true|
+|picture|string|null: false|
 ### Association
 - belongs_to: category
 - belongs_to: user
@@ -79,6 +82,7 @@
 |card_id|integer|null: false|
 |limit_month|date|null: false|
 |limit_year|date|null: false|
+|security_code|integer|null: false|
 ### Association
 - belongs_to: user
 
@@ -98,7 +102,7 @@
 |------|----|-------|
 |name|string|null: false|
 |name_sub|string||
-name_sub_sub|string||
+|name_sub_sub|string||
 ### Association
 - has_many: items
 - has_ancestry
@@ -141,10 +145,17 @@ name_sub_sub|string||
 ## Deliverystatusテーブル
 |Colimn|Type|Options|
 |------|----|-------|
-|status|string|null: false
+|status|string|null: false|
 ### Association
 - has_many: items
 
+## UserRatingテーブル
+|Colimn|Type|Options|
+|------|----|-------|
+|rating|integer|null: false|
+### Association
+- has_many: users
+- has_ancestry
 
 
 
