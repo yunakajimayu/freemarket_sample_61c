@@ -1,0 +1,272 @@
+.enter
+  =link_to "" do
+    出品
+.header
+  .content
+    .header__top
+      .header__top--logo
+        = image_tag 'fmarket_logo_red.svg', alt: 'freemarket', height: '', width: ''
+      .header__top--search
+        = form_with url: items_path do |f| 
+          = f.text_field  :items ,placeholder:"何かお探しですか？"
+          = f.button type:'submit' do
+            = icon("fas", "search")
+    .header__menu
+      .nav
+        %ul.nav__left
+          %li.title
+            = icon("fas", "bars red","カテゴリーから探す")
+            %ul
+              %li
+                = link_to "レディース","#"
+                %ul.position
+                  %li
+                    = link_to "トップス","#"
+                    %ul
+                      %li
+                        = link_to "Tシャツ/カットソー(半袖/袖なし)","#" 
+                      %li 
+                        = link_to "Tシャツ/カットソー(七分/長袖)","#" 
+                      %li 
+                        = link_to "シャツ/ブラウス(半袖/袖なし)","#" 
+                      %li 
+                        = link_to "シャツ/ブラウス(七分/長袖)","#" 
+                      %li 
+                        = link_to "ポロシャツ","#" 
+                      %li 
+                        = link_to "キャミソール","#" 
+                      %li 
+                        = link_to "タンクトップ","#" 
+                      %li 
+                        = link_to "ホルターネック","#" 
+                      %li 
+                        = link_to "ニット/セーター","#" 
+                      %li 
+                        = link_to "チュニック","#" 
+                      %li 
+                        = link_to "カーディガン/ボレロ","#" 
+                      %li 
+                        = link_to "アンサンブル","#" 
+                      %li 
+                        = link_to "ベスト/ジレ","#" 
+                      %li 
+                        = link_to "パーカー","#" 
+                      %li
+                        = link_to "レディース2","#"
+                      %li 
+                        = link_to "レディース3","#" 
+
+                  %li
+                    = link_to "メンズ","#"
+                  %li 
+                    = link_to "ベビー・キッズ","#"
+                  
+                  %li 
+                    = link_to "ジャケット/アウター","#"
+                  %li 
+                    = link_to "パンツ","#"
+                  %li 
+                    = link_to "スカート","#"
+                  %li 
+                    = link_to "ワンピース","#"
+                  %li 
+                    = link_to "靴","#"
+                  %li 
+                    = link_to "ルームウェア/パジャマ","#"
+                  %li 
+                    = link_to "レッグウェア","#"
+                  %li 
+                    = link_to "帽子","#"
+                  %li 
+                    = link_to "バッグ","#"
+                  %li 
+                    = link_to "アクセサリー","#"
+                  %li 
+                    = link_to "ヘアアクセサリー","#"
+                  %li 
+                    = link_to "小物","#"
+                  %li 
+                    = link_to "時計 ","#"
+              %li
+                = link_to "メンズ","#"
+                %ul.position
+                  %li
+                    = link_to "メンズ1","#"
+                    %ul
+                      %li
+                        = link_to "メンズ1-1","#"
+                      %li
+                        = link_to "メンズ1-2","#"
+                      %li 
+                        = link_to "メンズ1-3","#" 
+                  %li
+                    = link_to "メンズ2","#"
+                    %ul
+                      %li
+                        = link_to "メンズ2-1","#"
+                      %li
+                        = link_to "メンズ2-2","#"
+                      %li 
+                        = link_to "メンズ2-3","#" 
+                  %li 
+                    = link_to "メンズ3","#" 
+                    %ul
+                      %li
+                        = link_to "メンズ3-1","#"
+                      %li
+                        = link_to "メンズ3-2","#"
+                      %li 
+                        = link_to "メンズ3-3","#" 
+              %li 
+                = link_to "ベビー・キッズ","#" 
+                %ul.position
+                  %li
+                    = link_to "ベビー・キッズ1","#"
+                  %li
+                    = link_to "ベビー・キッズ2","#"
+                  %li 
+                    = link_to "ベビー・キッズ3","#" 
+                    %ul
+                      %li
+                        = link_to "ベビー・キッズ4","#"
+                      %li
+                        = link_to "ベビー・キッズ5","#"
+                      %li 
+                        = link_to "ベビー・キッズ6","#" 
+                      %li 
+                        = link_to "ベビー・キッズ6","#"
+              %li
+                = link_to "インテリア・住まい・小物","#"
+              %li
+                = link_to "本・音楽・ゲーム","#"
+              %li
+                = link_to "おもちゃ・ホビー・グッズ","#"
+              %li
+                = link_to "コスメ・香水・美容","#"
+              %li
+                = link_to "家電・スマホ・カメラ","#"
+              %li
+                = link_to "スポーツ・レジャー","#"
+              %li
+                = link_to "ハンドメイド","#"
+              %li
+                = link_to "チケット","#"
+              %li
+                = link_to "自動車・オートバイ","#"
+              %li
+                = link_to "その他","#"
+              %li
+                = link_to "カテゴリー一覧","#"
+
+          %li.title
+            = icon("fas", "tag red","ブランドから探す")
+            %ul
+              %li
+                = link_to "シャネル","#"
+              %li
+                = link_to "ナイキ","#"
+              %li 
+                = link_to "ルイヴィトン","#" 
+              %li
+                = link_to "シュプリーム","#"
+              %li
+                = link_to "アディダス","#"
+              %li 
+                = link_to "ブランド一覧","#" 
+        %ul.nav__right
+          %li.title
+            = icon("far", "heart fa-lg gray","いいね！一覧")
+          %li.title
+            = icon("far", "bell fa-lg gray","お知らせ")
+            %span
+              5
+            %ul.nav__right--notice
+              %li
+                %div
+                  %div 
+                    = image_tag 'logo_red.svg', alt: '', size:"40x40"
+                  %div
+                    = link_to "" , "#"
+                    ◯◯さん、他2名が「◯◯◯」にいいね！しました
+                    %p
+                      = icon("far", "clock gray","１日前")
+              %li 
+                %div
+                  %div 
+                    = image_tag 'logo_red.svg', alt: '', size:"40x40"
+                  %div
+                    = link_to "" , "#"
+                    ◯◯さん、他2名が「◯◯◯」にいいね！しました
+                    %p
+                      = icon("far", "clock gray","１日前")
+              %li 
+                %div
+                  %div 
+                    = image_tag 'logo_red.svg', alt: '', size:"40x40"
+                  %div
+                    = link_to "" , "#"
+                    ◯◯さん、他2名が「◯◯◯」にいいね！しました
+                    %p
+                      = icon("far", "clock gray","3日前")
+              %li 
+                %div
+                  %div 
+                    = image_tag 'logo_red.svg', alt: '', size:"40x40"
+                  %div
+                    = link_to "" , "#"
+                    ◯◯さん、他2名が「◯◯◯」にいいね！しました
+                    %p
+                      = icon("far", "clock gray","3日前")
+              %li 
+                %div
+                  %div 
+                    = image_tag 'logo_red.svg', alt: '', size:"40x40"
+                  %div
+                    = link_to "" , "#"
+                    ◯◯さん、他2名が「◯◯◯」にいいね！しました
+                    %p
+                      = icon("far", "clock gray","4日前")
+          %li.title.position
+            = icon("fas", "check fa-lg gray","やることリスト")
+            %ul.nav__right--task
+              %li 
+                %div
+                  %div
+                    = image_tag 'logo_gray.svg', alt: '', size:"120x120"
+
+                    現在、やることリストはありません
+          %li.title.positon
+            %div
+          %li.title.positon
+            マイページ
+            %ul.nav__right--mypage
+              %li 
+                %div
+              %li 
+                %p
+                  usernamee
+                %p
+                  = link_to "評価: 17","#" 
+                  = link_to "出品数: 26","#" 
+              %li 
+                %div
+                  = link_to "売上金",""
+                %div
+                  ¥0
+              %li 
+                %div
+                  = link_to "ポイント",""
+                %div
+                  P500
+              %li 
+                = link_to "いいね！一覧","#" 
+              %li 
+                = link_to "出品した商品 - 出品中","#" 
+              %li 
+                = link_to "出品した商品 - 取引中","#" 
+              %li 
+                = link_to "出品した商品 - ","#" 
+              %li 
+                = link_to "購入した商品 - 取引中","#" 
+              %li 
+                = link_to "購入した商品 - 過去の取引","#" 

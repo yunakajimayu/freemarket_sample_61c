@@ -1,0 +1,9 @@
+$gray :rgb(244, 244, 244); //背景色、検索窓の薄いグレー
+$deepgray :#ccc; //それ以外の少し濃いグレー。フッターのリンク色などに使用しています。
+$red :rgb(203, 56, 56); //赤全般
+$blue : rgb(74, 147, 225);//青全般
+$white:#FFFFFF;//白全般
+$black :rgb(45, 45, 45);//黒全般
+$shadow-color :rgba(0, 0, 0, 0.167);//shadow-boxタグに使用している色です。透明度を設定しています。
+$fontawesome :"Font Awesome 5 Free";//fontawesome用のフォント指定です。仕様が変わって指定フォント名が変更される可能性を考慮して変数にしています。
+$gray-hover :rgba(0, 0, 0, 0.038);
