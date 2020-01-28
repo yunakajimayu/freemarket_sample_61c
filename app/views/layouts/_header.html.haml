@@ -7,7 +7,7 @@
       .header__top--logo
         = image_tag 'fmarket_logo_red.svg', alt: 'freemarket', height: '', width: ''
       .header__top--search
-        = form_with url: items_path do |f| 
+        = form_with url: root_path do |f| 
           = f.text_field  :items ,placeholder:"何かお探しですか？"
           = f.button type:'submit' do
             = icon("fas", "search")
