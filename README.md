@@ -37,7 +37,10 @@
 |city|string|null: false|
 |address|string|null: false|
 |address_building|string||
-|user_id|reference|null: false, foreign_key: true|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_name_kana|string|null: false|
+|last_name_kana|string|null: false|
 ### Association
 - belongs_to: user
 
