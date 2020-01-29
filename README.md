@@ -18,13 +18,16 @@
 |tel|reference|null: false, foreign_key: true|
 |address|reference|null: false, foreign_key: true|
 |comment|reference|foreign_key: true|
+|sns_credential|reference|foreign_key: true|
 ### Association
 - has_many: comments
 - has_many: items
 - has_one: address
 - has_many: credits
 - has_one: tel
-- has_many: user_ratings
+- has_one: authrization
+- has_many: likes
+- has_one: sns_credential
 
 ## Addressテーブル
 |Colimn|Type|Options|
@@ -34,6 +37,7 @@
 |city|string|null: false|
 |address|string|null: false|
 |address_building|string||
+|user_id|reference|null: false, foreign_key: true|
 ### Association
 - belongs_to: user
 
@@ -42,14 +46,21 @@
 |------|----|-------|
 |user|reference|null: false, foreign_key: true|
 |tel_number|integer|null: false|
-|authrization_num|integer|null: false|
 ### Association
 - belongs_to: user
+- has_one: authorization
+
+## Authrizationsテーブル
+|Colimn|Type|Options|
+|------|----|-------|
+|tel_id|reference|null: false, foreign_key: true|
+|authrization_num|integer|null: false|
+### Association
+- belongs_to: tel
 
 ## Itemsテーブル
 |Colimn|Type|Options|
 |------|----|-------|
-|user|reference|null: false, foreign_key: true|
 |name|string|null: false, add_index|
 |category|reference|null: false, foreign_key: true|
 |brand|string|null: false|
@@ -64,6 +75,10 @@
 |dalivery_status|reference|null: false, foreugn_key: true|
 |delivery_days|reference|null: false, foreugn_key: true|
 |picture|string|null: false|
+|saler_id|reference|null: false, foreign_key: true, class:User|
+|buyer_id|reference|foreign_key: true, class: User|
+|like|reference|foreign_key: true|
+|user_rating|
 ### Association
 - belongs_to: category
 - belongs_to: user
@@ -74,6 +89,8 @@
 - belongs_to: status
 - belongs_to: delivery_days
 - belongs_to: delivery_status
+- has_one: user_rating
+- has_many: likes
 
 ## Creditsテーブル
 |Colimn|Type|Options|
@@ -85,7 +102,6 @@
 |security_code|integer|null: false|
 ### Association
 - belongs_to: user
-
 
 ## Commentsテーブル
 |Colimn|Type|Options|
@@ -152,10 +168,21 @@
 ## UserRatingテーブル
 |Colimn|Type|Options|
 |------|----|-------|
-|rating|integer|null: false|
+|rating_by_saler|integer|null: false|
+|rating_by_buyer|integer|null: false|
+|item_id|reference|null: false|
 ### Association
-- has_many: users
-- has_ancestry
+- belongs_to: item
+
+## Likesテーブル
+|Colimn|Type|Options|
+|------|----|-------|
+|like_count|string||
+|user_id|string|null: false, foreign_key: true|
+### Association
+- belongs_to: user
+- belongs_to: items
+
 
 
 
