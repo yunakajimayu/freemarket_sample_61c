@@ -69,3 +69,11 @@ end
 
 gem 'carrierwave'
 gem 'fog-aws'
+gem 'devise'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
+gem 'ancestry'
+gem "jquery-rails"
+gem "haml-rails", "~> 2.0"
+gem 'font-awesome-sass', '~> 5.12.0'
