@@ -10,9 +10,9 @@
 |last_name_kana|string|null: false|
 |email|string|null: false|
 |password|string|null: false|
-|birthday_year|date|null: false|
-|birthday_month|date|null: false|
-|birthday_day|date|null:false|
+|birthyear|date|null: false|
+|birthmonth|date|null: false|
+|birthday|date|null:false|
 |profile|text||
 |profile_image|string||
 |tel|reference|null: false, foreign_key: true|
@@ -27,7 +27,15 @@
 - has_one: tel
 - has_one: authrization
 - has_many: likes
-- has_one: sns_credential
+- has_many: sns_credentials
+
+## SnsCredentialテーブル
+|Colimn|Type|Options|
+|------|----|-------|
+|uid|string|null: false|
+|provider|string|null: false|
+### Association
+- belongs_to: user
 
 ## Addressテーブル
 |Colimn|Type|Options|
@@ -74,9 +82,8 @@
 |price|integer|null: false|
 |postage|reference|null: false, foreugn_key: true|
 |size|reference|null: false, foreugn_key: true|
-|status|reference|null: false, foreugn_key: true|
-|dalivery_status|reference|null: false, foreugn_key: true|
-|delivery_days|reference|null: false, foreugn_key: true|
+|status|string|null: false|
+|daliverys|reference|null: false, foreugn_key: true|
 |picture|string|null: false|
 |saler_id|reference|null: false, foreign_key: true, class:User|
 |buyer_id|reference|foreign_key: true, class: User|
@@ -133,13 +140,6 @@
 ### Association
 - has_many: items
 
-## Statusテーブル
-|Colimn|Type|Options|
-|------|----|-------|
-|sold_status|string|null: false|
-### Association
-- has_many: items
-
 ## Conditionテーブル
 |Colimn|Type|Options|
 |------|----|-------|
@@ -154,17 +154,11 @@
 ### Association
 - has_many: items
 
-## DeliveryDaysテーブル
+## Deliverysテーブル
 |Colimn|Type|Options|
 |------|----|-------|
-|arrival_day|date|null: false|
-### Association
-- has_many: items
-
-## Deliverystatusテーブル
-|Colimn|Type|Options|
-|------|----|-------|
-|status|string|null: false|
+|delivery_day|date|null: false|
+|delivery_status|string|null: false|
 ### Association
 - has_many: items
 
