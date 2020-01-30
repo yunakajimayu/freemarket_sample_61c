@@ -84,10 +84,10 @@
 |user_rating|reference|null: false, foreign_key: true|
 |condition|integer|null: false|
 ### Association
-- has_many: category
+- belongs_to: category
 - belongs_to: user
 - has_many: comments
-- belongs_to: deliverys
+- belongs_to: delivery
 - has_one: user_rating
 - has_many: likes
 
@@ -117,7 +117,6 @@
 |------|----|-------|
 |name|string|null: false|
 |ancestry|string||
-|ancestry|string||
 ### Association
 - has_many: items
 - has_ancestry
@@ -144,9 +143,10 @@
 |------|----|-------|
 |like_count|string||
 |user_id|string|null: false, foreign_key: true|
+|item_id|string|null: false, foreign_key: true|
 ### Association
 - belongs_to: user
-- belongs_to: items
+- belongs_to: item
 
 
 
