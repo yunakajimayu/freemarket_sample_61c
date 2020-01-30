@@ -76,13 +76,14 @@
 |postage|integer|null: false|
 |size|integer|null: false|
 |status|string|null: false|
-|daliverys|reference|null: false, foreugn_key: true|
+|dalivery|reference|null: false, foreign_key: true|
 |picture|string|null: false|
 |saler_id|reference|null: false, foreign_key: true, class:User|
 |buyer_id|reference|foreign_key: true, class: User|
 |like|reference|foreign_key: true|
 |user_rating|reference|null: false, foreign_key: true|
 |condition|integer|null: false|
+|category_id|reference|foreign_key: true, null: false|
 ### Association
 - belongs_to: category
 - belongs_to: user
