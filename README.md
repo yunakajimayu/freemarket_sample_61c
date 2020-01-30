@@ -32,6 +32,8 @@
 |first_name_kana|string|null: false|
 |last_name_kana|string|null: false|
 |tel_num|integer|null: false|
+### Association
+- belongs_to: user
 
 ## SnsCredentialテーブル
 |Colimn|Type|Options|
