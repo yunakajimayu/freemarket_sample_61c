@@ -57,25 +57,6 @@ li {
   color: $white;
 }
 
-// a {
-//   text-decoration: none;
-//   transition: color 0.3s;
-//    display: inline-block;
-
-//   &:link,&:visited {
-//     color: black;
-//   }
-
-//   &:hover {
-//     color: $blue;
-//   }
-
-//   i:hover {
-//     color: $blue;
-//   }
-
-// }
-
 .enter {
   position: relative;
   text-align: center;
@@ -227,7 +208,6 @@ li {
 
                 
         li {
-         
 
           ul {
             display: none;
