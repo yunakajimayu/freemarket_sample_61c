@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root 'items#index'
+  root to: 'items#index'
   get "items/signup/" => "items#new"
   devise_for :users, path: '', controllers: {
     registrations: 'users/registrations',
