@@ -8,7 +8,7 @@
 |birthyear|date|null: false|
 |birthmonth|date|null: false|
 |birthday|date|null:false|
-|sns_credential|reference|foreign_key: true|
+<!-- |sns_credential|reference|foreign_key: true| -->
 ### Association
 - has_many: comments
 - has_many: items
@@ -38,6 +38,7 @@
 ## SnsCredentialテーブル
 |Colimn|Type|Options|
 |------|----|-------|
+|user_id|reference|null: false|
 |uid|string|null: false|
 |provider|string|null: false|
 ### Association
