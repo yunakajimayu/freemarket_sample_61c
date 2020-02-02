@@ -31,7 +31,7 @@
 |last_name|string|null: false|
 |first_name_kana|string|null: false|
 |last_name_kana|string|null: false|
-|tel_num|integer|null: false, unique: true|
+|tel_number|integer|null: false, unique: true|
 ### Association
 - belongs_to: user
 
@@ -63,7 +63,7 @@
 |Colimn|Type|Options|
 |------|----|-------|
 |user_id|reference|null: false, foreign_key: true|
-|authrization_num|integer|null: false|
+|authrization_number|integer|null: false|
 ### Association
 - belongs_to: user
 
