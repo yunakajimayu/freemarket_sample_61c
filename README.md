@@ -8,7 +8,7 @@
 |birthyear|date|null: false|
 |birthmonth|date|null: false|
 |birthday|date|null:false|
-<!-- |sns_credential|reference|foreign_key: true| -->
+|sns_credential|reference|foreign_key: true|
 ### Association
 - has_many: comments
 - has_many: items
@@ -31,14 +31,13 @@
 |last_name|string|null: false|
 |first_name_kana|string|null: false|
 |last_name_kana|string|null: false|
-|tel_number|integer|null: false, unique: true|
+|tel_num|integer|null: false, unique: true|
 ### Association
 - belongs_to: user
 
 ## SnsCredentialテーブル
 |Colimn|Type|Options|
 |------|----|-------|
-|user_id|reference|null: false|
 |uid|string|null: false|
 |provider|string|null: false|
 ### Association
@@ -48,7 +47,7 @@
 |Colimn|Type|Options|
 |------|----|-------|
 |zipcode|string|null: false|
-|prefecture_id|integer|null: false|
+|prefecture|string|null: false|
 |city|string|null: false|
 |address|string|null: false|
 |address_building|string||
@@ -63,7 +62,7 @@
 |Colimn|Type|Options|
 |------|----|-------|
 |user_id|reference|null: false, foreign_key: true|
-|authrization_number|integer|null: false|
+|authrization_num|integer|null: false|
 ### Association
 - belongs_to: user
 
@@ -149,8 +148,6 @@
 ### Association
 - belongs_to: user
 - belongs_to: item
-
-<!-- Usersテーブルにnickname, kana_name,をprofileテーブルから移動させる -->
 
 
 

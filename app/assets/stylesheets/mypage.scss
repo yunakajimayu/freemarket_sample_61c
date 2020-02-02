@@ -1,0 +1,33 @@
+@import "var";
+
+.users {
+  .contents{
+    &__box{
+      &--right{
+        .mypage{
+          width: 700px;
+          height: 200px;
+          margin: 0 !important;
+          background: asset_url("mypage-header.jpg");
+          &__top{
+            width: 700px;
+            height: 200px;
+            margin: 0 !important;
+            &--name{
+            }
+          }
+          &--icon{
+            width: 60px;
+            height: 60px;
+            border-radius: 60px;
+            background: asset_url("user.jpg") center;
+            z-index: 999999 !important;
+            line-height: 30px !important;
+            float: right;
+            margin: 44px 320px 0 320px !important;
+          }
+        }
+      }
+    }
+  }
+}
