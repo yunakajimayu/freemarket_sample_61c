@@ -1,0 +1,26 @@
+<p>電話番号認証</p>
+
+<%= form_for @authorization,url: home_signup_sms_confirmation_sms_path do |f| %>
+  <%= render "devise/shared/error_messages", resource: @authorization %>
+
+  <div class="field">
+    <%= f.label "認証番号" %><br />
+    <%= f.text_field :authorization_number, autofocus: true, placeholder: "認証番号を入力" %>
+  </div>
+  <%= "SMSで届いた認証番号を入力してください" %>
+
+  <div class="actions">
+    <%= f.submit "認証して完了" %>
+  </div>
+  <%= "30秒たっても認証番号が届かない方へ" %><br />
+  <%= "電話で認証番号を聞くこともできます。" %>
+  <div class="actions">
+    <%= f.submit "電話で認証番号を聞く（通話無料）" %>
+  </div>
+  <%= "認証番号を再送することもできます。もう一度電話番号を入力して下さい。"%><br />
+  <%= link_to "電話番号を再度入力する", home_signup_sms_confirmation_path %><br />
+  <%= "SMSが届かない場合は"%>
+  <%= link_to "SMS受信設定"%>
+  <%= "を確認して、もう一度電話番号を入力してください。"%>
+
+<% end %>
