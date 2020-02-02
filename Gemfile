@@ -79,3 +79,4 @@ gem 'ancestry'
 gem "jquery-rails"
 gem "haml-rails", "~> 2.0"
 gem 'font-awesome-sass', '~> 5.3.1'
+gem 'bundler', '2.0.2'

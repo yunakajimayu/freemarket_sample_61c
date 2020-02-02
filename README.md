@@ -31,7 +31,7 @@
 |last_name|string|null: false|
 |first_name_kana|string|null: false|
 |last_name_kana|string|null: false|
-|tel_num|integer|null: false|
+|tel_num|integer|null: false, unique: true|
 ### Association
 - belongs_to: user
 
@@ -148,6 +148,8 @@
 ### Association
 - belongs_to: user
 - belongs_to: item
+
+<!-- Usersテーブルにnickname, kana_name,をprofileテーブルから移動させる -->
 
 
 
