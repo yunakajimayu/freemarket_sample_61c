@@ -7,3 +7,9 @@ $black :rgb(45, 45, 45);//黒全般
 $shadow-color :rgba(0, 0, 0, 0.167);//shadow-boxタグに使用している色です。透明度を設定しています。
 $fontawesome :"Font Awesome 5 Free";//fontawesome用のフォント指定です。仕様が変わって指定フォント名が変更される可能性を考慮して変数にしています。
 $gray-hover :rgba(0, 0, 0, 0.038);
+
+@mixin flex {
+  display: flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+}
