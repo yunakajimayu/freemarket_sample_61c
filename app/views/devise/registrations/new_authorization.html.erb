@@ -1,6 +1,6 @@
 <p>電話番号認証</p>
 
-<%= form_for @authorization,url: home_signup_sms_confirmation_sms_path do |f| %>
+<%= form_for(@authorization,url: jp_signup_sms_confirmation_sms_path) do |f| %>
   <%= render "devise/shared/error_messages", resource: @authorization %>
 
   <div class="field">
@@ -18,7 +18,7 @@
     <%= f.submit "電話で認証番号を聞く（通話無料）" %>
   </div>
   <%= "認証番号を再送することもできます。もう一度電話番号を入力して下さい。"%><br />
-  <%= link_to "電話番号を再度入力する", home_signup_sms_confirmation_path %><br />
+  <%= link_to "電話番号を再度入力する", jp_signup_sms_confirmation_path %><br />
   <%= "SMSが届かない場合は"%>
   <%= link_to "SMS受信設定"%>
   <%= "を確認して、もう一度電話番号を入力してください。"%>

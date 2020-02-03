@@ -1,6 +1,6 @@
 <p>電話番号の確認</p>
 
-<%= form_for @profile,url: home_signup_sms_confirmation_path do |f| %>
+<%= form_for(@profile, url: jp_signup_sms_confirmation_path) do |f| %>
   <%= render "devise/shared/error_messages", resource: @profile %>
 
   <div class="field">
