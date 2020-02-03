@@ -172,6 +172,11 @@
               %li 
                 = link_to "ブランド一覧","#" 
         %ul.nav__right
+          -# %li.nav__right--signup
+          -#   = link_to "新規会員登録",  '/jp/signup/'
+          -# %li.nav__right--signin
+          -#   = link_to "ログイン", root_path
+
           %li.title
             = icon("far", "heart fa-lg gray","いいね！一覧")
           %li.title
@@ -268,3 +273,5 @@
                 = link_to "購入した商品 - 取引中","#" 
               %li 
                 = link_to "購入した商品 - 過去の取引","#" 
+        
+          
