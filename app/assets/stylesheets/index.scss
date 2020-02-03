@@ -288,6 +288,7 @@ li {
             display: block;
             padding: 10px;
             border-radius: 5px;
+            height: 35px;
           }
         }
 
@@ -300,6 +301,7 @@ li {
 
         &--signin {
           a {
+            
             border: 1px solid $blue;
             color: $blue;
             transition: all  0.3s ease;
