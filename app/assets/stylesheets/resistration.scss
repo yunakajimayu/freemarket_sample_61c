@@ -1,0 +1,70 @@
+@import "var";
+.main {
+  position: relative;
+  font-size: 14px;
+  color: $black;
+  line-height: 1;
+  width:100%;
+  margin: 0;
+  padding: 0;
+  background-color: $gray;
+  display: flex;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  .container {
+    border-style: solid;
+    border-width: 0;
+    background-color: $white;
+    width: 700px;
+    margin: 0 auto;
+    padding: 0;
+    .new_resistration {
+      text-align: center;
+      line-height: 1.5;
+      font-size: 18px;
+      padding: 16px;
+      display: block;
+      font-weight: bold;
+    }
+    .contentsbox {
+      color: $white;
+      padding: 24px 16px 40px;
+      border-top: 1px solid $gray;
+      .contents {
+        max-width: 343px;
+        margin: 0 auto;
+        &__btn{
+          display: block;
+          border-radius: 4px;
+          width: 100%;
+          line-height: 48px;
+          font-size: 14px;
+          border: 1px solid;
+          text-align: center;
+          &--icon{
+            padding-right:20px;
+          }
+          &--mail{
+            position: relative;
+            background: #eee;
+            color: $white;
+            background-color: #ea352d;
+          }
+          
+          &--facebook{
+            position: relative;
+            background: #eee;
+            margin: 16px 0 0;
+            color: $white;
+            background-color: #4169e1;
+          }
+          &--google{
+            position: relative;
+            background: #eee;
+            margin: 16px 0 0;
+            background-color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
