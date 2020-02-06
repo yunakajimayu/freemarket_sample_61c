@@ -68,10 +68,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new_credit and return
     end
     @credit = @user.build_credit(@credit.attributes)
-    @user.save
-    @profile.save
-    @authorization.save
-    @address.save
+
+    User.transaction do
+      @user.save!
+      @profile.save!
+      @authorization.save!
+      @address.save!
+      @credit.save!
+    end
 
     @id = Credit.find(@credit.id)
     @user.update(id: @id.user_id)
