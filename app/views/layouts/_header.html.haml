@@ -8,6 +8,12 @@
           = f.text_field  :items ,placeholder:"何かお探しですか？"
           = f.button type:'submit' do
             = icon("fas", "search")
+      - if user_signed_in?
+        = link_to "ログアウト", destroy_user_session_path, method: :delete
+      - else
+        = link_to "新規会員",  '/jp/signup/'
+        = link_to "ログイン", new_user_session_path
+
     .header__menu
       .nav
         %ul.nav__left
