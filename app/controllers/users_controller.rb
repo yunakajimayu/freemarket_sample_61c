@@ -1,5 +1,3 @@
 class UsersController < ApplicationController
-  def new
-    
-  end
+  layout false
 end
