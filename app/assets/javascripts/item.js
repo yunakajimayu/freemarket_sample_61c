@@ -14,5 +14,22 @@ $(function(){
       $('#sales').text("-")
     }
   })
+  $('[name*="DeliveryFee"]').change(function(){
+    var val = $(this).val();
+
+    switch(val){
+      case "Seller" :
+        $('.buyer').hide()
+        $('.seller').show()
+      break;
+      case "Buyer" :
+        $('.seller').hide()
+        $('.buyer').show()
+      break;
+    }
+    
+
+  })
+  // $("select").prepend($("<option selected>").text("---"));
 
 })

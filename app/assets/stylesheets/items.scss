@@ -36,6 +36,7 @@
         padding: 40px;
         border-bottom: 1px solid $gray;
 
+        
         a {
           color: $blue;
           &:hover {
@@ -66,6 +67,14 @@
 
         input[type=submit] {
           @include submit-red-bar;
+          margin-top: 50px;
+          opacity: 0.93;
+          transition: 0.5s;
+
+          &:hover {
+            opacity: 1;
+            
+          }
 
           + a {
             @include submit-red-bar;
@@ -107,7 +116,7 @@
         }
 
         h2 {
-          font-size: 1em;
+          font-size: 0.9em;
           line-height: 1.5em;
           margin-bottom: 5px;
 
@@ -115,13 +124,39 @@
             font-size: 0.8em;
             margin: 10px 0 20px 0;
           }
+
+          
         }
 
       &:nth-child(n+6):nth-child(-n+8){
         @include flex;
         
         div:nth-child(2) {
-          >ul > li{
+          > div {
+            &.seller, &.buyer {
+              display: none;
+            }
+            div:first-child {
+          width: 35%;
+
+          
+        }
+          
+          
+          > div  {
+            &::after {
+              position: absolute;
+              right: 15px;
+              top: 0;
+              line-height: 53px;
+              pointer-events: none;
+              font-family: $fontawesome;
+              font-weight: 900;
+              color: $lightblack;
+              content:"\f078";
+            }
+          }
+          li{
             @include flex;
             color:$black;
             list-style: none;
@@ -129,6 +164,7 @@
           &:nth-child(-n+2) {
             border-bottom: 1px solid $deepgray;
             div,p {
+              width: fit-content;
               line-height: 40px;
             }
             > div:nth-child(2) {
@@ -165,18 +201,18 @@
             }
           }
         }
+      }
         }
 
-        div:first-child {
-          width: 35%;
-
-          
-        }
+        
 
         div:last-child{
           width: 65%;
           > div:nth-last-child(n+2){
             margin-bottom: 40px;
+          }
+          div{
+            width: 100%;
           }
         }
         div > div {
@@ -191,17 +227,6 @@
 
           
 
-          &::after {
-            position: absolute;
-            right: 15px;
-            top: 0;
-            line-height: 53px;
-            pointer-events: none;
-            font-family: $fontawesome;
-            font-weight: 900;
-            color: $lightblack;
-            content:"\f078";
-          }
           
           
           > select {
@@ -213,6 +238,7 @@
           height: 50px;
           padding: 8px 12px;
           width:100%;
+          border-color: $deepgray;
           background-color: inherit;
           background: none transparent;
           font-size: 1em;

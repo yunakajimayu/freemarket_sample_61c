@@ -4,13 +4,13 @@
     = link_to root_path do
       = image_tag 'fmarket_logo_red.svg', alt: '', width:'200', class: ''
   %div
-    = form_with url:root_path do |f|
+    = form_with model: @item do |f|
       %div
         %h1
           商品の情報を入力
       %div
         %h2
-          出品画像
+          = f.label :picture, "出品画像"
           %span.required 必須
         %p
           最大10枚までアップロードできます
@@ -19,28 +19,31 @@
           またはクリックしてファイルをアップロード
       %div
         %h2 
-          商品名
+          = f.label :name ,"商品名"
           %span.required 必須
-        = f.text_field :items , placeholder: "商品名（必須 40文字まで)"
+        = f.text_field :name , placeholder: "商品名（必須 40文字まで)"
         %h2
-          商品の説明
+          = f.label :description, "商品の説明"
           %span.required 必須
-        = f.text_area :items , placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+        = f.text_area :description , placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
       %div
         %div
           %h3
             商品の詳細
         %div
-          %h2 
-            カテゴリー
-            %span.required 必須
           %div
-            = f.select :items, [['---', 0],['太郎', 1], ['二郎', 2]], { include_blank: true, selected: 0 }, { id: "category_id", class: "user_class" } 
-          %h2 
-            商品の状態
-            %span.required 必須
+            %h2 
+              = f.label :category, "カテゴリー"
+              %span.required 必須
+            %div
+              = f.collection_select :category_id, @categories, :id, :name, class: "user_class", prompt: true
           %div
-            = f.select :items, [['---', 0],['太郎', 1], ['二郎', 2]], { include_blank: true, selected: 0 }, { id: "category_id", class: "user_class" } 
+            %h2 
+              = f.label :condition,"商品の状態"
+              %span.required 必須
+            %div
+              -# = f.select :condition, Item.conditions_i18n.keys, prompt: true
+              = f.select :condition, Item.conditions_i18n.invert, {}, prompt: true
 
       %div
         %div
@@ -48,21 +51,38 @@
             配送について
             =link_to "?","",class:"question",target:"_blank"
         %div
-          %h2 
-            配送料の負担
-            %span.required 必須
           %div
-            = f.select :items, [['---', 0],['太郎', 1], ['二郎', 2]], { include_blank: true, selected: 0 }, { id: "category_id", class: "user_class" } 
-          %h2 
-            発送元の地域
-            %span.required 必須
+            %h2 
+              配送料の負担
+              %span.required 必須
+            %div
+              = f.select :budget_d, Item.budget_ds_i18n.keys.map{|k| [I18n.t("enum.item.budget_d.#{k}"), k]}, prompt: true
+              = f.select :delivery_fee, Item.delivery_fees_i18n.keys.map{|k| [I18n.t("enum.item.delivery_fee.#{k}"), k]}, prompt: true
+              = f.select :delivery_fee, Item.delivery_fees_i18n.invert
+          %div.seller
+            %h2 
+              配送の方法
+              %span.required 必須
+            %div
+              = f.select :ShippingMethod, Item.ShippingMethods.keys.to_a, prompt: true
+          %div.buyer
+            %h2 
+              配送の方法
+              %span.required 必須
+            %div
+              = f.select :ShippingMethod, Item.ShippingMethods.slice(:Undecided,:YuMail,:KuromekoYamato,:YuPack).keys.to_a, prompt: true
           %div
-            = f.select :items, [['---', 0],['太郎', 1], ['二郎', 2]], { include_blank: true, selected: 0 }, { id: "category_id", class: "user_class" } 
-          %h2 
-            発送までの日数
-            %span.required 必須
+            %h2 
+              発送元の地域
+              %span.required 必須
+            %div
+              = f.select :ShippingArea, Item.ShippingAreas.keys.to_a, prompt: true
           %div
-            = f.select :items, [['---', 0],['太郎', 1], ['二郎', 2]], { include_blank: true, selected: 0 }, { id: "category_id", class: "user_class" } 
+            %h2 
+              発送までの日数
+              %span.required 必須
+            %div
+              = f.select :ShipDate, Item.ShipDates.keys.to_a, prompt: true
 
       %div
         %div
@@ -70,20 +90,21 @@
             販売価格(300〜9,999,999)
             =link_to "?","",class:"question",target:"_blank"
         %div
-          %ul
-            %li
-              %div
-                価格
-                %span.required 必須
-              %div
-                ¥
-                = f.text_field :price , placeholder: "例) 300", id: "price"
-            %li
-              %div 販売手数料 (10%)
-              %p#commission -
-            %li
-              %div 販売利益
-              %p#sales -
+          %div
+            %ul
+              %li
+                %div
+                  = f.label :price ,"価格"
+                  %span.required 必須
+                %div
+                  ¥
+                  = f.text_field :price , placeholder: "例) 300", id: "price"
+              %li
+                %div 販売手数料 (10%)
+                %p#commission -
+              %li
+                %div 販売利益
+                %p#sales -
       %div
         %p
           #{link_to "禁止されている出品","#"}、#{link_to "行為","#"}を必ずご確認ください。
@@ -91,7 +112,7 @@
           またブランド品でシリアルナンバー等がある場合はご記載ください。#{link_to "偽ブランドの販売","#"}は犯罪であり処罰される可能性があります。
         %p
           また、出品をもちまして#{link_to "加盟店規約","#"}に同意したことになります。
-        = f.submit :items , value:"出品する"
+        = f.submit "出品する"
         = link_to "もどる", root_path
   %footer.item__contents--footer
     %p
