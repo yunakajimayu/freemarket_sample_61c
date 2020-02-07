@@ -37,6 +37,7 @@
 ## SnsCredentialテーブル
 |Colimn|Type|Options|
 |------|----|-------|
+|user_id|reference|null: false|
 |uid|string|null: false|
 |provider|string|null: false|
 ### Association

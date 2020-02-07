@@ -11,6 +11,7 @@
           margin: 0 !important;
           background: asset_url("mypage-header.jpg") no-repeat;
           cursor: pointer;
+          // ↓プロフィール画面に遷移するためのバナーの部分です
           &__top{
             width: 700px;
             height: 200px;
@@ -46,6 +47,7 @@
               float: left;
               display: flex;
               align-items: center;
+              // ↓評価数のところです
               .evaluation{
                 font-size: 14px;
                 font-weight: normal;
@@ -57,6 +59,7 @@
                   font-weight: bold;
                 }
               }
+              // ↓出品数のところです
               .exhibition{
                 font-size: 14px;
                 font-weight: normal;
@@ -84,6 +87,7 @@
             width: 700px;
             margin: 0 !important;
             background-color: $gray !important;
+            // ↓お知らせとやることリストのタブです
             &--tabs{
               width: 700px;
               margin: 0 !important;
@@ -122,6 +126,7 @@
                 height: 91.42px;
                 align-items: center;
                 height: fit-content;
+                // ↓タブの中身です
                 .tab_content_description{
                   margin: 0 !important;
                   height: 91.42px;
@@ -134,9 +139,11 @@
                     float: left;
                     margin-right: 20px;
                   }
+                  // ↓お知らせややることリストの詳細です
                   .details{
                     font-size: 14px;
                   }
+                  // ↓font-awasomeの色の指定
                   .far{
                     color: #888888;
                   }
@@ -147,6 +154,7 @@
                 .tab_content_description:hover{
                   background-color: $gray;
                 }
+                // ↓「一覧を見る」ボタンのスタイルです
                 .go_mypage{
                   margin: 0 !important;
                   height: 59.42px;
@@ -182,6 +190,7 @@
               line-height: 70px;
               background-color: #f7f8fa !important;
             }
+            // ↓取引中と過去の取引のところのタブです
             &--tradingtab{
               width: 700px;
               margin: 0 !important;
@@ -235,6 +244,7 @@
                   .details{
                     font-size: 14px;
                   }
+                  // ↓「受け取り評価待ち」の赤いラベルです
                   span.notyet{
                     color: $white;
                     background-color: $red;
@@ -244,6 +254,7 @@
                     margin-top: 8px;
                     line-height: 40px;
                   }
+                  // ↓「取引完了」の黒いタブです
                   span.complete{
                     color: $white;
                     background-color: $black;
@@ -257,6 +268,7 @@
                 .tab_content_description:hover{
                   background-color: $gray;
                 }
+                // ↓「一覧を見る」ボタンのスタイルを調節しています
                 .go_mypage{
                   margin: 0 !important;
                   height: 59.42px;
