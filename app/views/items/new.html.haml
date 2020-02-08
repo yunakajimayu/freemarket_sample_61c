@@ -1,6 +1,6 @@
 = link_to "メールアドレスで登録する", '/jp/signup/registration/'
 %br/
-= link_to "Facebookで登録する", '/jp/signup/registration/'
+= link_to "Facebookで登録する", user_facebook_omniauth_authorize_path, method: :post
 %br/
-= link_to "Googleで登録する", '/jp/signup/registration/'
+= link_to "Googleで登録する", user_google_oauth2_omniauth_authorize_path, method: :post
 %br/
