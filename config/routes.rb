@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   devise_for :users, path: '', controllers: {
     registrations: 'users/registrations',
   }
+  end
     
   devise_scope :user do
     get '/jp/signup/registration/', to: 'users/registrations#new'
