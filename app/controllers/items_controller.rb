@@ -4,5 +4,7 @@ class ItemsController < ApplicationController
 
   def sell
     render layout: 'sell'
+
+  def new
   end
 end
