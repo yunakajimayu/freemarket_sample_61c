@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "jp/signup/" => "items#new"
   devise_for :users, path: '', controllers: {
     registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
   devise_scope :user do
     get '/jp/signup/registration/', to: 'users/registrations#new'
