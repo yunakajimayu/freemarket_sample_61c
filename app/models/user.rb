@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
-  validates :nickname, :first_name, :last_name, :first_name_kana, :last_name_kana, :birth_date ,:sns_auth, presence: true
+  validates :nickname, :first_name, :last_name, :first_name_kana, :last_name_kana, :birth_date , presence: true
   has_one :authorization
   has_one :address
   has_one :credit
@@ -22,7 +22,7 @@ class User < ApplicationRecord
     # userが登録済みの場合はそのままログインの処理へ行くので、ここでsnsのuser_idを更新しておく
     if user.persisted?
       sns.user = user
-      sns.save
+      sns.save(:validate => false)
     end
     {user: user, sns: sns}
   end
