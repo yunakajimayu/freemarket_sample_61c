@@ -1,0 +1,146 @@
+@import "var";
+
+
+.users {
+  .contents{
+    &__box{
+      &--right{
+        .identification{
+          margin: 0 !important;
+          &__header{
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 24px;
+            padding: 8px 24px;
+            height: 50px;
+            border-bottom: $gray solid 1px;
+            line-height: 35px;
+          }
+          &__contents{
+            padding: 64px;
+            font-size: 14px;
+            margin: 0 !important;
+            p{
+              width: 572px;
+            }
+            &--document{
+              font-size: 0;
+              float: right; 
+              width: 250px;
+              margin-top: 8px;
+              a{
+                font-size: 14px;
+                color: $blue;
+                i{
+                  font-size: 14px;
+                  color: $blue;
+                }
+              } 
+            }
+            p.name{
+              font-family: Arial, Helvetica, sans-serif;
+              margin-top: 40px;
+              font-weight: bold;
+            }            
+            p.users-information{
+              font-family: Arial, Helvetica, sans-serif;
+              margin-top: 8px;
+            }
+            &--formgroup{
+              margin-top: 40px;
+              p.zipcode{
+                float: left;
+                width: 56px;
+              }
+              span{
+                background-color: $gray;
+                color: $white;
+                font-size: 12px;
+                padding: 2px 4px;
+                margin:0 0 400px 8px !important;
+                font-family: Arial, Helvetica, sans-serif;
+                width: 32px;
+              }
+              input{
+                display: block;
+                margin-top: 8px;
+                width:572px;
+                height: 48px;
+                border-radius: 4px;
+                border: 1px solid $gray;
+              }
+            }
+            &--formgroup{
+              margin-top: 40px; 
+              p.prefecture{
+                float: left;
+                width: 56px;
+              }
+              select{
+                width: 572px;
+                height: 48px;
+                margin-top: 8px;
+                background-color: $white;
+                border: $gray solid 1px;
+                color: $black;
+                position: relative;
+                font-size: 16px;
+              }
+              icon{
+                appearance:none;
+              }
+            }
+            &--formgroup{
+              p.city{
+                float: left;
+                width: 56px;
+              }
+            }        
+            &--formgroup{
+              p.banti{
+                float: left;
+                width: 28px;
+              }
+            }
+            &--formgroup{
+              margin-bottom: 40px;
+              p.buildname{
+                float: left;
+                width: 42px;
+              }
+            }
+            &--saveupto{
+              margin: 0 !important;
+              button{
+              background-color: $red;
+              color: $white;
+              width: 572px;
+              height: 50px;
+              border: none;
+              font-size: 14px;
+              font-family: Arial, Helvetica, sans-serif;
+              margin:0 40px 0 0 !important;
+              }
+            }
+            &--register{
+                font-size: 0;
+                float: right; 
+                width: 170px;
+                margin:20px 0 0 0 !important;
+                a{
+                  font-size: 14px;
+                  color: $blue;
+                  i{
+                    font-size: 14px;
+                    color: $blue;
+                  }
+                } 
+              }
+            }
+          }
+
+       
+      }
+    }
+  }
+}
