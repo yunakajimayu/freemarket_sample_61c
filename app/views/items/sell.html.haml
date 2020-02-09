@@ -1,8 +1,5 @@
 - content_for(:html_title) { '出品' } 
 .item__contents
-  %p 
-    = link_to root_path do
-      = image_tag 'fmarket_logo_red.svg', alt: '', width:'200', class: ''
   %div
     = form_with model: @item do |f|
       %div
@@ -114,15 +111,3 @@
           また、出品をもちまして#{link_to "加盟店規約","#"}に同意したことになります。
         = f.submit "出品する"
         = link_to "もどる", root_path
-  %footer.item__contents--footer
-    %p
-      = link_to "プライバシーポリシー",""
-      = link_to "メルカリ利用規約",""
-      = link_to "特定商取引に関する表記",""
-    %p
-      = link_to root_path do
-        = image_tag 'logo_gray.svg', alt: '', size:'100x100', class: ''
-    %p
-      © Fmarket
-
-:javascript
