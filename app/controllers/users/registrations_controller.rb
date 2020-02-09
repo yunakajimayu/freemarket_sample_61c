@@ -16,6 +16,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     @profile = @user.build_profile
     render :new_profile
+
+    if params[:sns_auth] == 'true'
+      pass = Devise.friendly_token
+      params[:user][:password] = pass
+      params[:user][:password_confirmation] = pass
+    end
+    super
   end
 
   def create_profile
@@ -93,7 +100,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def user_params
-    params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :first_name, :last_name, :first_name_kana, :last_name_kana, :birth_date)
+    params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :first_name, :last_name, :first_name_kana, :last_name_kana, :birth_date, :sns_auth)
   end
 
   def profile_params

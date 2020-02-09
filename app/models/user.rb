@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
-  validates :nickname, :first_name, :last_name, :first_name_kana, :last_name_kana, :birth_date ,presence: true
+  validates :nickname, :first_name, :last_name, :first_name_kana, :last_name_kana, :birth_date ,:sns_auth, presence: true
   has_one :authorization
   has_one :address
   has_one :credit
@@ -24,7 +24,7 @@ class User < ApplicationRecord
       sns.user = user
       sns.save
     end
-    user
+    {user: user, sns: sns}
   end
-  
+
 end
