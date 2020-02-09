@@ -8,7 +8,11 @@
 |birthyear|date|null: false|
 |birthmonth|date|null: false|
 |birthday|date|null:false|
-|sns_credential|reference|foreign_key: true|
+|nickname|string|null: false|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_name_kana|string|null: false|
+|last_name_kana|string|null: false|
 ### Association
 - has_many: comments
 - has_many: items
@@ -26,11 +30,6 @@
 |user_id|reference|null: false, foreign_key: true|
 |profile|text||
 |profile_image|string||
-|nickname|string|null: false|
-|first_name|string|null: false|
-|last_name|string|null: false|
-|first_name_kana|string|null: false|
-|last_name_kana|string|null: false|
 |tel_number|integer|null: false, unique: true|
 ### Association
 - belongs_to: user
@@ -38,6 +37,7 @@
 ## SnsCredentialテーブル
 |Colimn|Type|Options|
 |------|----|-------|
+|user_id|reference|null: false|
 |uid|string|null: false|
 |provider|string|null: false|
 ### Association
@@ -62,7 +62,7 @@
 |Colimn|Type|Options|
 |------|----|-------|
 |user_id|reference|null: false, foreign_key: true|
-|authrization_number|integer|null: false|
+|authrization_num|integer|null: false|
 ### Association
 - belongs_to: user
 
@@ -73,20 +73,20 @@
 |description|text|null: false|
 |prefecture|string|null: false|
 |price|integer|null: false|
-|postage|integer|null: false|
 |size|integer|null: false|
 |status|string|null: false|
 |dalivery|reference|null: false, foreign_key: true|
 |picture|string|null: false|
-|saler_id|reference|null: false, foreign_key: true, class:User|
-|buyer_id|reference|foreign_key: true, class: User|
+|saler_id|reference|null: false, foreign_key: true|
+|buyer_id|reference|foreign_key: true|
 |like|reference|foreign_key: true|
 |user_rating|reference|null: false, foreign_key: true|
 |condition|integer|null: false|
 |category_id|reference|foreign_key: true, null: false|
 ### Association
 - belongs_to: category
-- belongs_to: user
+- belongs_to: saler, class: User
+- belongs_to: buyer, class: User
 - has_many: comments
 - belongs_to: delivery
 - has_one: user_rating
@@ -127,8 +127,10 @@
 |------|----|-------|
 |delivery_day|date|null: false|
 |delivery_status|string|null: false|
+|postage|integer|null: false|
+|postage_bearer|string|null: false|
 ### Association
-- has_many: items
+- has_one: item
 
 ## UserRatingテーブル
 |Colimn|Type|Options|
