@@ -40,7 +40,8 @@
 
 body {
   background-color: $gray;
-  @include width70;
+  width: 100%;
+
 }
 
 * {

@@ -8,10 +8,7 @@
   width: 1000px;
   margin: 0 auto;
 }
-body {
-  background-color: $gray;
-  @include width70;
-}
+
 
 .main {
   position: relative;

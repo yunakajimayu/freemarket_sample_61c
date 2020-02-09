@@ -57,3 +57,15 @@ $black-hover :rgba(0, 0, 0, 0.50);
       border: 1px solid $blue;
     }
 }
+
+@mixin select {
+    position: absolute;
+    right: 15px;
+    top: 0;
+    line-height: 53px;
+    pointer-events: none;
+    font-family: $fontawesome;
+    font-weight: 900;
+    color: $lightblack;
+    content:"\f078";
+}

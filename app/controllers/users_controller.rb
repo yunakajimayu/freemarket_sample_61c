@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def profile
-    
+    render layout: 'users'
   end
   
 end
