@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   devise_for :users, path: '', controllers: {
     registrations: 'users/registrations',
   }
+  
+    
   devise_scope :user do
     get '/jp/signup/registration/', to: 'users/registrations#new'
     post'/jp/signup/registration/', to: 'users/registrations#create'
@@ -24,5 +26,6 @@ Rails.application.routes.draw do
     get '/jp/signup/credit_card/', to: 'users/registrations#new_credit'
     post '/jp/signup/credit_card/', to: 'users/registrations#create_credit'
     get '/jp/signup/done/', to: 'users/registrations#done'
+
   end
 end
