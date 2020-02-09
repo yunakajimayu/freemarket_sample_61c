@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   
   resource :items ,path:'/jp/' do
     get 'sell',on: :collection
-    get "signup" => "items#new"
   end
   
   resource :user,path: '/mypage/' do
@@ -15,6 +14,7 @@ Rails.application.routes.draw do
   
     
   devise_scope :user do
+    get '/jp/signup', to: "users/registrations#new_page"
     get '/jp/signup/registration/', to: 'users/registrations#new'
     post'/jp/signup/registration/', to: 'users/registrations#create'
     get '/jp/signup/sms_confirmation/', to: 'users/registrations#new_profile'
