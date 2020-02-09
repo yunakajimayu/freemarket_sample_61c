@@ -39,8 +39,7 @@
               = f.label :condition,"商品の状態"
               %span.required 必須
             %div
-              -# = f.select :condition, Item.conditions_i18n.keys, prompt: true
-              = f.select :condition, Item.conditions_i18n.invert, {}, prompt: true
+              = f.select :condition, Item.conditions.keys.map{|k| [I18n.t("enum.item.condition.#{k}"), k]}, prompt: true
 
       %div
         %div
@@ -53,21 +52,19 @@
               配送料の負担
               %span.required 必須
             %div
-              = f.select :budget_d, Item.budget_ds_i18n.keys.map{|k| [I18n.t("enum.item.budget_d.#{k}"), k]}, prompt: true
-              = f.select :delivery_fee, Item.delivery_fees_i18n.keys.map{|k| [I18n.t("enum.item.delivery_fee.#{k}"), k]}, prompt: true
-              = f.select :delivery_fee, Item.delivery_fees_i18n.invert
+              = f.select :delivery_fee, Item.delivery_fees.keys.map{|k| [I18n.t("enum.item.delivery_fee.#{k}"), k]}, prompt: true
           %div.seller
             %h2 
               配送の方法
               %span.required 必須
             %div
-              = f.select :ShippingMethod, Item.ShippingMethods.keys.to_a, prompt: true
+              = f.select :shipping_method, Item.shipping_methods.keys.map{|k| [I18n.t("enum.item.shipping_method.#{k}"), k]}, prompt: true
           %div.buyer
             %h2 
               配送の方法
               %span.required 必須
             %div
-              = f.select :ShippingMethod, Item.ShippingMethods.slice(:Undecided,:YuMail,:KuromekoYamato,:YuPack).keys.to_a, prompt: true
+              = f.select :shipping_method, Item.shipping_methods_i18n.slice(:Undecided,:YuMail,:KuromekoYamato,:YuPack).keys.map{|k| [I18n.t("enum.item.shipping_method.#{k}"), k]}, prompt: true
           %div
             %h2 
               発送元の地域
@@ -79,7 +76,7 @@
               発送までの日数
               %span.required 必須
             %div
-              = f.select :ShipDate, Item.ShipDates.keys.to_a, prompt: true
+              = f.select :ship_date, Item.ship_dates.keys.map{|k| [I18n.t("enum.item.ship_date.#{k}"), k]}, prompt: true
 
       %div
         %div

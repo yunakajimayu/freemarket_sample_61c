@@ -14,15 +14,15 @@ $(function(){
       $('#sales').text("-")
     }
   })
-  $('[name*="DeliveryFee"]').change(function(){
+  $('[name*="delivery_fee"]').change(function(){
     var val = $(this).val();
-
+    console.log(val)
     switch(val){
-      case "Seller" :
+      case "seller" :
         $('.buyer').hide()
         $('.seller').show()
       break;
-      case "Buyer" :
+      case "buyer" :
         $('.seller').hide()
         $('.buyer').show()
       break;

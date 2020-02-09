@@ -7,30 +7,30 @@ class Item < ApplicationRecord
   has_many :likes
   
 
-  enum condition: { 
-    newdayo: 0,
-    almost_unused: 1,
-    no_noticeable_scratches_or_dirt: 2,
-    some_scratches_and_dirt: 3,
-    there_are_scratches_and_dirt: 4,
-    overall_bad_condition: 5
-  }
+  enum condition: [
+    :new_unused, 
+    :almost_unused, 
+    :no_noticeable_scratches_or_dirt, 
+    :some_scratches_and_dirt, 
+    :there_are_scratches_and_dirt, 
+    :overall_bad_condition
+  ]
 
-  enum 	delivery_fee: {
-    seller: 0,
-    buyer: 1
-  }
+  enum 	delivery_fee: [
+    :seller,
+    :buyer
+  ]
 
-  enum ShippingMethod:{
-    Undecided: 0,
-    YuMail: 1,
-    LetterPack: 2,
-    StandardMail: 3,
-    KuromekoYamato: 4,
-    YuPack: 5,
-    ClickPost: 6,
-    YuPacket: 7,
-  }
+  enum shipping_method:[
+    :undecided,
+    :yu_mail,
+    :letter_pack,
+    :standard_mail,
+    :kuromeko_yamato,
+    :yu_pack,
+    :click_post,
+    :yu_packet,
+  ]
 
 
   enum ShippingArea: {
@@ -44,10 +44,10 @@ class Item < ApplicationRecord
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
   }
 
-  enum ShipDate: {
-    WithinTwoDays: 0,
-    WithinThreeDays: 1,
-    WithinOneWeek: 2
+  enum ship_date: {
+    with_in_two_days: 0,
+    with_in_three_days: 1,
+    with_in_one_week: 2
   }
 
   enum budget_d: {
