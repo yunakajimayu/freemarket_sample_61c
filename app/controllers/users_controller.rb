@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  layout false
   def show
     
   end
@@ -7,4 +7,5 @@ class UsersController < ApplicationController
   def profile
     
   end
+  
 end

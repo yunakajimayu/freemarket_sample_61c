@@ -1,5 +1,6 @@
 $gray :rgb(244, 244, 244); //背景色、検索窓の薄いグレー
-$deepgray :#ccc; //それ以外の少し濃いグレー。フッターのリンク色などに使用しています。
+$deepgray :rgb(185, 185, 185); //それ以外の少し濃いグレー。フッターのリンク色などに使用しています。
+$lightblack :rgb(132, 132, 132);
 $red :rgb(203, 56, 56); //赤全般
 $blue : rgb(74, 147, 225);//青全般
 $white:#FFFFFF;//白全般
@@ -7,9 +8,52 @@ $black :rgb(45, 45, 45);//黒全般
 $shadow-color :rgba(0, 0, 0, 0.167);//shadow-boxタグに使用している色です。透明度を設定しています。
 $fontawesome :"Font Awesome 5 Free";//fontawesome用のフォント指定です。仕様が変わって指定フォント名が変更される可能性を考慮して変数にしています。
 $gray-hover :rgba(0, 0, 0, 0.020);
+$black-hover :rgba(0, 0, 0, 0.50);
 
 @mixin flex {
   display: flex;
     justify-content:space-between;
     flex-wrap: wrap;
+}
+
+@mixin submit-red-bar {
+  border: none;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  margin: 15px 0 30px 0;
+  color: $white;
+  font-size: 0.9em;
+  background-color: $red;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin input-form {
+    padding: 15px;
+    width: 230px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 5px;
+    border-style: none;
+    font-size: 1em;
+    border: 1px solid $deepgray;
+    &:focus {
+      outline: none;
+      border: 1px solid $blue;
+    }
+}
+
+@mixin textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    line-height: 1.5em;
+    border: 1px solid $deepgray;
+    &:focus {
+      outline: none;
+      border: 1px solid $blue;
+    }
 }
