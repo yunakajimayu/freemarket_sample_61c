@@ -19,6 +19,7 @@
           &__contents{
             padding: 64px;
             font-size: 14px;
+            line-height: 1.5;
             margin: 0 !important;
             p{
               width: 572px;
@@ -26,11 +27,14 @@
             &--document{
               font-size: 0;
               float: right; 
-              width: 250px;
+              text-align: right;
+              width: 572px;
               margin-top: 8px;
+              margin-bottom: 60px;
               a{
                 font-size: 14px;
                 color: $blue;
+                width: 572px;
                 i{
                   font-size: 14px;
                   color: $blue;
@@ -53,7 +57,7 @@
                 width: 56px;
               }
               span{
-                background-color: $gray;
+                background-color: #ccc;
                 color: $white;
                 font-size: 12px;
                 padding: 2px 4px;
@@ -68,6 +72,8 @@
                 height: 48px;
                 border-radius: 4px;
                 border: 1px solid $gray;
+                font-size: 16px;
+                padding-left: 20px;
               }
             }
             &--formgroup{
@@ -76,7 +82,23 @@
                 float: left;
                 width: 56px;
               }
+              div{
+                &::after{
+                  position: absolute;
+                  right: 280px;
+                  font-size: 18px;
+                  line-height: 65px;
+                  pointer-events: none;
+                  font-family: $fontawesome;
+                  font-weight: 900;
+                  color: #888;
+                  content:"\f078";
+                  z-index: 999999;
+
+                  }
+              }
               select{
+                cursor: pointer;
                 width: 572px;
                 height: 48px;
                 margin-top: 8px;
@@ -88,8 +110,9 @@
                 -webkit-appearance: none;
                 -moz-appearance: none;
                 appearance: none;
+                padding-left:20px;
+                }
               }
-            }
             &--formgroup{
               p.city{
                 float: left;
