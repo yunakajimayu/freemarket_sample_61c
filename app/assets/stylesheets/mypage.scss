@@ -1,0 +1,297 @@
+.users {
+  margin: 0 !important;
+  .contents{
+    &__box{
+      &--right{
+        background-color: $gray !important;
+        .mypage{
+          width: 700px;
+          height: 200px;
+          margin: 0 !important;
+          background: asset_url("mypage-header.jpg") no-repeat;
+          cursor: pointer;
+          // ↓プロフィール画面に遷移するためのバナーの部分です
+          &__top{
+            width: 700px;
+            height: 200px;
+            margin: 0 !important;
+            &--icon{
+              width: 60px;
+              height: 60px;
+              border-radius: 60px;
+              background: asset_url("user.jpg") center ;
+              z-index: 999999 !important;
+              line-height: 30px !important;
+              float: right;
+              margin: 44px 320px 8px 320px !important;
+            }
+            &--nickname{
+              font-size: 14px;
+              font-weight: bold;
+              font-family: Arial, Helvetica, sans-serif;
+              color: $black;
+              text-align: center !important;
+              width: 700px;
+              margin: 0 auto 10px !important;
+              height: 19px;
+              float: left;
+            }
+            &--status{
+              margin: 0 auto 10px !important;
+              height: 19px;
+              line-height: 45px;
+              text-align: center;
+              font-family: Arial, Helvetica, sans-serif;
+              width: 700px;
+              float: left;
+              display: flex;
+              align-items: center;
+              // ↓評価数のところです
+              .evaluation{
+                font-size: 14px;
+                font-weight: normal;
+                font-family: Arial, Helvetica, sans-serif;
+                width: 80px;
+                margin-left: 270px;
+                span{
+                  margin-left: 8px;
+                  font-weight: bold;
+                }
+              }
+              // ↓出品数のところです
+              .exhibition{
+                font-size: 14px;
+                font-weight: normal;
+                font-family: Arial, Helvetica, sans-serif;
+                margin: 0 !important;
+                width: 80px;
+                padding-left:0 ;
+                span{
+                  margin-left: 8px;
+                  font-weight: bold;
+                }
+              }
+            }
+          }
+          // ↓画像にカーソルが載った時に画像が透過します。
+          &__top:hover{
+            transition-property: opacity;
+            transition-duration: 1s;
+            transition-timing-function: ease;
+            transition-delay: 0;
+            opacity: 0.5;
+          }
+          // ↓ここからマイページのお知らせとやることリスト
+          &__container{
+            width: 700px;
+            margin: 0 !important;
+            background-color: $gray !important;
+            // ↓お知らせとやることリストのタブです
+            &--tabs{
+              width: 700px;
+              margin: 0 !important;
+              .tab_item{
+                width: 350px !important;
+                height: 72px !important;
+                font-size: 16px;
+                text-align: center;
+                line-height: 60px;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: bold;
+                transition: all 0.2s ease;
+                float: left;
+                background-color: $gray !important;
+              }
+              .tab_item:hover{
+                opacity: 0.7;
+              }
+              // ↓ラジオボタンでタブの選択機能を実装していますが、ラジオボタンが邪魔なので存在を消します。
+              input[name="tab_item"] {
+                display: none;
+              }
+              // ↓タブの中身を消します。
+              .tab_content {
+                display: none;
+                clear: both;
+                overflow: hidden;
+              }
+              // ↓ここの記述により、選択したタブの中身のみを表示させます。
+              #notification:checked ~ #notification_content,
+              #todolist:checked ~ #todolist_content,{
+                display: block;
+                background-color: $white;
+                margin: 0;
+                font-size: 14px;
+                height: 91.42px;
+                align-items: center;
+                height: fit-content;
+                // ↓タブの中身です
+                .tab_content_description{
+                  margin: 0 !important;
+                  height: 91.42px;
+                  border-bottom: $gray solid 1px;
+                  padding: 16px;
+                  .icon_item{
+                    width: 48px;
+                    height: 48px;
+                    background: asset_url("logo_red.svg") no-repeat ;
+                    float: left;
+                    margin-right: 20px;
+                  }
+                  // ↓お知らせややることリストの詳細です
+                  .details{
+                    font-size: 14px;
+                  }
+                  // ↓font-awasomeの色の指定
+                  .far{
+                    color: $deepgray;
+                  }
+                  span{
+                    color: $deepgray;
+                  }
+                }
+                .tab_content_description:hover{
+                  background-color: $gray;
+                }
+                // ↓「一覧を見る」ボタンのスタイルです
+                .go_mypage{
+                  margin: 0 !important;
+                  height: 59.42px;
+                  width: 668px;
+                  margin: 16px !important;
+                  background-color: $gray;
+                  text-align: center;
+                  list-style: none;
+                  line-height: 60px;
+                }
+                .go_mypage:hover{
+                  background-color: #f7f8fa;
+                }
+              }
+            }
+            // ↓選択されたタブは背景が白くなり、上に赤のボーダーラインが現れます。
+            &--tabs input:checked + .tab_item {
+              background-color: $white !important;
+              border-top: 2px solid $red;
+              height: fit-content;
+            }
+          }
+          // ↓ここから購入した商品のリスト
+          &__container{
+            width: 700px;
+            margin: 0 !important;
+            &--head{
+              width: 700x;
+              padding: 0 16px;
+              margin: 40px 0 0 0 !important;
+              height: 72px;
+              font-family: Arial, Helvetica, sans-serif;
+              line-height: 70px;
+              background-color: #f7f8fa !important;
+            }
+            // ↓取引中と過去の取引のところのタブです
+            &--tradingtab{
+              width: 700px;
+              margin: 0 !important;
+              .tab_trading{
+                width: 350px !important;
+                height: 72px !important;
+                font-size: 16px;
+                text-align: center;
+                line-height: 60px;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: bold;
+                transition: all 0.2s ease;
+                float: left;
+                background-color: $gray !important;
+              }
+              .tab_trading:hover{
+                opacity: 0.7;
+              }
+              // ↓ラジオボタンでタブの選択機能を実装していますが、ラジオボタンが邪魔なので存在を消します。
+              input[name="tab_trading"] {
+                display: none;
+              }
+              // ↓タブの中身を消します。
+              .tab_content {
+                display: none;
+                clear: both;
+                overflow: hidden;
+              }
+              // ↓ここの記述により、選択したタブの中身のみを表示させます。
+              #tradingnow:checked ~ #tradingnow_content,
+              #tradingpast:checked ~ #tradingpast_content,{
+                display: block;
+                background-color: $white;
+                margin: 0;
+                font-size: 14px;
+                height: 91.42px;
+                align-items: center;
+                height: fit-content;
+                .tab_content_description{
+                  margin: 0 !important;
+                  height: 91.42px;
+                  border-bottom: $gray solid 1px;
+                  padding: 16px;
+                  .icon_item{
+                    width: 48px;
+                    height: 48px;
+                    background: asset_url("logo_red.svg") no-repeat ;
+                    float: left;
+                    margin-right: 20px;
+                  }
+                  .details{
+                    font-size: 14px;
+                  }
+                  // ↓「受け取り評価待ち」の赤いラベルです
+                  span.notyet{
+                    color: $white;
+                    background-color: $red;
+                    border-radius: 2px;
+                    font-size: 12px;
+                    padding: 5px 6px;
+                    margin-top: 8px;
+                    line-height: 40px;
+                  }
+                  // ↓「取引完了」の黒いタブです
+                  span.complete{
+                    color: $white;
+                    background-color: $deepgray;
+                    border-radius: 2px;
+                    font-size: 12px;
+                    padding: 5px 6px;
+                    margin-top: 8px;
+                    line-height: 40px;
+                  }
+                }
+                .tab_content_description:hover{
+                  background-color: $gray;
+                }
+                // ↓「一覧を見る」ボタンのスタイルを調節しています
+                .go_mypage{
+                  margin: 0 !important;
+                  height: 59.42px;
+                  width: 668px;
+                  margin: 16px !important;
+                  background-color: $gray;
+                  text-align: center;
+                  list-style: none;
+                  line-height: 60px;
+                }
+                .go_mypage:hover{
+                  background-color: #f7f8fa;
+                }
+              }
+            }
+            // ↓選択されたタブは背景が白くなり、上に赤のボーダーラインが現れます。
+            &--tradingtab input:checked + .tab_trading {
+              background-color: $white !important;
+              border-top: 2px solid $red;
+              height: fit-content;
+            }
+          }
+        }
+      }
+    }
+  }
+}

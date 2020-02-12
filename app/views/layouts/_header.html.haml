@@ -2,12 +2,19 @@
   .content
     .header__top
       .header__top--logo
-        = image_tag 'fmarket_logo_red.svg', alt: 'freemarket', height: '', width: ''
+        = link_to root_path do
+          = image_tag 'fmarket_logo_red.svg', alt: 'freemarket', height: '', width: ''
       .header__top--search
         = form_with url: root_path do |f| 
           = f.text_field  :items ,placeholder:"何かお探しですか？"
           = f.button type:'submit' do
             = icon("fas", "search")
+      - if user_signed_in?
+        = link_to "ログアウト", destroy_user_session_path, method: :delete
+      - else
+        = link_to "新規会員",  '/jp/signup/'
+        = link_to "ログイン", new_user_session_path
+
     .header__menu
       .nav
         %ul.nav__left
@@ -238,7 +245,7 @@
             マイページ
             %ul.nav__right--mypage
               %li 
-                %div
+                %div.usericon
               %li 
                 %p
                   usernamee
