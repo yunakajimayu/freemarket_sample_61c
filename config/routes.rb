@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   root to: 'items#index'
-  resource :user,path: '/mypage/' do
-    get 'profile',on: :collection
   get "jp/signup/" => "items#new"
   devise_for :users, path: '', controllers: {
     registrations: 'users/registrations',
@@ -18,5 +16,7 @@ Rails.application.routes.draw do
     get '/jp/signup/credit_card/', to: 'users/registrations#new_credit'
     post '/jp/signup/credit_card/', to: 'users/registrations#create_credit'
     get '/jp/signup/done/', to: 'users/registrations#done'
+    resource :user,path: '/mypage/' do
+      get 'profile',on: :collection
   end
 end
