@@ -79,4 +79,7 @@ gem 'ancestry'
 gem "jquery-rails"
 gem "haml-rails", "~> 2.0"
 gem 'font-awesome-sass', '~> 5.3.1'
-
+gem "bundler", "2.0.2"
+gem "dropzonejs-rails"
+gem 'enum_help' 
+gem 'rails-i18n', '~> 5.1'
