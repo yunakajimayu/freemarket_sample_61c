@@ -73,7 +73,6 @@
 |description|text|null: false|
 |prefecture|string|null: false|
 |price|integer|null: false|
-|postage|integer|null: false|
 |size|integer|null: false|
 |status|string|null: false|
 |dalivery|reference|null: false, foreign_key: true|
@@ -128,8 +127,10 @@
 |------|----|-------|
 |delivery_day|date|null: false|
 |delivery_status|string|null: false|
+|postage|integer|null: false|
+|postage_bearer|string|null: false|
 ### Association
-- has_many: items
+- has_one: item
 
 ## UserRatingテーブル
 |Colimn|Type|Options|
