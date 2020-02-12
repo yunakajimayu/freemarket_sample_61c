@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root to: 'items#index'
+  resource :user,path: '/mypage/' do
+    get 'profile',on: :collection
   get "jp/signup/" => "items#new"
   devise_for :users, path: '', controllers: {
     registrations: 'users/registrations',
