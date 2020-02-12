@@ -1,5 +1,8 @@
 = render 'layouts/application'
 .contents
   = render 'layouts/header'
-  = yield
+  .contents__box
+    = render 'mypage-nav'
+    .contents__box--right
+      = yield
   = render 'layouts/footer'

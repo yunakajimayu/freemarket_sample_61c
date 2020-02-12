@@ -1,0 +1,66 @@
+- content_for(:html_title) { 'マイページ' } 
+.enter
+  =link_to "" do
+    出品
+.mypage
+  .mypage__top
+    = link_to ""
+    .mypage__top--icon
+    .mypage__top--nickname
+      usernamae
+    .mypage__top--status
+      .evaluation
+        評価
+        %span.my-eva 17
+      .exhibition
+        出品数
+        %span.my-exhi 26
+  .mypage__container
+    .mypage__container--tabs
+      %input#notification{checked: "checked", name: "tab_item", type: "radio"}/
+      %label.tab_item{for: "notification"} お知らせ
+      %input#todolist{name: "tab_item", type: "radio"}/
+      %label.tab_item{for: "todolist"} やることリスト
+      #notification_content.tab_content
+        %li.tab_content_description
+          %p.icon_item 
+          %p.details お知らせ①
+          = icon("far", "clock fa-clock gray")
+          %span 3日前
+        %li.tab_content_description
+          %p.icon_item 
+          %p.details お知らせ②
+          = icon("far", "clock fa-clock gray")
+          %span 5日前
+        %li.go_mypage
+          =link_to "一覧を見る"
+      #todolist_content.tab_content
+        %li.tab_content_description
+          %p.icon_item 
+          %p.details 電話番号認証をしましょう
+          = icon("far", "clock fa-clock gray")
+          %span 10日前
+        %li.go_mypage
+          =link_to "一覧を見る"
+  .mypage__container
+    .mypage__container--head
+      %h3 購入した商品
+    .mypage__container--tradingtab
+      %input#tradingnow{checked: "checked", name: "tab_trading", type: "radio"}/
+      %label.tab_trading{for: "tradingnow"} 取引中
+      %input#tradingpast{name: "tab_trading", type: "radio"}/
+      %label.tab_trading{for: "tradingpast"} 過去の取引
+      #tradingnow_content.tab_content
+        %li.tab_content_description
+          %p.icon_item 
+          %p.details 「ダンボール」を購入しました。受取評価をしてください。
+          %span.notyet 受け取り評価待ち
+        %li.go_mypage
+          =link_to "一覧を見る"
+      #tradingpast_content.tab_content
+        %li.tab_content_description
+          %p.icon_item 
+          %p.details 「全自動卵割り機」を購入しました。取引が完了しました。
+          %span.complete 取引完了
+        %li.go_mypage
+          =link_to "一覧を見る"
