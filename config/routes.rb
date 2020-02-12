@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, path: '', controllers: {
     registrations: 'users/registrations',
   }
+  get "jp/mypage/card/" => "creditcards#index"
   devise_scope :user do
     get '/jp/signup/registration/', to: 'users/registrations#new'
     post'/jp/signup/registration/', to: 'users/registrations#create'
