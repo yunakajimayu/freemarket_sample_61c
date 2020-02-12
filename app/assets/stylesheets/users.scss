@@ -1,0 +1,151 @@
+@import "var";
+
+
+.users {
+  //mypage プロフィール編集画面
+  .contents {
+    &__box {
+      @include flex;
+      justify-content: flex-start;
+      width: fit-content;
+      padding-top: 40px ;
+      margin: 0 auto;
+
+      nav {
+        margin-right: 40px;
+      }
+        ul {
+          background-color: $white;
+          font-size: 0.85em;
+          width: 280px;
+          
+          > li {
+            color: $black;
+            border-bottom: 1px solid $gray;
+            position: relative;
+            width: 100%;
+            height: fit-content;
+            
+
+            > a {
+              display: block;
+              width: 100%;
+              height: 100%;
+              padding: 18px;
+              &::after {
+                font-family: $fontawesome;
+                font-weight: 900;
+                font-size: 1.1em;
+                content:"\f054";
+                color: $deepgray;
+                position: absolute;
+                right: 20px;
+                transition: all .2s;
+              }
+
+              &:hover {
+                background-color: $gray-hover;
+                &::after {
+                  color: $black;
+                  transform: translate(3px,0px);
+                }
+                
+              }
+            }
+
+            &.title {
+
+              padding: 40px 0 10px 0;
+              background-color: $gray;
+              font-size: 1.1em;
+              font-weight: bold;
+            }
+          }
+        }
+
+        &--right {
+          width: 700px;
+          height:fit-content;
+          background-color: $white;
+
+          h1 {
+            text-align: center;
+            font-size: 1.38em;
+            padding: 15px 0;
+          }
+
+          form > div:nth-of-type(1) {
+            
+            background:  asset_url("mypage-header.jpg") no-repeat;
+            padding: 60px 0 20px 0;
+            height: 150px;
+            > div {
+              @include flex;
+              justify-content: flex-start;
+              width: fit-content;
+              height: 60px;
+              margin: 0 auto;
+
+              div {
+                background-color: $deepgray;
+                border-radius: 50px;
+                width: 60px;
+                height: 60px;
+                margin-right: 10px;
+                background: asset_url("user.jpg") center;
+                background-size:cover;
+              }
+
+              > input[type=text] {
+                position: relative;
+                top: 7px;
+                padding: 15px;
+                width: 230px;
+                height: 50px;
+                line-height: 50px;
+                border-radius: 5px;
+                border-style: none;
+                font-size: 1em;
+                border: 1px solid $deepgray;
+                &:focus {
+                  outline: none;
+                  border: 1px solid $blue;
+                }
+              }
+
+              
+
+
+            }
+          }
+
+          div:last-child {
+            margin: 20px;
+              > textarea {
+                width: 100%;
+                height: 14em;
+                padding: 10px;
+                font-size: 1em;
+                line-height: 1.5em;
+                &:focus {
+                  outline: none;
+                  border: 1px solid $blue;
+                }
+              }
+
+              > input[type=submit] {
+                border: none;
+                width: 100%;
+                height: 50px;
+                padding: 10px;
+                margin: 15px 0 30px 0;
+                color: $white;
+                font-size: 0.8em;
+                background-color: $red;
+              }
+          }
+        }
+      }
+    }
+  }
+
