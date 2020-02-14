@@ -10,6 +10,7 @@ $fontawesome :"Font Awesome 5 Free";//fontawesome用のフォント指定です�
 $gray-hover :rgba(0, 0, 0, 0.020);
 $black-hover :rgba(0, 0, 0, 0.50);
 
+
 @mixin flex {
   display: flex;
     justify-content:space-between;
@@ -56,4 +57,16 @@ $black-hover :rgba(0, 0, 0, 0.50);
       outline: none;
       border: 1px solid $blue;
     }
+}
+
+@mixin select {
+    position: absolute;
+    right: 15px;
+    top: 0;
+    line-height: 53px;
+    pointer-events: none;
+    font-family: $fontawesome;
+    font-weight: 900;
+    color: $lightblack;
+    content:"\f078";
 }
