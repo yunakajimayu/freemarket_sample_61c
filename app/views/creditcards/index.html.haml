@@ -8,13 +8,12 @@
   .credit-inner
     .inner-content
       %h2 クレジットカード一覧
-      - if @credit.present? 
+      -# クレジットカードが登録されている場合は一覧表示します
+      -# サーバーサイドタスク「商品購入」が実装されたら行います。
+      -# クレジットカードが登録されていない場合は新規作成ボタンを表示します
+      - if @credit.present?
         %ul
           %li
-          = form_with url: card_path(@card.id), method: :delete, local: true, id: 'charge-form' do |f|
-            %figure
-              = image_tag "https://card-professor.jp/wp/wp-content/uploads/2019/09/mark-e.jpg", width: '26', height: '20'
-
       - else
         .create-newcard
           .create-newcard__button
