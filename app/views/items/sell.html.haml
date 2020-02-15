@@ -1,7 +1,7 @@
 - content_for(:html_title) { '出品' } 
 .item__contents
   %div
-    = form_with model: @item do |f|
+    = form_with model: @item,local: true,id: "upload-dropzone" do |f|
       %div
         %h1
           商品の情報を入力
@@ -14,6 +14,9 @@
         %div.item__contents--upload
           ドラッグアンドドロップ<BR>
           またはクリックしてファイルをアップロード
+        .dropzone
+          .fallback
+            = f.file_field :file_name, multiple: true
       %div
         %h2 
           = f.label :name ,"商品名"
@@ -108,3 +111,7 @@
           また、出品をもちまして#{link_to "加盟店規約","#"}に同意したことになります。
         = f.submit "出品する"
         = link_to "もどる", root_path
+
+  = form_for(Item.new, html: {multipart: true, class: "dropzone"}) do |f| 
+    .fallback
+      = f.file_field :file_name, multiple: true

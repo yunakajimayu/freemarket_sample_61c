@@ -13,4 +13,5 @@
 //= require rails-ujs
 //= require jquery
 //= require activestorage
+//= require dropzone
 //= require_tree .

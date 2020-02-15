@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   root 'items#index'
   
   resource :items ,path:'/jp/' do
-    get 'sell',on: :collection
-    get "signup" => "items#new"
+    collection do
+    get 'sell' => "items#new"
+    post 'sell' => "items#new"
+    end
   end
   
   resource :user,path: 'jp/mypage/' do

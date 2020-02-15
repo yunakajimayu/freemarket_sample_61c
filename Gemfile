@@ -85,3 +85,4 @@ gem "dropzonejs-rails"
 gem 'enum_help' 
 gem 'rails-i18n', '~> 5.1'
 gem 'payjp'
+gem 'pry-byebug'

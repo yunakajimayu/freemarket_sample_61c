@@ -11,6 +11,9 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
+ *= require dropzone/basic
+ *= require dropzone/dropzone
+
  */ 
   @import "var";
   @import "reset";
@@ -25,5 +28,3 @@
   @import "sub-header-footer";
   @import "user-identification";
   @import "mypage"
-
-
