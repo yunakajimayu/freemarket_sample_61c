@@ -1,5 +1,15 @@
 $(function(){
 
+  Dropzone.autoDiscover = false;
+
+  $(".dropzone").dropzone({
+    maxFilesize: 1,
+    addRemoveLinks: true,
+    autoProcessQueue:false, 
+    dictDefaultMessage: "アップロードするファイルをここへドロップしてください",
+    previewsContainer:".preview"
+  });
+
   $('#price').keyup(function() {
     var s = $('#price').val();
     var si = parseInt(s);
@@ -31,15 +41,7 @@ $(function(){
 
   })
 
+
+
 })
 
-
-$(function() {
-  // disable auto discover
-  Dropzone.autoDiscover = false;
-
-  $(".dropzone").dropzone({
-    maxFilesize: 1,
-    addRemoveLinks: true
-  });
-});

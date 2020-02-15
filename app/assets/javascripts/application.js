@@ -15,3 +15,5 @@
 //= require activestorage
 //= require dropzone
 //= require_tree .
+
+

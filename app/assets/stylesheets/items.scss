@@ -31,7 +31,7 @@
         padding: 40px;
         border-bottom: 1px solid $gray;
 
-        
+
         a {
           color: $blue;
           &:hover {
@@ -40,10 +40,64 @@
           }
         }
 
-        &:nth-child(5) {
-          input[type=text] {
-            width: 100%;
-          }
+        &:nth-child(6) {
+          
+          @include flex;
+            > div {
+              width: 35%;
+
+              + div {
+                width: calc(100% - 35%);
+
+                  > div > div {
+                    position: relative;
+                    &::after {
+                      @include select;
+                    }
+                    
+                    
+
+                    select {
+
+                      -webkit-appearance: none;
+                      -moz-appearance:none;
+                      appearance: none;
+                      outline:none;
+                      color: inherit;
+                      height: 50px;
+                      padding: 8px 12px;
+                      width:100%;
+                      border-color: $deepgray;
+                      background-color: inherit;
+                      background: none transparent;
+                      font-size: 1em;
+                      &:focus {
+                        outline: none;
+                      }
+                      &:hover {
+                        border: 1px solid $blue;
+                      }
+                      
+            
+                      > option{
+                        background-color: #fff;
+                        color: $black;
+      
+                        
+      
+                    }
+      
+                    
+                    
+                    margin-bottom: 40px;
+      
+                  }
+                    
+                  }
+              }
+            }
+            
+
         }
 
         &:last-child {
@@ -119,6 +173,10 @@
           + p{
             font-size: 0.8em;
             margin: 10px 0 20px 0;
+          }
+
+          + input[type=text] {
+            width: 100%;
           }
 
           
@@ -217,7 +275,7 @@
 
           
           
-          > select {
+          select {
           -webkit-appearance: none;
           -moz-appearance:none;
           appearance: none;
@@ -254,7 +312,7 @@
       }
     }
 
-    &--upload {
+    &--upload,.dropzone > .dz-default {
       width: 100%;
       background-color: $gray;
       border: dashed 1px $deepgray;
@@ -263,6 +321,9 @@
       font-size: 0.85em;
       line-height: 1.5em;
       text-align: center;
+      cursor: pointer;
+      margin: 30px 0;
+      
     }
 
 
