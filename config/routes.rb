@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resource :user,path: '/mypage/' do
     get 'profile',on: :collection
     get 'identification',on: :collection
+    get 'logout', on: :collection
   end
   
   resource :items ,path:'/jp/' do
