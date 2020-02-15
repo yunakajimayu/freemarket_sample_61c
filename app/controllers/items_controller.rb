@@ -9,9 +9,6 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-  def new
-  end
-
   def create
   end
 
