@@ -2,7 +2,8 @@
   .content
     .header__top
       .header__top--logo
-        = image_tag 'fmarket_logo_red.svg', alt: 'freemarket', height: '', width: ''
+        = link_to root_path do
+          = image_tag 'fmarket_logo_red.svg', alt: 'freemarket', height: '', width: ''
       .header__top--search
         = form_with url: root_path do |f| 
           = f.text_field  :items ,placeholder:"何かお探しですか？"
@@ -244,7 +245,7 @@
             マイページ
             %ul.nav__right--mypage
               %li 
-                %div
+                %div.usericon
               %li 
                 %p
                   usernamee
