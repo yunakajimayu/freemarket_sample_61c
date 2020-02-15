@@ -1,31 +1,30 @@
-%body
-  .main
-    .container
-      .new_resistration
-        カード
-      .contentsbox
-        = form_for(@credit, url: jp_signup_credit_card_path) do |f|
-          = render "devise/shared/error_messages", resource: @credit
-          .field
-            = f.label "カード番号"
-            %span.required 必須
-            %br
-            = f.text_field :card_id, autofocus: true, placeholder: "半角数字のみ"
-          .field
-            = f.label "有効期限"
-            %span.required 必須
-            %br
-            = f.text_field :limit_month
-            = "月"
-            = f.text_field :limit_year
-            = "年"
-          .field
-            = f.label "セキュリティーコード"
-            %span.required 必須
-            %br
-            = f.text_field :security_code, autofocus: true, placeholder: "カード背面4桁もしくは3桁の番号"
-          #help
-            = link_to "カード裏面の番号とは？"
+.main
+  .container
+    .new_resistration
+      カード
+    .contentsbox
+      = form_for(@credit, url: jp_signup_credit_card_path) do |f|
+        = render "devise/shared/error_messages", resource: @credit
+        .field
+          = f.label "カード番号"
+          %span.required 必須
           %br
-          .actions
-            = f.submit "次へ進む"
+          = f.text_field :card_id, autofocus: true, placeholder: "半角数字のみ"
+        .field
+          = f.label "有効期限"
+          %span.required 必須
+          %br
+          = f.text_field :limit_month
+          = "月"
+          = f.text_field :limit_year
+          = "年"
+        .field
+          = f.label "セキュリティーコード"
+          %span.required 必須
+          %br
+          = f.text_field :security_code, autofocus: true, placeholder: "カード背面4桁もしくは3桁の番号"
+        #help
+          = link_to "カード裏面の番号とは？"
+        %br
+        .actions
+          = f.submit "次へ進む"
