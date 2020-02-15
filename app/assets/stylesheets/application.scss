@@ -12,14 +12,17 @@
  *
  *= require_self
  */ 
- @import "var";
- @import "reset";
- @import "font-awesome-sprockets";
- @import "font-awesome";
- @import "animate";
- @import "index";
- @import "items";
- @import "users";
- @import "mypage";
- @import "logout";
- @import "user-identification";
+  @import "var";
+  @import "reset";
+  @import "font-awesome-sprockets";
+  @import "font-awesome";
+  @import "animate";
+  @import "index";
+  @import "items";
+  @import "users";
+  @import "devise";
+  @import "resistration";
+  @import "sub-header-footer";
+  @import "user-identification";
+  @import "mypage";
+  @import "logout";

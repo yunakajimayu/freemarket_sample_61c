@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root to: 'items#index'
   resource :user,path: '/mypage/' do
     get 'profile',on: :collection
@@ -6,9 +7,21 @@ Rails.application.routes.draw do
     get 'logout', on: :collection
   end
   get "jp/signup/" => "items#new"
+  root 'items#index'
+  
+  resource :items ,path:'/jp/' do
+    get 'sell',on: :collection
+    get "signup" => "items#new"
+  end
+  
+  resource :user,path: 'jp/mypage/' do
+    get 'profile',on: :collection
+  end
   devise_for :users, path: '', controllers: {
     registrations: 'users/registrations',
   }
+  
+    
   devise_scope :user do
     get '/jp/signup/registration/', to: 'users/registrations#new'
     post'/jp/signup/registration/', to: 'users/registrations#create'
