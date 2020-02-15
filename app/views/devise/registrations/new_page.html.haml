@@ -1,16 +1,15 @@
-%body
-  .main
-    .container
-      .new_resistration
-        新規会員登録
-      .contentsbox
-        .contents
-        =link_to '/jp/signup/registration/', class: "contents__btn contents__btn--mail" do
-          = icon('far', 'envelope', class: "contents__btn--icon")
-          メールアドレスで登録する
-        =link_to "/" , class: "contents__btn contents__btn--facebook", method: :post do
-          =icon('fab', 'facebook-square', class: "contents__btn--icon")
-          Facebookで登録する
-        =link_to "/" , class: "contents__btn contents__btn--google", method: :post do
-          =icon('fab', 'google',class: "contents__btn--icon--google" )
-          Googleで登録する
+.main
+  .container
+    .new_resistration
+      新規会員登録
+    .contentsbox
+      .contents
+      =link_to '/jp/signup/registration/', class: "contents__btn contents__btn--mail" do
+        = icon('far', 'envelope', class: "contents__btn--icon")
+        メールアドレスで登録する
+      =link_to "/" , class: "contents__btn contents__btn--facebook", method: :post do
+        =icon('fab', 'facebook-square', class: "contents__btn--icon")
+        Facebookで登録する
+      =link_to "/" , class: "contents__btn contents__btn--google", method: :post do
+        =icon('fab', 'google',class: "contents__btn--icon--google" )
+        Googleで登録する
