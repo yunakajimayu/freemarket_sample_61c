@@ -392,7 +392,6 @@ DEPENDENCIES
   payjp
   puma (~> 3.11)
   rails (~> 5.2.4, >= 5.2.4.1)
-  rails-i18n (~> 5.1)
   rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver
