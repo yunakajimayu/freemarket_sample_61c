@@ -3,14 +3,15 @@ $(function(){
   Dropzone.autoDiscover = false;
 
   $(".dropzone").dropzone({
-    addRemoveLinks: true,
     autoProcessQueue:false, 
-    dictDefaultMessage: "アップロードするファイルをここへドロップしてください",
+    dictDefaultMessage: 'アップロードするファイルをここへドロップしてください',
     previewsContainer:".preview",
     thumbnailHeight:"120",
     thumbnailWidth:"120",
     thumbnailMethod:"contain",
-    maxFiles:"10"
+    maxFiles:"10",
+    addRemoveLinks:true,
+    dictRemoveFile:'削除'
   });
 
   $('#price').keyup(function() {
