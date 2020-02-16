@@ -276,6 +276,6 @@
             %li.nav__right--signup
               = link_to "新規会員登録",  '/jp/signup/'
             %li.nav__right--signin
-              = link_to "ログイン",  '/jp/signin/'
+              = link_to "ログイン", new_user_session_path
             %li.nav__right--signin
               = link_to "ログアウト", destroy_user_session_path, method: :delete
