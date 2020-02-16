@@ -5,7 +5,6 @@ Rails.application.routes.draw do
     get 'profile',on: :collection
     get 'identification',on: :collection
   end
-  get "jp/signup/" => "items#new"
   root 'items#index'
   
   resource :items ,path:'/jp/' do

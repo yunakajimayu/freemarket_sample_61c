@@ -312,20 +312,88 @@
       }
     }
 
-    &--upload,.dropzone > .dz-default {
+    &--upload,.dropzone{
+
+      > div > div > div:nth-child(3) {
+        display: flex;
+        flex-wrap: wrap;
+        width: 620px;
+        height: 160px;
+
+
+        div + div {
+          width: calc(100% - fit-content);
+        }
+      }
+      
+      .dz-default {
       width: 100%;
+      min-width: 100px;
       background-color: $gray;
       border: dashed 1px $deepgray;
-      padding: 50px;
+      padding: 60px;
       font-weight: bold;
       font-size: 0.85em;
       line-height: 1.5em;
       text-align: center;
       cursor: pointer;
-      margin: 30px 0;
+
       
     }
+    .preview {
+      width: fit-content;
+      display: flex;
+      flex-wrap: wrap;
+      > div {
+        border: 1px solid $gray-hover;
+        margin: 0 5px 0 0 !important;
+        height: 160px;
+        background-color: $gray;
+      
 
+        > a.dz-remove {
+          background-color: $gray;
+            display: block;
+            width: 100%;
+            text-align: center;
+            line-height: 2em;
+            &:hover {
+              border: none;
+              opacity: 0.5;
+              background-color: rgba(255, 255, 255, 0.3);
+            }
+
+        }
+       div {
+        
+        
+
+
+        &.dz-image{
+          
+        width: 120px !important;
+        img {
+          display: block;
+          margin: 0 auto;
+          height: 120px;
+          width: 120px;
+          object-fit: contain;
+        }
+
+        }
+        
+        
+
+        &.dz-details,&.dz-progress{
+          display: none;
+        }
+
+        
+      }
+    }
+    }
+
+  }
 
     
   }

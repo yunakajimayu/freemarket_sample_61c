@@ -3,11 +3,13 @@ $(function(){
   Dropzone.autoDiscover = false;
 
   $(".dropzone").dropzone({
-    maxFilesize: 1,
     addRemoveLinks: true,
     autoProcessQueue:false, 
     dictDefaultMessage: "アップロードするファイルをここへドロップしてください",
-    previewsContainer:".preview"
+    previewsContainer:".preview",
+    thumbnailHeight:"120",
+    thumbnailWidth:"120",
+    thumbnailMethod:"contain",
   });
 
   $('#price').keyup(function() {
