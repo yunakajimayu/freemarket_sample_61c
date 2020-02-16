@@ -1,14 +1,29 @@
 Rails.application.routes.draw do
+
   root to: 'items#index'
-  get "jp/signup/" => "items#new"
-  devise_for :users, path: '', controllers: {
-    registrations: 'users/registrations',
-  }
   resource :user,path: '/mypage/' do
     get 'profile',on: :collection
+    get 'identification',on: :collection
+    get 'logout', on: :collection
   end
+  
+  resource :items ,path:'/jp/' do
+    get 'sell',on: :collection
+  end
+  
+  resource :user,path: 'jp/mypage/' do
+    get 'profile',on: :collection
+  end
+  devise_for :users, path: '', controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
   get "jp/mypage/card/" => "creditcards#index"
+  
   devise_scope :user do
+    get '/jp/signin', to: "users/sessions#new" 
+    get '/jp/signup', to: "users/registrations#new_page"
     get '/jp/signup/registration/', to: 'users/registrations#new'
     post'/jp/signup/registration/', to: 'users/registrations#create'
     get '/jp/signup/sms_confirmation/', to: 'users/registrations#new_profile'

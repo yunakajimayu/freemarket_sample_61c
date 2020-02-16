@@ -2,17 +2,14 @@
   .content
     .header__top
       .header__top--logo
-        = image_tag 'fmarket_logo_red.svg', alt: 'freemarket', height: '', width: ''
+        = link_to root_path do
+          = image_tag 'fmarket_logo_red.svg', alt: 'freemarket', height: '', width: ''
       .header__top--search
         = form_with url: root_path do |f| 
           = f.text_field  :items ,placeholder:"何かお探しですか？"
           = f.button type:'submit' do
             = icon("fas", "search")
-      - if user_signed_in?
-        = link_to "ログアウト", destroy_user_session_path, method: :delete
-      - else
-        = link_to "新規会員",  '/jp/signup/'
-        = link_to "ログイン", new_user_session_path
+
 
     .header__menu
       .nav
@@ -161,6 +158,7 @@
               %li
                 = link_to "カテゴリー一覧","#"
 
+
           %li.title
             = icon("fas", "tag red","ブランドから探す")
             %ul
@@ -177,99 +175,108 @@
               %li 
                 = link_to "ブランド一覧","#" 
         %ul.nav__right
-          %li.title
-            = icon("far", "heart fa-lg gray","いいね！一覧")
-          %li.title
-            = icon("far", "bell fa-lg gray","お知らせ")
-            %span
-              5
-            %ul.nav__right--notice
-              %li
-                %div
-                  %div 
-                    = image_tag 'logo_red.svg', alt: '', size:"40x40"
+          - if user_signed_in?
+            %li.title
+              = icon("far", "heart fa-lg gray","いいね！一覧")
+            %li.title
+              = icon("far", "bell fa-lg gray","お知らせ")
+              %span
+                5
+              %ul.nav__right--notice
+                %li
                   %div
-                    = link_to "" , "#"
-                    ◯◯さん、他2名が「◯◯◯」にいいね！しました
-                    %p
-                      = icon("far", "clock gray","１日前")
-              %li 
-                %div
-                  %div 
-                    = image_tag 'logo_red.svg', alt: '', size:"40x40"
+                    %div 
+                      = image_tag 'logo_red.svg', alt: '', size:"40x40"
+                    %div
+                      = link_to "" , "#"
+                      ◯◯さん、他2名が「◯◯◯」にいいね！しました
+                      %p
+                        = icon("far", "clock gray","１日前")
+                %li 
                   %div
-                    = link_to "" , "#"
-                    ◯◯さん、他2名が「◯◯◯」にいいね！しました
-                    %p
-                      = icon("far", "clock gray","１日前")
-              %li 
-                %div
-                  %div 
-                    = image_tag 'logo_red.svg', alt: '', size:"40x40"
+                    %div 
+                      = image_tag 'logo_red.svg', alt: '', size:"40x40"
+                    %div
+                      = link_to "" , "#"
+                      ◯◯さん、他2名が「◯◯◯」にいいね！しました
+                      %p
+                        = icon("far", "clock gray","１日前")
+                %li 
                   %div
-                    = link_to "" , "#"
-                    ◯◯さん、他2名が「◯◯◯」にいいね！しました
-                    %p
-                      = icon("far", "clock gray","3日前")
-              %li 
-                %div
-                  %div 
-                    = image_tag 'logo_red.svg', alt: '', size:"40x40"
+                    %div 
+                      = image_tag 'logo_red.svg', alt: '', size:"40x40"
+                    %div
+                      = link_to "" , "#"
+                      ◯◯さん、他2名が「◯◯◯」にいいね！しました
+                      %p
+                        = icon("far", "clock gray","3日前")
+                %li 
                   %div
-                    = link_to "" , "#"
-                    ◯◯さん、他2名が「◯◯◯」にいいね！しました
-                    %p
-                      = icon("far", "clock gray","3日前")
-              %li 
-                %div
-                  %div 
-                    = image_tag 'logo_red.svg', alt: '', size:"40x40"
+                    %div 
+                      = image_tag 'logo_red.svg', alt: '', size:"40x40"
+                    %div
+                      = link_to "" , "#"
+                      ◯◯さん、他2名が「◯◯◯」にいいね！しました
+                      %p
+                        = icon("far", "clock gray","3日前")
+                %li 
                   %div
-                    = link_to "" , "#"
-                    ◯◯さん、他2名が「◯◯◯」にいいね！しました
-                    %p
-                      = icon("far", "clock gray","4日前")
-          %li.title.position
-            = icon("fas", "check fa-lg gray","やることリスト")
-            %ul.nav__right--task
-              %li 
-                %div
+                    %div 
+                      = image_tag 'logo_red.svg', alt: '', size:"40x40"
+                    %div
+                      = link_to "" , "#"
+                      ◯◯さん、他2名が「◯◯◯」にいいね！しました
+                      %p
+                        = icon("far", "clock gray","4日前")
+            %li.title.position
+              = icon("fas", "check fa-lg gray","やることリスト")
+              %ul.nav__right--task
+                %li 
                   %div
-                    = image_tag 'logo_gray.svg', alt: '', size:"120x120"
+                    %div
+                      = image_tag 'logo_gray.svg', alt: '', size:"120x120"
 
-                    現在、やることリストはありません
-          %li.title.positon
-            %div
-          %li.title.positon
-            マイページ
-            %ul.nav__right--mypage
-              %li 
-                %div
-              %li 
-                %p
-                  usernamee
-                %p
-                  = link_to "評価: 17","#" 
-                  = link_to "出品数: 26","#" 
-              %li 
-                %div
-                  = link_to "売上金",""
-                %div
-                  ¥0
-              %li 
-                %div
-                  = link_to "ポイント",""
-                %div
-                  P500
-              %li 
-                = link_to "いいね！一覧","#" 
-              %li 
-                = link_to "出品した商品 - 出品中","#" 
-              %li 
-                = link_to "出品した商品 - 取引中","#" 
-              %li 
-                = link_to "出品した商品 - ","#" 
-              %li 
-                = link_to "購入した商品 - 取引中","#" 
-              %li 
-                = link_to "購入した商品 - 過去の取引","#" 
+                      現在、やることリストはありません
+            %li.title.positon
+              %div
+            %li.title.positon
+              = link_to "マイページ", user_path
+              %ul.nav__right--mypage
+                %li 
+                  %div.usericon
+                %li 
+                  %p
+                    usernamee
+                  %p
+                    = link_to "評価: 17","#" 
+                    = link_to "出品数: 26","#" 
+                %li 
+                  %div
+                    = link_to "売上金",""
+                  %div
+                    ¥0
+                %li 
+                  %div
+                    = link_to "ポイント",""
+                  %div
+                    P500
+                %li 
+                  = link_to "いいね！一覧","#" 
+                %li 
+                  = link_to "出品した商品 - 出品中","#" 
+                %li 
+                  = link_to "出品した商品 - 取引中","#" 
+                %li 
+                  = link_to "出品した商品 - ","#" 
+                %li 
+                  = link_to "購入した商品 - 取引中","#" 
+                %li 
+                  = link_to "購入した商品 - 過去の取引","#" 
+          - else
+            %li.nav__right--signup
+              = link_to "新規会員登録",  '/jp/signup/'
+            %li.nav__right--signin
+              = link_to "ログイン",  '/jp/signin/'
+            %li.nav__right--signin
+            %li.nav__right--signin
+              = link_to "ログアウト", destroy_user_session_path, method: :delete
