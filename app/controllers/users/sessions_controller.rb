@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
+  layout false
+  
   def new
     render layout: 'resistration' 
   end
