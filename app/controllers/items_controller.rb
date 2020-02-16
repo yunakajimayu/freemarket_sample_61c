@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    render 'sell',layout: 'sell' 
+    render layout: 'sell' 
     @item = Item.new
   end
 
