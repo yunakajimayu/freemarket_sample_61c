@@ -10,6 +10,7 @@ $(function(){
     thumbnailHeight:"120",
     thumbnailWidth:"120",
     thumbnailMethod:"contain",
+    maxFiles:"10"
   });
 
   $('#price').keyup(function() {

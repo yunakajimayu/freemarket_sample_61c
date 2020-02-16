@@ -312,116 +312,70 @@
       }
     }
 
-    &--upload {
-      
-      background-color: $gray;
-          border: dashed 1px $deepgray;
-          margin: 0 auto;
-          height: 100%;
-          padding: 10px;
-          font-weight: bold;
-          font-size: 0.85em;
-          text-align: center;
-          cursor: pointer;
-    }
-
-    &--upload,.dropzone{
-
-      
-
-      > div > div > div:nth-child(3) {
-        display: flex;
-        flex-wrap: wrap;
-        width: 620px;
-        height: 160px;
-        
-
-
-        div + div {
-          width: calc(100% - fit-content);
-        }
-      }
-      
-      div {
-        
-
-        flex-grow: 5;
-        position: relative;
-
-        .dz-default {
-          
-          display: flex;
-          height: 100%;
-          align-items: center;
-          
-          
-
-          > p{
-            flex: 1;
-          }
-          
     
-          
-        }
 
-      }
+  &--dropzone {
+    &--upload-area {
 
+    @include flex;
+    
     .preview {
-      display: flex;
-      // flex-wrap: wrap;
-      .dz-preview {
-        border: 1px solid $gray-hover;
-        margin: 0 10px 0 0 !important;
-        width: 115px;
+      .dz-preview{
+        width: 113px;
         height: 160px;
+        margin: 0 13px 10px 0;
         background-color: $gray;
-      
 
-        > a.dz-remove {
-          background-color: $gray;
+        .dz-image {
+          max-width: 100%;
+          > img {
             display: block;
-            width: 100%;
-            text-align: center;
-            line-height: 2em;
-            &:hover {
-              border: none;
-              opacity: 0.5;
-              background-color: rgba(255, 255, 255, 0.3);
-            }
-
+            margin: 0 auto;
+            width: 113px;
+            height: 113px;
+            object-fit: contain;
+          }
         }
-       div {
-        
-        
 
-
-        &.dz-image{
-          
-        width: 115px !important;
-        img {
+        > a{
           display: block;
-          margin: 0 auto;
-          height: 115px;
-          width: 115px;
-          object-fit: contain;
+          line-height: 47px;
+          text-align: center;
+          &:hover {
+            background-color: rgba(255,255,255,0.5);
+            border: none;
+          }
         }
 
+        &:nth-child(5),&:nth-child(10) {
+          margin-right: 0;
         }
-        
-        
 
-        &.dz-details,&.dz-progress{
+        .dz-details,.dz-progress {
           display: none;
         }
-
-        
       }
     }
+    .dz-message {
+      @include flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+      flex-shrink: 10;
+      width: 110px;
+      background-color: $gray;
+      border: dashed 1px $deepgray;
+      margin: 0 auto;
+      height: 160px;
+      padding: 10px;
+      font-weight: bold;
+      font-size: 0.85em;
+      text-align: center;
+      cursor: pointer;
+      line-height: 1.6em;
     }
-
   }
-
-    
+  }
   }
 
 }

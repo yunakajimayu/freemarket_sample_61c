@@ -12,14 +12,17 @@
             %span.required 必須
           %p
             最大10枚までアップロードできます
-          %div
-            .preview
-              %div.item__contents--upload
-                .dz-default.dz-message
+          %div.item__contents--dropzone
+            
+            %div.item__contents--dropzone--upload-area
+              .preview
+              .dz-default.dz-message
+                %p
                   ドラッグアンドドロップ<BR>
                   またはクリックしてファイルをアップロード
-                .fallback
-                  = f.file_field :file_name, multiple: true
+              .fallback
+                = f.file_field :file_name, multiple: true
+            .dz-error-message
       %div
         %div
           %h2 
