@@ -12,7 +12,12 @@ $(function(){
     maxFiles:"10",
     addRemoveLinks:true,
     dictRemoveFile:'削除'
+    
   });
+
+  $('submit').click(function(){
+    myDropzone.processQueue()
+  })
 
   $('#price').keyup(function() {
     var s = $('#price').val();
