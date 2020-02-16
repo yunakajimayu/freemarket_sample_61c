@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   
   resource :items ,path:'/jp/' do
     get 'sell',on: :collection
+    get 'transaction',on: :collection
   end
   
   resource :user,path: 'jp/mypage/' do
