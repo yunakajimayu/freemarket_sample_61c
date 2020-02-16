@@ -312,13 +312,29 @@
       }
     }
 
+    &--upload {
+      
+      background-color: $gray;
+          border: dashed 1px $deepgray;
+          margin: 0 auto;
+          height: 100%;
+          padding: 10px;
+          font-weight: bold;
+          font-size: 0.85em;
+          text-align: center;
+          cursor: pointer;
+    }
+
     &--upload,.dropzone{
+
+      
 
       > div > div > div:nth-child(3) {
         display: flex;
         flex-wrap: wrap;
         width: 620px;
         height: 160px;
+        
 
 
         div + div {
@@ -326,27 +342,37 @@
         }
       }
       
-      .dz-default {
-      width: 100%;
-      min-width: 100px;
-      background-color: $gray;
-      border: dashed 1px $deepgray;
-      padding: 60px;
-      font-weight: bold;
-      font-size: 0.85em;
-      line-height: 1.5em;
-      text-align: center;
-      cursor: pointer;
+      div {
+        
 
-      
-    }
+        flex-grow: 5;
+        position: relative;
+
+        .dz-default {
+          
+          display: flex;
+          height: 100%;
+          align-items: center;
+          
+          
+
+          > p{
+            flex: 1;
+          }
+          
+    
+          
+        }
+
+      }
+
     .preview {
-      width: fit-content;
       display: flex;
-      flex-wrap: wrap;
-      > div {
+      // flex-wrap: wrap;
+      .dz-preview {
         border: 1px solid $gray-hover;
-        margin: 0 5px 0 0 !important;
+        margin: 0 10px 0 0 !important;
+        width: 115px;
         height: 160px;
         background-color: $gray;
       
@@ -371,12 +397,12 @@
 
         &.dz-image{
           
-        width: 120px !important;
+        width: 115px !important;
         img {
           display: block;
           margin: 0 auto;
-          height: 120px;
-          width: 120px;
+          height: 115px;
+          width: 115px;
           object-fit: contain;
         }
 

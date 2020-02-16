@@ -14,11 +14,12 @@
             最大10枚までアップロードできます
           %div
             .preview
-            %div.item__contents--upload.dz-default.dz-message
-              ドラッグアンドドロップ<BR>
-              またはクリックしてファイルをアップロード
-              .fallback
-                = f.file_field :file_name, multiple: true
+              %div.item__contents--upload
+                .dz-default.dz-message
+                  ドラッグアンドドロップ<BR>
+                  またはクリックしてファイルをアップロード
+                .fallback
+                  = f.file_field :file_name, multiple: true
       %div
         %div
           %h2 
