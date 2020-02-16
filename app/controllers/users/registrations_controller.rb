@@ -1,6 +1,9 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
 
+  def new_page
+  end
+
   def new
     @user = User.new
   end

@@ -38,7 +38,8 @@
 
 body {
   background-color: $gray;
-  @include width70;
+  width: 100%;
+
 }
 
 * {
@@ -280,6 +281,38 @@ li {
       
       &__right {
 
+        &--signup , &--signin {
+          a {
+            margin: 5px 3px;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            height: 33px;
+          }
+        }
+
+        &--signup {
+          a {
+            background-color: $red;
+            color: $white;
+          }
+        }
+
+        &--signin {
+          a {
+            
+            border: 1px solid $blue;
+            color: $blue;
+            transition: all  0.3s ease;
+
+            &:hover {
+              background-color: $blue;
+              color: $white;
+
+            }
+          }
+        }
+
         ul > li {
           width: 300px;
         }
@@ -302,8 +335,9 @@ li {
         &:nth-child(2) {
           position: relative;
           height: 20px;
-          line-height: 20px;
+          // line-height: 20px;
           span {
+            line-height: 20px;
             position: absolute;
             left: 24px;
             top: 7px;
