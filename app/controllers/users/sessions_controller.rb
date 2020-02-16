@@ -2,9 +2,9 @@
 
 class Users::SessionsController < Devise::SessionsController
   layout false
-  
+
   def new
-    render layout: 'resistration' 
+    render layout: 'devise' 
   end
   # before_action :configure_sign_in_params, only: [:create]
   
