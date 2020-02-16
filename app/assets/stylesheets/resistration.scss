@@ -209,6 +209,12 @@ body {
                 margin-top: 16px;
                 background-color: #fff;
               }
+              &--registration{
+                position: relative;
+                background: #eee;
+                color: $white;
+                background-color: #0099e8;
+              }
           }
         }
         .btn{
