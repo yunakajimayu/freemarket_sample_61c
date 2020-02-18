@@ -11,16 +11,19 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item.build_delivery
   end
 
   def create
-
-    @item = Item.new(create_params)
+    size = "aaa"
+    @item = Item.new(item_params[:delivery_attributes])
+    
     if @item.save
-      redirect_to @item
+      format.html { redirect_to sell_items_path, notice: 'Book was successfully created.' }
+      format.json { render :new, status: :created, location: @item }
     else
-
-      render root
+      format.html { redirect_to sell_items_path }
+      format.json { render json: @item.errors, status: :unprocessable_entity }
     end
 
 
@@ -32,10 +35,26 @@ class ItemsController < ApplicationController
     @categories = Category.all
   end
 
-  private
-
-  def create_params
-    params.require(:item).permit(:name, :description,:price,:postage,:picture,:condition,:category_id).merge(seler_id: current_user.id)
+  def item_params
+    params.permit(
+      :name, 
+      :description,
+      :prefecture,
+      :price,
+      :size,
+      :status,
+      :condition,
+      :category_id,
+      {picture: [:picture]},
+      delivery_attributes:[
+        :id,
+        :delivery_day,
+        :delivery_status,
+        :delivery_method,
+        :postage,
+        :postage_bearer]
+      )
+      .merge(seller_id: current_user.id)
   end
 
 end

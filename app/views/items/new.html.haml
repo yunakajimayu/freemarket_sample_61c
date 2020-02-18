@@ -21,7 +21,8 @@
                   ドラッグアンドドロップ<BR>
                   またはクリックしてファイルをアップロード
               .fallback
-                = f.file_field :file_name, multiple: true
+                -# = f.file_field :file_name, multiple: true
+              =f.file_field :picture, multiple: true
             .dz-error-message
       %div
         %div
@@ -50,43 +51,44 @@
               %span.required 必須
             %div
               = f.select :condition, Item.conditions.keys.map{|k| [I18n.t("enum.item.condition.#{k}"), k]}, prompt: true
-
-      %div
+      = fields_for :delivery do |d|
         %div
-          %h3
-            配送について
-            =link_to "?","",class:"question",target:"_blank"
-        %div
+          
           %div
-            %h2 
-              配送料の負担
-              %span.required 必須
-            %div
-              = f.select :delivery_fee, Item.delivery_fees.keys.map{|k| [I18n.t("enum.item.delivery_fee.#{k}"), k]}, prompt: true
-          %div.seller
-            %h2 
-              配送の方法
-              %span.required 必須
-            %div
-              = f.select :shipping_method, Item.shipping_methods.keys.map{|k| [I18n.t("enum.item.shipping_method.#{k}"), k]}, prompt: true
-          %div.buyer
-            %h2 
-              配送の方法
-              %span.required 必須
-            %div
-              = f.select :shipping_method, Item.shipping_methods_i18n.slice(:Undecided,:YuMail,:KuromekoYamato,:YuPack).keys.map{|k| [I18n.t("enum.item.shipping_method.#{k}"), k]}, prompt: true
+            %h3
+              配送について
+              =link_to "?","",class:"question",target:"_blank"
           %div
-            %h2 
-              発送元の地域
-              %span.required 必須
             %div
-              = f.select :ShippingArea, Item.ShippingAreas.keys.to_a, prompt: true
-          %div
-            %h2 
-              発送までの日数
-              %span.required 必須
+              %h2 
+                配送料の負担
+                %span.required 必須
+              %div
+                = d.select :postage_bearer, Item.postage_bearers.keys.map{|k| [I18n.t("enum.item.postage_bearer.#{k}"), k]}, prompt: true
+            %div.seller
+              %h2 
+                配送の方法
+                %span.required 必須
+              %div
+                = d.select :delivery_method, Item.delivery_methods.keys.map{|k| [I18n.t("enum.item.delivery_method.#{k}"), k]}, prompt: true
+            %div.buyer
+              %h2 
+                配送の方法
+                %span.required 必須
+              %div
+                = d.select :delivery_method, Item.delivery_methods_i18n.slice(:undecided,:yu_mail,:kuromeko_yamato,:yu_pack).keys.map{|k| [I18n.t("enum.item.delivery_method.#{k}"), k]}, prompt: true
             %div
-              = f.select :ship_date, Item.ship_dates.keys.map{|k| [I18n.t("enum.item.ship_date.#{k}"), k]}, prompt: true
+              %h2 
+                発送元の地域
+                %span.required 必須
+              %div
+                = f.select :prefecture, Item.prefectures.keys.to_a, prompt: true
+            %div
+              %h2 
+                発送までの日数
+                %span.required 必須
+              %div
+                = d.select :delivery_day, Item.delivery_days.keys.map{|k| [I18n.t("enum.item.delivery_day.#{k}"), k]}, prompt: true
 
       %div
         %div
