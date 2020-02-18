@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   resource :user,path: '/mypage/' do
     get 'profile',on: :collection
     get 'identification',on: :collection
+    get 'logout', on: :collection
   end
-  root 'items#index'
   
   resource :items ,path:'/jp/' do
     collection do
@@ -18,10 +18,12 @@ Rails.application.routes.draw do
   end
   devise_for :users, path: '', controllers: {
     registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
   
     
-  devise_scope :user do
+  devise_scope :user do 
+    get '/jp/signup', to: "users/registrations#new_page"
     get '/jp/signup/registration/', to: 'users/registrations#new'
     post'/jp/signup/registration/', to: 'users/registrations#create'
     get '/jp/signup/sms_confirmation/', to: 'users/registrations#new_profile'

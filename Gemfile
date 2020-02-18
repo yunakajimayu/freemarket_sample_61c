@@ -83,6 +83,7 @@ gem 'font-awesome-sass', '~> 5.3.1'
 gem "bundler"
 gem "dropzonejs-rails"
 gem 'enum_help' 
-gem 'rails-i18n', '~> 5.1'
 gem 'payjp'
-gem 'pry-byebug'
+gem 'pry-rails'
+gem "gretel"
+gem 'rails-i18n', '~> 5.1'

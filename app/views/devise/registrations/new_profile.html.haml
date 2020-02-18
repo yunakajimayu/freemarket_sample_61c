@@ -1,13 +1,24 @@
-%p 電話番号の確認
-= form_for(@profile, url: jp_signup_sms_confirmation_path) do |f|
-  = render "devise/shared/error_messages", resource: @profile
-  .field
-    = f.label "携帯電話の番号"
-    %br/
-    = f.telephone_field :tell_number, autofocus: true, placeholder: "携帯電話の番号を入力"
-  = "本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。"
-  .actions
-    = f.submit "SMSを送信する"
-  = "※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。"
-  %br/
-  = link_to "電話番号の確認が必要な理由＞"
+.main
+  .container
+    .new_resistration
+      電話番号の確認
+    .contentsbox
+      = form_for(@profile, url: jp_signup_sms_confirmation_path) do |f|
+        = render "devise/shared/error_messages", resource: @profile
+        .field
+          = f.label "携帯電話の番号"
+          %br/
+          = f.telephone_field :tell_number, autofocus: true, placeholder: "携帯電話の番号を入力"
+        %div
+          %h2
+            本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+        %br
+        .actions
+          = f.submit "SMSを送信する"
+        %br
+        %div
+          %h2
+            ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。"
+        %br
+        #help
+          = link_to "電話番号の確認が必要な理由＞"

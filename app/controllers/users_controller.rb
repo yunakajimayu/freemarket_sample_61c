@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   layout false
 
   def show
-    
+    render layout: 'users'
   end
 
   def profile
@@ -12,7 +12,11 @@ class UsersController < ApplicationController
     
 
   def identification
+    render layout: 'users'
+  end
 
+  def logout
+    render layout: 'users'
   end
 
 end

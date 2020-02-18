@@ -1,0 +1,8 @@
+- content_for(:html_title) { 'ログアウト' } 
+.enter
+  =link_to "" do
+    出品
+.logout
+  .logout__btn
+    .logout__btn--userdelete
+      = link_to "ログアウト", destroy_user_session_path, class: 'post', method: :delete
