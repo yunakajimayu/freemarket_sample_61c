@@ -19,7 +19,8 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  get "jp/mypage/card/" => "creditcards#index"
+
+  get "jp/mypage/card/", to: "creditcards#index"
   
   devise_scope :user do
     get '/jp/signin', to: "users/sessions#new" 
