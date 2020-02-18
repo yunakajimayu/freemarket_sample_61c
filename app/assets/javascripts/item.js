@@ -33,7 +33,7 @@ $(function(){
       $('#sales').text("-")
     }
   })
-  $('[name*="delivery_fee"]').change(function(){
+  $('[name*="postage_bearer"]').change(function(){
     var val = $(this).val();
     console.log(val)
     switch(val){

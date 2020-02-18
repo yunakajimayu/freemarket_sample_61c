@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resource :items ,path:'/jp/' do
     collection do
     get 'sell' => "items#new"
+    post 'sell' => "items#create"
     end
   end
   
