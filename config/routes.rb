@@ -16,14 +16,12 @@ Rails.application.routes.draw do
   end
   devise_for :users, path: '', controllers: {
     registrations: 'users/registrations',
-    sessions: 'users/sessions',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   get "jp/mypage/card/", to: "creditcards#index"
-  
-  devise_scope :user do
-    get '/jp/signin', to: "users/sessions#new" 
+    
+  devise_scope :user do 
     get '/jp/signup', to: "users/registrations#new_page"
     get '/jp/signup/registration/', to: 'users/registrations#new'
     post'/jp/signup/registration/', to: 'users/registrations#create'

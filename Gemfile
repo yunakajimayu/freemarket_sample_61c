@@ -84,3 +84,5 @@ gem "bundler", "2.0.2"
 gem "dropzonejs-rails"
 gem 'enum_help' 
 gem 'payjp'
+gem 'pry-rails'
+gem "gretel"
