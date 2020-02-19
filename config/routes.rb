@@ -18,7 +18,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  
+
+  get "jp/mypage/card/", to: "creditcards#index"
     
   devise_scope :user do 
     get '/jp/signup', to: "users/registrations#new_page"
