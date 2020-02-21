@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
   
+  get 'item_id/' => 'items_details#index'
+
     
   devise_scope :user do 
     get '/jp/signup', to: "users/registrations#new_page"
