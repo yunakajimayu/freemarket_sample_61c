@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    size = "aaa"
+    binding.pry
     @item = Item.new(item_params[:delivery_attributes])
     
     if @item.save
@@ -36,13 +36,11 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.permit(
+    params.require(:item).permit(
       :name, 
       :description,
       :prefecture,
       :price,
-      :size,
-      :status,
       :condition,
       :category_id,
       {picture: [:picture]},
@@ -54,8 +52,10 @@ class ItemsController < ApplicationController
         :postage,
         :postage_bearer]
       )
-      .merge(seller_id: current_user.id)
+      .merge(seller_id: current_user.id,size: 0,status: 0,delivery_id: 0)
   end
+
+
 
 end
 
