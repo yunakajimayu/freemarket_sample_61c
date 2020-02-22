@@ -1,24 +1,21 @@
 class ItemsController < ApplicationController
   before_action :set_categories
+  layout 'sell', except: [:index]
   def index
     @items = Item.all
   end
 
   def sell
-    
-    
-
+    render :new
   end
 
   def new
-    render layout: 'sell' 
     @item = Item.new
   end
 
   def create
 
     @item = Item.new(create_params)
-    binding.pry
     if @item.save
       redirect_to @item
     else
