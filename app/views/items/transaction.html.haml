@@ -1,11 +1,33 @@
-.transaction-contents
-  .transaction-contents__header
+.transaction
+  .transaction__header
     %h1 購入内容の確認
-  .transaction-contents__body
-    %img
+  .transaction__body
+    %p.img
       = image_tag 'product.jpg',width:"80px", height:"80px"
-    %p サンドベージュの靴
-    %span 7000円
-    %span （税込）送料込み
-  .transaction-contents
-    %p 支払い金額
+    %p.item-name サンドベージュの靴。サンドベージュの靴です。
+    %span.price 5980円  （税込）送料込み
+  .transaction__bottom
+    %p.pay-price 支払い金額
+    %p.value ¥5980
+    %span.mark ⬜️ 
+    %p.mark ポイントを使用(所持ポイント:P0)
+  .transaction__bottom--way
+    %p 支払い方法
+  .transaction__bottom--icon
+    = link_to "" do 
+      %p.icon
+        =icon("fa", "plus-circle")
+      %p.link 
+        登録してください
+  .transaction__bottom--delivery
+    %p 配送先
+  .transaction__bottom--link
+    = link_to  "" do
+      変更する  
+  .transaction__bottom--customer
+    %p 〒999-9999
+    %p 大阪府大阪市中央区１−１−１
+    %p サンプル太郎
+  .transaction__bottom--buy
+    %button 購入する
+
