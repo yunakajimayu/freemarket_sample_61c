@@ -1,0 +1,26 @@
+- content_for(:html_title) { '支払い方法 '} 
+.enter
+  =link_to "" do
+    出品
+.credit-container
+  .credit-head
+    %h1
+      支払い方法
+  .credit-inner
+    .inner-content
+      %h2 クレジットカード一覧
+      -# クレジットカードが登録されている場合は一覧表示します
+      -# サーバーサイドタスク「商品購入」が実装されたら行います。
+      -# クレジットカードが登録されていない場合は新規作成ボタンを表示します
+      - if @credit.present?
+        %ul
+          %li
+      - else
+        .create-newcard
+          .create-newcard__button
+            = icon('far', 'credit-card', class: "create-newcard__button--icon")
+            = link_to "クレジットカードを追加する", "jp/mypage/card/create", class: "create-newcard__button--text"
+    .information
+      .information__button
+        = link_to "支払い方法について", "https://www.mercari.com/jp/help_center/category/6/", class: "information__button--text"
+        = icon('fas', 'chevron-right', class: "information__button--icon")
