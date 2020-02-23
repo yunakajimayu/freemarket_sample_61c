@@ -80,8 +80,10 @@ ActiveRecord::Schema.define(version: 2020_02_18_093252) do
     t.bigint "seller_id", null: false
     t.bigint "buyer_id"
     t.bigint "category_id", null: false
+    t.bigint "delivery_id", null: false
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["delivery_id"], name: "index_items_on_delivery_id"
     t.index ["name"], name: "index_items_on_name"
     t.index ["seller_id"], name: "index_items_on_seller_id"
   end

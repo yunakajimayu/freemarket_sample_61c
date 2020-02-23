@@ -53,6 +53,7 @@
               = f.select :condition, Item.conditions.keys.map{|k| [I18n.t("enum.item.condition.#{k}"), k]}, prompt: true
       = f.fields_for :delivery do |d|
         %div
+          
           %div
             %h3
               配送について

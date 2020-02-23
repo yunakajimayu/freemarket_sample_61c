@@ -1,12 +1,12 @@
 class Item < ApplicationRecord
-  # belongs_to :category
-  # belongs_to :user, foreign_key: "seller_id"
-  # has_many :comments
+  belongs_to :category
+  belongs_to :user, foreign_key: "seller_id"
+  has_many :comments
   has_one :delivery
-  # has_one :user_rating
-  # has_many :likes
-  # belongs_to :saller, class_name: "User",foreign_key: "saller_id"
-  # belongs_to :buyer, class_name: "User",foreign_key: "buyer_id"
+  has_one :user_rating
+  has_many :likes
+  belongs_to :saller, class_name: "User",foreign_key: "saller_id"
+  belongs_to :buyer, class_name: "User",foreign_key: "buyer_id"
   mount_uploader :picture, PictureUploader
   serialize :picture, JSON
   
