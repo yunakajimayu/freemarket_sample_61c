@@ -1,13 +1,15 @@
 class Item < ApplicationRecord
-  belongs_to :category
-  belongs_to :user
-  has_many :comments
+  # belongs_to :category
+  # belongs_to :user, foreign_key: "seller_id"
+  # has_many :comments
   has_one :delivery
-  has_one :user_rating
-  has_many :likes
-  belongs_to :saler, class_name: "User",foreign_key: "saler_id"
-  belongs_to :buyer, class_name: "User",foreign_key: "buyer_id"
-  mount_uploaders :picture, ImageUploader
+  # has_one :user_rating
+  # has_many :likes
+  # belongs_to :saller, class_name: "User",foreign_key: "saller_id"
+  # belongs_to :buyer, class_name: "User",foreign_key: "buyer_id"
+  mount_uploader :picture, PictureUploader
+  serialize :picture, JSON
+  
   accepts_nested_attributes_for :delivery
   
 
@@ -37,7 +39,7 @@ class Item < ApplicationRecord
   ]
 
 
-  enum prefecture: {
+  enum delivery_area: {
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
     茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,
     新潟県:15,富山県:16,石川県:17,福井県:18,山梨県:19,長野県:20,
@@ -46,12 +48,6 @@ class Item < ApplicationRecord
     鳥取県:31,島根県:32,岡山県:33,広島県:34,山口県:35,
     徳島県:36,香川県:37,愛媛県:38,高知県:39,
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
-  }
-
-  enum delivery_day: {
-    with_in_two_days: 0,
-    with_in_three_days: 1,
-    with_in_one_week: 2
   }
 
 end

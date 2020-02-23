@@ -51,9 +51,8 @@
               %span.required 必須
             %div
               = f.select :condition, Item.conditions.keys.map{|k| [I18n.t("enum.item.condition.#{k}"), k]}, prompt: true
-      = fields_for :delivery do |d|
+      = f.fields_for :delivery do |d|
         %div
-          
           %div
             %h3
               配送について
@@ -82,13 +81,15 @@
                 発送元の地域
                 %span.required 必須
               %div
-                = f.select :prefecture, Item.prefectures.keys.to_a, prompt: true
+                = d.select :delivery_area, Item.delivery_areas.keys, prompt: true
             %div
               %h2 
                 発送までの日数
                 %span.required 必須
               %div
-                = d.select :delivery_day, Item.delivery_days.keys.map{|k| [I18n.t("enum.item.delivery_day.#{k}"), k]}, prompt: true
+                = d.select :delivery_day, Delivery.delivery_days.keys.map{|k| [I18n.t("enum.delivery.delivery_day.#{k}"), k]}, prompt: true
+              = d.hidden_field :postage,value: 0
+              = d.hidden_field :delivery_status,value: "delivery_status"
 
       %div
         %div
@@ -118,6 +119,8 @@
           またブランド品でシリアルナンバー等がある場合はご記載ください。#{link_to "偽ブランドの販売","#"}は犯罪であり処罰される可能性があります。
         %p
           また、出品をもちまして#{link_to "加盟店規約","#"}に同意したことになります。
+        = f.hidden_field :size,value: 0
+        = f.hidden_field :status,value: 0
         = f.submit "出品する"
         = link_to "もどる", root_path
 

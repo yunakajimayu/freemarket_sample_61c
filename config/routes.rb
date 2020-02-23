@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   end
   
   resource :items ,path:'/jp/' do
-    get 'sell',on: :collection
+    collection do
+      get 'sell'
+      post 'sell'
+    end
   end
   
   devise_for :users, path: '', controllers: {

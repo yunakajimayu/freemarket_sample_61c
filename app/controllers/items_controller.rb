@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
 
   def sell
     render :new
+    @item = Item.new
   end
 
   def new
@@ -15,18 +16,11 @@ class ItemsController < ApplicationController
   end
 
   def create
-    binding.pry
-    @item = Item.new(item_params[:delivery_attributes])
-    
-    if @item.save
-      format.html { redirect_to sell_items_path, notice: 'Book was successfully created.' }
-      format.json { render :new, status: :created, location: @item }
-    else
-      format.html { redirect_to sell_items_path }
-      format.json { render json: @item.errors, status: :unprocessable_entity }
+    item_params[:picture].each do |a|
+      @item = Item.new(item_params.clone.merge({picture: a}))
+      @item.save
     end
-
-
+    redirect_to user_path
   end
 
   private
@@ -39,20 +33,23 @@ class ItemsController < ApplicationController
     params.require(:item).permit(
       :name, 
       :description,
-      :prefecture,
       :price,
+      :size,
+      :status,
       :condition,
       :category_id,
-      {picture: [:picture]},
+      {picture: []},
+      [:delivery_attributes],
       delivery_attributes:[
         :id,
-        :delivery_day,
         :delivery_status,
         :delivery_method,
+        :delivery_area,
+        :delivery_day,
         :postage,
         :postage_bearer]
       )
-      .merge(seller_id: current_user.id,size: 0,status: 0,delivery_id: 0)
+      .merge(seller_id: current_user.id,buyer_id: nil)
   end
 
 

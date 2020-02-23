@@ -55,12 +55,13 @@ ActiveRecord::Schema.define(version: 2020_02_18_093252) do
   end
 
   create_table "deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.date "delivery_day", null: false
+    t.string "delivery_day", null: false
     t.string "delivery_status", null: false
     t.string "delivery_method", null: false
     t.integer "postage", null: false
     t.string "postage_bearer", null: false
     t.bigint "item_id"
+    t.string "delivery_area", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_deliveries_on_item_id"
@@ -69,7 +70,6 @@ ActiveRecord::Schema.define(version: 2020_02_18_093252) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
-    t.string "prefecture", null: false
     t.integer "price", null: false
     t.integer "size", null: false
     t.string "status", null: false
@@ -80,10 +80,8 @@ ActiveRecord::Schema.define(version: 2020_02_18_093252) do
     t.bigint "seller_id", null: false
     t.bigint "buyer_id"
     t.bigint "category_id", null: false
-    t.bigint "delivery_id", null: false
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["delivery_id"], name: "index_items_on_delivery_id"
     t.index ["name"], name: "index_items_on_name"
     t.index ["seller_id"], name: "index_items_on_seller_id"
   end
