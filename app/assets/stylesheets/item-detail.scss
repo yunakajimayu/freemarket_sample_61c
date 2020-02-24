@@ -1,0 +1,123 @@
+.item-box-container{
+  width: 700px;
+  background-color: #FFFFFF;
+  margin: 40px auto 0;
+  padding: 24px 40px 40px;
+  display: block;
+  .item-name{
+    display: block;
+    font-size: 24px;
+    text-align: center;
+    line-height: 1.4;
+    word-wrap: break-word;
+  }
+  .item-main-content-clearfix{
+    clear: both;
+    margin: 16px 0 0;
+    width: 620px;
+    height: 420px;
+    .item-photo{
+      display: block;
+      float: left;
+      min-width: 300px;
+      min-height: 375px;
+      margin: 0 auto;
+      background-color: pink;
+    }
+    .item-detail-table{
+      display: block;
+      float: right;
+      width: 300px;
+      height: 420px;
+      margin: 0 auto;
+      background-color: red;
+    }
+  }
+  .item-price-box{
+    display: block;
+    width: 620px;
+    height: 50px;
+    margin: 24px 0 0;
+    text-align: center;
+    .item-price{
+      font-size: 40px;
+      margin: 0 10px 0 0;
+      font-weight: 600;
+    }
+    .item-tax{
+      font-size: 10px;
+    }
+    .item-shipping-fee{
+      font-size: 16px;
+    }
+  }
+  .item-buy-btn{
+    display: block;
+    text-align: center;
+    background-color: #ea352d;
+    font-size: 24px;
+    font-weight: 600;
+    height: 60px;
+    width: 620px;
+    margin-top: 16px;
+    line-height: 60px;
+    color: #fff;
+    a{
+      color: inherit;
+    }
+  }
+  .item-description{
+    padding: 32px 0 0;
+    line-height: 1.5;
+    font-size: 18px;
+    .item-description-inner{
+      white-space: pre-wrap;
+      display: block;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+    }
+  }
+  .item-btn-container-clearfix{
+    display: block;
+    clear: both;
+    width: 620px;
+    height: 33px;
+    margin: 16px 0 0;
+    .item-btn-left{
+      float: left;
+      display: block;
+      .like{
+        border: 1px solid #f5f5f5;
+        background: #f5f5f5;
+        display: inline-block;
+        padding: 8px 16px;
+        border-radius: 40px;
+      }
+      .report{
+        border: 1px solid #f5f5f5;
+        background: #f5f5f5;
+        display: inline-block;
+        padding: 8px 16px;
+        border-radius: 40px;
+      }
+    }
+    .item-btn-light{
+      display: inline-block;
+      float: right;
+      margin: 8px 0 0;
+      font-size: 14px;
+      a{
+        color: #0099e8;
+      }
+    }
+  }
+}
+.item-detail-message{
+  width: 700px;
+  margin: 8px auto;
+  .message-content{
+    .padding: 24px;
+  }
+}
