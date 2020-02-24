@@ -737,6 +737,16 @@ li {
 
     }
   }
+  .breadcrumbs{
+    height: 48px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-top: $gray 1px solid;
+    .current{
+      font-weight: bold;
+      line-height: 44px;
+    }
+  }
 }
 
 

@@ -1,6 +1,5 @@
 .header
   .content
-    = breadcrumbs
     .header__top
       .header__top--logo
         = link_to root_path do
@@ -280,3 +279,5 @@
               = link_to "ログイン", new_user_session_path
             %li.nav__right--signin
               = link_to "ログアウト", destroy_user_session_path, method: :delete
+
+    = breadcrumbs separator: " &rsaquo; "
