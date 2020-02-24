@@ -35,7 +35,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @profile = @user.build_profile
       render :new_profile
     end
-    # super
   end
 
   def create_profile
