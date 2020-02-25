@@ -50,13 +50,4 @@ class Item < ApplicationRecord
     with_in_one_week: 2
   }
 
-  enum budget_d: {
-    till_1000: 1,
-    till_2000: 2,
-    till_3000: 3,
-    till_4000: 4,
-    till_5000: 5,
-    over_5000: 6
-  },  _prefix: true
-
 end

@@ -15,15 +15,12 @@
           background-color: $white;
           font-size: 0.85em;
           width: 280px;
-          
           > li {
             color: $black;
             border-bottom: 1px solid $gray;
             position: relative;
             width: 100%;
             height: fit-content;
-            
-
             > a {
               display: block;
               width: 100%;
@@ -39,19 +36,15 @@
                 right: 20px;
                 transition: all .2s;
               }
-
               &:hover {
                 background-color: $gray-hover;
                 &::after {
                   color: $black;
                   transform: translate(3px,0px);
                 }
-                
               }
             }
-
             &.title {
-
               padding: 40px 0 10px 0;
               background-color: $gray;
               font-size: 1.1em;
@@ -63,8 +56,6 @@
         &--right {
           width: 700px;
           height:fit-content;
-          
-
           h1 {
             text-align: center;
             font-size: 1.38em;
@@ -78,8 +69,6 @@
 
 
           form > div:nth-of-type(1) {
-            
-
             background:  asset_url("mypage-header.jpg") no-repeat;
             padding: 60px 0 20px 0;
             height: 150px;
@@ -89,7 +78,6 @@
               width: fit-content;
               height: 60px;
               margin: 0 auto;
-
               div {
                 background-color: $deepgray;
                 border-radius: 50px;
@@ -104,12 +92,7 @@
                 position: relative;
                 top: 7px;
                 @include input-form;
-
               }
-
-              
-
-
             }
           }
 
@@ -127,7 +110,5 @@
         }
       }
     }
-
-
   }
 
