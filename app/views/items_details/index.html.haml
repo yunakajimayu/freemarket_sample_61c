@@ -8,31 +8,34 @@
         .th
           出品者
         .td
-          = link_to 'nickname' 
-        .item-user-ratings
-          .icon-good
-          %span
-            0
-        .item-user-ratings
-          .icon-nomal
-          %span
-            0
-        .item-user-ratings
-          .icon-bad
-          %span
-            0
+          = link_to 'nickname'
+          .user-rating
+            .item-user-ratings
+              .icon-good
+              %span
+                0
+            .item-user-ratings
+              .icon-nomal
+              %span
+                0
+            .item-user-ratings
+              .icon-bad
+              %span
+                0
       .tr
         .th
           カテゴリー
         .td
           =link_to 'レディース'
+          %br
           =link_to '靴'
+          %br
           =link_to 'スニーカー'
       .tr
         .th
           ブランド
         .td
-          シャネル
+          =link_to 'シャネル'
       .tr
         .th
           商品のサイズ
