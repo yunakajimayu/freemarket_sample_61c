@@ -26,6 +26,10 @@ class ItemsController < ApplicationController
 
   end
 
+  def transaction
+    render layout: 'sell'
+  end 
+
   private
 
   def set_categories

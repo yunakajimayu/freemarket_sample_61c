@@ -1,0 +1,134 @@
+.transaction{
+  width: 700px;
+  height: 770px;
+  background-color: white;
+  margin: auto;
+}
+.transaction__header 
+  h1{
+  text-align: center;
+  font-size: 22px;
+  padding: 32px;
+}
+
+.transaction__body{
+  border-top: 1px solid $gray;
+  padding: 32px 16px;
+  p.img{
+    margin-left: 150px;
+    float: left;;
+    margin-right: 20px;
+  }
+  p.item-name{
+    display: block;
+    padding-left: 10px;
+    margin-bottom: 20px;
+    margin-right: 160px;
+  }
+  span.price{
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 15px;
+  }
+}
+.transaction__bottom{
+  border-top: 1px solid $gray;
+  margin-top: 20px;
+  p.pay-price{
+    margin-top:30px;
+    margin-left:160px;
+    margin-right: 200px;
+    float: left;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  p.value{
+    font-size: 28px;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  span.mark{
+    margin-top: 30px;
+    margin-left: 160px;
+    margin-right:5px;
+    color: gray;
+    float: left;
+    font-size: 20px;
+  }
+  p.mark{
+    font-size: 14px;
+    color: gray;
+    margin-top: 32px;
+    margin-bottom: 50px;
+  }
+}
+
+.transaction__bottom--way{
+  padding-top: 32px;
+  margin-right: 160px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 160px;
+  border-top: 1px solid $gray;
+  p.link{
+    color:$blue;
+  } 
+}
+
+.transaction__bottom--icon{
+  margin-left: 160px;
+  display: flexbox;
+  margin-top: 10px;
+  p.link{
+    color:$blue;
+    font-size: 14px;
+    display: inline-block;
+  }
+  p.icon{
+    display: inline-block;
+  }
+}
+.transaction__bottom--delivery{
+  p{
+    border-top: 1px solid $gray;
+    padding-top: 20px;
+    margin-left: 160px;
+    margin-top: 40px;
+    margin-right: 160px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+}
+
+.transaction__bottom--link{
+  margin-left: 480px;
+  a{
+    color: $blue;
+    font-size: 14px;
+  }
+}
+
+.transaction__bottom--customer{
+  margin-bottom: 20px;
+  p{
+    margin-left: 160px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+.transaction__bottom--buy{
+  margin-bottom: 48px;
+  border-top: 1px solid $gray;
+  padding-top: 30px;
+  width: 343px;
+  margin: 0 auto;
+  button{
+    margin: 30 0 0 !important;
+    width: 343px;
+    height: 50px;
+    background-color:$deepgray;
+    color: $white;
+    font-size: 14px;
+  }
+}
