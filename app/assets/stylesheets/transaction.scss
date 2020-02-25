@@ -120,13 +120,13 @@
 .transaction__bottom--buy{
   margin-bottom: 48px;
   border-top: 1px solid $gray;
-  padding-top: 10px;
+  padding-top: 30px;
+  width: 343px;
+  margin: 0 auto;
   button{
+    margin: 30 0 0 !important;
     width: 343px;
     height: 50px;
-    margin-left: 160px;
-    margin-top: 32px;
-    margin-right: 160px;
     background-color:$deepgray;
     color: $white;
     font-size: 14px;

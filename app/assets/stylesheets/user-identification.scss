@@ -81,9 +81,11 @@
                 width: 56px;
               }
               div{
+                position: relative;
+                margin: 0;
                 &::after{
                   position: absolute;
-                  right: 280px;
+                  right: 15px;
                   font-size: 18px;
                   line-height: 65px;
                   pointer-events: none;
@@ -93,22 +95,22 @@
                   content:"\f078";
                   z-index: 999999;
                   }
-              }
-              select{
-                cursor: pointer;
-                width: 572px;
-                height: 48px;
-                margin-top: 8px;
-                background-color: $white;
-                border: $gray solid 1px;
-                color: $black;
-                position: relative;
-                font-size: 16px;
-                -webkit-appearance: none;
-                -moz-appearance: none;
-                appearance: none;
-                padding-left:20px;
-                }
+                select{
+                  cursor: pointer;
+                  width: 572px;
+                  height: 48px;
+                  margin-top: 8px;
+                  background-color: $white;
+                  border: $gray solid 1px;
+                  color: $black;
+                  position: relative;
+                  font-size: 16px;
+                  -webkit-appearance: none;
+                  -moz-appearance: none;
+                  appearance: none;
+                  padding-left:20px;
+                   }
+                } 
               }
             &--formgroup{
               p.city{
