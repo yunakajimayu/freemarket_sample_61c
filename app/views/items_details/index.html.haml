@@ -96,7 +96,21 @@
       =link_to "鍵  あんしん・あんぜんへの取り組み"
 .item-detail-message
   .message-container
+    .message-item
+      .message-icon
+        =link_to "●"
+      .message-user-name
+         メルカリ君
+      .message-body
+        %p.message-body-text
+          はじめまして、購入検討中なのですが、
+          お時間のある時に返信いただけたらありがたく思います。
     .message-content
-      %span
-        相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-  
+      %form.message-form{:action => "https://www.mercari.com/jp/comment/add/", :method => "POST"}
+      %input{:name => "__csrf_value", :type => "hidden", :value => "df77c4d2310d61bbaca481c0d5bc740b9cb085cd8eac6c5fb6ab72b26984afb2dba9df8257c6870d8c2bb6acdeded52cffa2f55627fbc169bbbb14a6c1314def3"}/
+      %span 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      %input{:name => "item_id", :type => "hidden", :value => "m15171925306"}/
+      %input{:name => "redirect_url_key", :type => "hidden", :value => "item_detail"}/
+      %textarea.textarea-default{:name => "body", :type => "text", :value => ""}
+      %button.message-submit.btn-default.btn-gray{:type => "submit"}
+        %p コメントする
