@@ -219,4 +219,40 @@
       }
     }
   }
+  .sns-link{
+    text-align: center;
+    line-height: 40px;
+    .icon-box{
+      display: inline-block;
+      margin: 0 8px 8px 0;
+      text-align: center;
+      height: 40px;
+      width: 40px;
+      background-color: gray;
+      .facebook{
+      }
+      .twitter{
+      }
+      .line{
+      }
+      .pinterest{
+      }
+    }
+  }
+}
+.next-item{
+  display: block;
+  width: 700px;
+  margin: 40px auto 0;
+  display: block;
+  height: 20px;
+  a{
+    color: #0099e8;
+  }
+  .left{
+    float: left;
+  }
+  .right{
+    float: right;
+  }
 }
