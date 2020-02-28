@@ -9,19 +9,16 @@ Rails.application.routes.draw do
   
   resource :items ,path:'/jp/' do
     get 'sell',on: :collection
+    get 'transaction',on: :collection
   end
   
-  resource :user,path: 'jp/mypage/' do
-    get 'profile',on: :collection
-  end
   devise_for :users, path: '', controllers: {
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
   
   get 'item_id/' => 'items_details#index'
-
-    
+  
   devise_scope :user do 
     get '/jp/signup', to: "users/registrations#new_page"
     get '/jp/signup/registration/', to: 'users/registrations#new'
