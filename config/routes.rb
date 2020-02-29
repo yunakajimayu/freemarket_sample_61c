@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     get 'transaction',on: :collection
   end
   
+  get 'item_id/' => 'items_details#index'
+
   devise_for :users, path: '', controllers: {
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'
