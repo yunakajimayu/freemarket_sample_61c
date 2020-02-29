@@ -1,5 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
+  require "payjp"
 
   def new_page
   end
@@ -72,37 +73,37 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new_address and return
     end
     session["devise.regist_data4"] = {address: @address.attributes}
-    @credit = @user.build_credit
+    @cedit = @user.build_credit
     render :new_credit
   end
 
   def create_credit
+    Payjp.api_key = "sk_test_06207c0e157a821b64f2bcdc"
     @user = User.new(session["devise.regist_data"]["user"])
     @profile = Profile.new(session["devise.regist_data2"]["profile"])
     @authorization = Authorization.new(session["devise.regist_data3"]["authorization"])
     @address = Address.new(session["devise.regist_data4"]["address"])
-    @credit = Credit.new(credit_params)
-    unless @credit.valid?
-      flash.now[:alert] = @credit.errors.full_messages
-      render :new_credit and return
-    end
-    @credit = @user.build_credit(@credit.attributes)
 
     User.transaction do
       @user.save!
       @profile.save!
       @authorization.save!
       @address.save!
-      @credit.save!
     end
+    session[:id] = @user.id 
+    sign_in User.find(session[:id]) unless user_signed_in?
 
-    @id = Credit.find(@credit.id)
-    @user.update(id: @id.user_id)
-    @profile.update(user_id: @id.user_id)
-    @authorization.update(user_id: @id.user_id)
-    @address.update(user_id: @id.user_id)
-    sign_in(:user, @user)
-    render :done
+    if params['payjp-token'].blank?
+      redirect_to action: 'new'
+    else
+      customer = Payjp::Customer.create(
+      card: params['payjp-token'],
+      )
+      @credit = Credit.new(user_id: session[:id], customer_id: customer.id, card_id: customer.default_card)
+
+      @credit.save!
+      render :done
+    end
   end
 
   protected
@@ -128,7 +129,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def credit_params
-    params.require(:credit).permit(:card_id, :limit_month, :limit_year, :security_code)
+    params.require(:credit).permit(:user_id, :customer_id, :card_id)
   end
 
 end

@@ -1,37 +1,39 @@
-.main
-  .container
-    .new_resistration
-      カード
-    .contentsbox
-      = form_for(@credit, url: jp_signup_credit_card_path) do |f|
-        = render "devise/shared/error_messages", resource: @credit
-        .field
-          = f.label "カード番号"
-          %span.required 必須
-          %br
-          = f.text_field :card_id, autofocus: true, placeholder: "半角数字のみ"
-        .field
-          = f.label "有効期限"
-          %span.required 必須
-          %br
-          = f.text_field :limit_month
-          = "月"
-          = f.text_field :limit_year
-          = "年"
-        .field
-          = f.label "セキュリティーコード"
-          %span.required 必須
-          %br
-          = f.text_field :security_code, autofocus: true, placeholder: "カード背面4桁もしくは3桁の番号"
-        #help
-          = link_to "カード裏面の番号とは？"
-        %br
-        .actions
-          = f.submit "次へ進む"
+-# .main
+-#   .container
+-#     .new_resistration
+-#       クレジットカード情報入力
+-#     .contentsbox
+-#       = form_for(@credit, url: jp_signup_credit_card_path) do |f|
+-#         = render "devise/shared/error_messages", resource: @credit
+-#         .field
+-#           = f.label "カード番号"
+-#           %span.required 必須
+-#           %br
+-#           = f.text_field :number, autofocus: true, placeholder: "半角数字のみ"
+-#           -# = f.text_field "number", "", class: "number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "number"
+-#         .field
+-#           = f.label "有効期限"
+-#           %span.required 必須
+-#           %br
+-#           = f.text_field :exp_month
+-#           = "月"
+-#           = f.text_field :exp_year
+-#           = "年"
+-#         .field
+-#           = f.label "セキュリティーコード"
+-#           %span.required 必須
+-#           %br
+-#           = f.text_field :cvc, autofocus: true, placeholder: "カード背面4桁もしくは3桁の番号"
+-#         #help
+-#           = link_to "カード裏面の番号とは？"
+-#         %br
+-#         .actions
+-#           = f.submit "次へ進む", id: "token_submit"
 
-= form_tag("pay", method: :post, id: 'charge-form',  name: "inputForm") do
+= form_tag(jp_signup_credit_card_path, method: :post, id: 'charge-form',  name: "inputForm") do
+  -# = render "devise/shared/error_messages", resource: @credit
   %label カード番号
-  = text_field_tag "number", "", class: "number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
+  = text_field_tag "card_number", "", class: "card_number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
   %br
   %label 有効期限
   %select#exp_month{name: "exp_month", type: "text"}

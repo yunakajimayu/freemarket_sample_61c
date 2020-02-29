@@ -25,10 +25,6 @@ Rails.application.routes.draw do
       post 'delete', to: 'creditcards#delete'
     end
   end
-
-  get 'creditcard/index'
-  get 'creditcard/new'
-  get 'creditcard/show'
   
   devise_scope :user do 
     get '/jp/signup', to: "users/registrations#new_page"
