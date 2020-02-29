@@ -1,0 +1,202 @@
+= form_for @item do |f|
+  - if @item.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@item.errors.count, "error")} prohibited this item from being saved:"
+      %ul
+        - @item.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :pictures
+    = f.file_field :pictures, multiple: true
+  .field
+    = f.label :discription
+    = f.text_area :discription
+    = f.hidden_field :size,value: 0
+    = f.hidden_field :status,value: 0
+  .field
+    = f.label :category_id
+    = f.collection_select :category_id, @categories, :id, :name, class: "user_class", prompt: true
+  .field
+    = f.label :condition
+    = f.select :condition, Item.conditions.keys.map{|k| [I18n.t("enum.item.condition.#{k}"), k]}, prompt: true
+  = f.fields_for :delivery do |d|
+    %div
+      %h5
+        配送料の負担
+        %span.required 必須
+      %div
+        = d.select :postage_bearer, Delivery.postage_bearers.keys.map{|k| [I18n.t("enum.delivery.postage_bearer.#{k}"), k]}, prompt: true
+    %div.seller
+      %h5
+        配送の方法
+        %span.required 必須
+      %div
+        = d.select :delivery_method, Delivery.delivery_methods.keys.map{|k| [I18n.t("enum.delivery.delivery_method.#{k}"), k]}, prompt: true
+    %div
+      %h5 
+        発送元の地域
+      = d.select :delivery_area, Delivery.delivery_areas.keys, prompt: true
+    %div
+      %h5
+        発送までの日数
+      = d.select :delivery_day, Delivery.delivery_days.keys.map{|k| [I18n.t("enum.delivery.delivery_day.#{k}"), k]}, prompt: true
+      = d.hidden_field :postage,value: 0
+      = d.hidden_field :delivery_status,value: "delivery_status"
+
+  .field
+    = f.label :price
+    = f.text_field :price
+
+
+  .actions
+    = f.submit 'Save'
+
+
+-# %div
+
+-#   = form_for @item,class: "dropzone",id: "upload-dropzone" do |f|
+-#     %div
+-#       %h1
+-#         商品の情報を入力
+-#     %div
+-#       %div
+-#         - if @item.errors.any?
+-#           #error_explanation
+-#             %h2= "#{pluralize(@item.errors.count, "error")} prohibited this item from being saved:"
+-#             %ul
+-#               - @item.errors.full_messages.each do |message|
+-#                 %li{style:'color:black;'}
+-#                   = message
+-#         %h2
+-#           = f.label :picture, "出品画像"
+-#           %span.required 必須
+-#         %p
+-#           最大10枚までアップロードできます
+-#         %div.item__contents--dropzone
+          
+-#           %div.item__contents--dropzone--upload-area
+-#             .preview
+-#             .dz-default.dz-message
+-#               %p
+-#                 ドラッグアンドドロップ<BR>
+-#                 またはクリックしてファイルをアップロード
+-#             .fallback
+-#               -# = f.file_field :file_name, multiple: true
+-#           =f.file_field :picture, multiple: true
+-#           .dz-error-message
+-#     %div
+-#       %div
+-#         %h2 
+-#           = f.label :name ,"商品名"
+-#           %span.required 必須
+-#         = f.text_field :name , placeholder: "商品名（必須 40文字まで)"
+-#         %h2
+-#           = f.label :description, "商品の説明"
+-#           %span.required 必須
+-#         = f.text_area :description , placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+-#     %div
+-#       %div
+-#         %h3
+-#           商品の詳細
+-#       %div
+-#         %div
+-#           %h2 
+-#             = f.label :category, "カテゴリー"
+-#             %span.required 必須
+-#           %div
+-#             = f.collection_select :category_id, @categories, :id, :name, class: "user_class", prompt: true
+-#         %div
+-#           %h2 
+-#             = f.label :condition,"商品の状態"
+-#             %span.required 必須
+-#           %div
+-#             = f.select :condition, Item.conditions.keys.map{|k| [I18n.t("enum.item.condition.#{k}"), k]}, prompt: true
+-#     = f.fields_for :delivery do |d|
+-#       %div
+        
+-#         %div
+-#           %h3
+-#             配送について
+-#             =link_to "?","",class:"question",target:"_blank"
+-#         %div
+-#           %div
+-#             %h2 
+-#               配送料の負担
+-#               %span.required 必須
+-#             %div
+-#               = d.select :postage_bearer, Delivery.postage_bearers.keys.map{|k| [I18n.t("enum.delivery.postage_bearer.#{k}"), k]}, prompt: true
+-#           %div.seller
+-#             %h2 
+-#               配送の方法
+-#               %span.required 必須
+-#             %div
+-#               = d.select :delivery_method, Delivery.delivery_methods.keys.map{|k| [I18n.t("enum.delivery.delivery_method.#{k}"), k]}, prompt: true
+-#           %div.buyer
+-#             %h2 
+-#               配送の方法
+-#               %span.required 必須
+-#             %div
+-#               = d.select :delivery_method, Delivery.delivery_methods_i18n.slice(:undecided,:yu_mail,:kuromeko_yamato,:yu_pack).keys.map{|k| [I18n.t("enum.delivery.delivery_method.#{k}"), k]}, prompt: true
+-#           %div
+-#             %h2 
+-#               発送元の地域
+-#               %span.required 必須
+-#             %div
+-#               = d.select :delivery_area, Delivery.delivery_areas.keys, prompt: true
+-#           %div
+-#             %h2 
+-#               発送までの日数
+-#               %span.required 必須
+-#             %div
+-#               = d.select :delivery_day, Delivery.delivery_days.keys.map{|k| [I18n.t("enum.delivery.delivery_day.#{k}"), k]}, prompt: true
+-#             = d.hidden_field :postage,value: 0
+-#             = d.hidden_field :delivery_status,value: "delivery_status"
+
+-#     %div
+-#       %div
+-#         %h3
+-#           販売価格(300〜9,999,999)
+-#           =link_to "?","",class:"question",target:"_blank"
+-#       %div
+-#         %div
+-#           %ul
+-#             %li
+-#               %div
+-#                 = f.label :price ,"価格"
+-#                 %span.required 必須
+-#               %div
+-#                 ¥
+-#                 = f.text_field :price , placeholder: "例) 300", id: "price"
+-#             %li
+-#               %div 販売手数料 (10%)
+-#               %p#commission -
+-#             %li
+-#               %div 販売利益
+-#               %p#sales -
+-#     %div
+-#       %p
+-#         #{link_to "禁止されている出品","#"}、#{link_to "行為","#"}を必ずご確認ください。
+-#       %p
+-#         またブランド品でシリアルナンバー等がある場合はご記載ください。#{link_to "偽ブランドの販売","#"}は犯罪であり処罰される可能性があります。
+-#       %p
+-#         また、出品をもちまして#{link_to "加盟店規約","#"}に同意したことになります。
+-#       = f.hidden_field :size,value: 0
+-#       = f.hidden_field :status,value: 0
+-#       = f.submit "出品する"
+-#       = link_to "もどる", root_path
+
+
+-# :css
+-#   .dropzone {
+-#     position:relative;
+    
+-#   }
+-#   .upload_form {
+-#     margin-top:10px;
+-#     position:absolute;
+-#     top:100%;
+-#   }

@@ -5,14 +5,6 @@ ja:
         with_in_two_days: 1~2日で発送
         with_in_three_days: 2~3日で発送
         with_in_one_week: 4~7日で発送
-    item:
-      condition:
-        new_unused: 新品、未使用
-        almost_unused: 未使用に近い
-        no_noticeable_scratches_or_dirt: 目立った傷や汚れなし
-        some_scratches_and_dirt: やや傷や汚れあり
-        there_are_scratches_and_dirt: 傷や汚れあり
-        overall_bad_condition: 全体的に状態が悪い
       postage_bearer:
         seller: 送料込み(出品者負担)
         buyer: 着払い(購入者負担)
@@ -25,6 +17,14 @@ ja:
         yu_pack: ゆうパック
         click_post: クリックポスト
         yu_packet: ゆうパケット
+    item:
+      condition:
+        new_unused: 新品、未使用
+        almost_unused: 未使用に近い
+        no_noticeable_scratches_or_dirt: 目立った傷や汚れなし
+        some_scratches_and_dirt: やや傷や汚れあり
+        there_are_scratches_and_dirt: 傷や汚れあり
+        overall_bad_condition: 全体的に状態が悪い
   activerecord:
     errors:
       messages:

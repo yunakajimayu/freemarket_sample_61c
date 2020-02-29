@@ -15,5 +15,10 @@
 //= require activestorage
 //= require dropzone
 //= require_tree .
-
+$(function(){
+  setTimeout("$('#notice').fadeOut('slow')", 1000);
+  $('.button')
+.popup()
+;
+})
 

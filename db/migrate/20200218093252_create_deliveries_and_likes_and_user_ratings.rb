@@ -28,6 +28,9 @@ class CreateDeliveriesAndLikesAndUserRatings < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
+    add_reference :items, :like
+    add_reference :items, :user_rating
+
     
   end
 end

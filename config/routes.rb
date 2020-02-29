@@ -7,11 +7,9 @@ Rails.application.routes.draw do
     get 'logout', on: :collection
   end
   
-  resource :items ,path:'/jp/' do
-    collection do
-      get 'sell'
-      post 'sell'
-    end
+  resources :items ,path:'/jp/', except: :new do
+  get "sell", to: "items#new" ,on: :collection
+  get ""=>"items#show",on: :member
   end
   
   devise_for :users, path: '', controllers: {
