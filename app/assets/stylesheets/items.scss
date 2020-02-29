@@ -157,9 +157,11 @@
         @include flex;
         div:nth-child(2) {
           > div {
-            &.seller, &.buyer {
-              display: none;
-            }
+            // &.seller, &.buyer {
+            //   display: none;
+            // }
+            // 配送料負担を選択した際のセレクトボックスを表示するために必要な記述です
+            // 後ほど実装する予定なのでこのまま置いてあります
             div:first-child {
           width: 35%;
             }

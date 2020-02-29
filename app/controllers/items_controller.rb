@@ -49,7 +49,7 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).
     permit( :name, 
-            :discription,
+            :description,
             :price,
             :size,
             :status,

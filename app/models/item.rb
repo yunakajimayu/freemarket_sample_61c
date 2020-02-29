@@ -13,7 +13,7 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :delivery
 
   validates :name,presence: true,length: { maximum: 40 }
-  validates :discription,presence: true, length: { maximum: 1000 }
+  validates :description,presence: true, length: { maximum: 1000 }
   validates :price,presence: true,numericality: { only_integer: true }
   validates :condition,presence: true
   validates :category_id,presence: true

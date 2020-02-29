@@ -33,22 +33,23 @@ $(function(){
       $('#sales').text("-")
     }
   })
-  $('[name*="postage_bearer"]').change(function(){
-    var val = $(this).val();
-    console.log(val)
-    switch(val){
-      case "seller" :
-        $('.buyer').hide()
-        $('.seller').show()
-      break;
-      case "buyer" :
-        $('.seller').hide()
-        $('.buyer').show()
-      break;
-    }
-    
+  // $('[name*="postage_bearer"]').change(function(){
+  //   var val = $(this).val();
+  //   console.log(val)
+  //   switch(val){
+  //     case "seller" :
+  //       $('.buyer').hide()
+  //       $('.seller').show()
+  //     break;
+  //     case "buyer" :
+  //       $('.seller').hide()
+  //       $('.buyer').show()
+  //     break;
+  //   }
+  // 配送料負担を選択した際のセレクトボックスを表示するために必要な記述です
+  // 後ほど実装しなおす予定なので記述をそのままにしています
 
-  })
+  // })
 
 
 
