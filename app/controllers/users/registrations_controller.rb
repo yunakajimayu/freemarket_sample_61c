@@ -73,7 +73,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new_address and return
     end
     session["devise.regist_data4"] = {address: @address.attributes}
-    @cedit = @user.build_credit
     render :new_credit
   end
 
@@ -90,7 +89,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @authorization.save!
       @address.save!
     end
-    session[:id] = @user.id 
+    session[:id] = @user.id
     sign_in User.find(session[:id]) unless user_signed_in?
 
     if params['payjp-token'].blank?
@@ -100,7 +99,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       card: params['payjp-token'],
       )
       @credit = Credit.new(user_id: session[:id], customer_id: customer.id, card_id: customer.default_card)
-
       @credit.save!
       render :done
     end
@@ -126,10 +124,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def address_params
     params.require(:address).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :zipcode, :prefecture, :city, :address, :address_building)
-  end
-
-  def credit_params
-    params.require(:credit).permit(:user_id, :customer_id, :card_id)
   end
 
 end
