@@ -82,9 +82,10 @@
           font-size: 0.85em;
           line-height: 1.6em;
         }
-        input[type=text] {
+        input[type=text], input[type=number] {
           @include input-form;
           margin-bottom: 40px;
+          font-weight: bold;
         }
 
         textarea {
