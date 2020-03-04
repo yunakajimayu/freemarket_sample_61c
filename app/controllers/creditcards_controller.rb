@@ -17,7 +17,7 @@ class CreditcardsController < ApplicationController
       customer = Payjp::Customer.create(
         description: '登録テスト', #PAY.JPの顧客情報に表示する。
         email: current_user.email,
-        credit: params['payjp-token'],
+        card: params['payjp-token'],
         metadata: {user_id: current_user.id}
       )
       @credit = Credit.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)

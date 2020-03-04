@@ -77,12 +77,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create_credit
+    # apiとこれまで受け取ってきた情報を全て取得
     Payjp.api_key = "sk_test_06207c0e157a821b64f2bcdc"
     @user = User.new(session["devise.regist_data"]["user"])
     @profile = Profile.new(session["devise.regist_data2"]["profile"])
     @authorization = Authorization.new(session["devise.regist_data3"]["authorization"])
     @address = Address.new(session["devise.regist_data4"]["address"])
-
+    # transactionで全ての情報を同時にDBに保存
     User.transaction do
       @user.save!
       @profile.save!
@@ -90,18 +91,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @address.save!
     end
     session[:id] = @user.id
-    sign_in User.find(session[:id]) unless user_signed_in?
-
+    # 入力された情報はpayjpに送り、その代わりとしてpayjp-tokenを取得。@creditに情報を保存。
     if params['payjp-token'].blank?
       redirect_to action: 'new'
     else
       customer = Payjp::Customer.create(
-      card: params['payjp-token'],
-      )
-      @credit = Credit.new(user_id: session[:id], customer_id: customer.id, card_id: customer.default_card)
-      @credit.save!
-      render :done
+        card: params['payjp-token'],
+        )
+        @credit = Credit.new(user_id: session[:id], customer_id: customer.id, card_id: customer.default_card)
+        @credit.save!
     end
+    sign_in User.find(session[:id]) unless user_signed_in?
+    render :done
   end
 
   protected
