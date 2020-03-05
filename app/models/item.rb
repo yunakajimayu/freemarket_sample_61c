@@ -17,7 +17,8 @@ class Item < ApplicationRecord
   validates :price,presence: true,numericality: { only_integer: true }
   validates :condition,presence: true
   validates :category_id,presence: true
-  validates :pictures,absence: false,allow_blank:true,on: :create
+  validates :pictures,presence: true
+  validates :size,presence: true
 
 
       

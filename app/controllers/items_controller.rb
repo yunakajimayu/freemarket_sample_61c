@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_categories,:set_delivery
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  # before_action :set_item, only: [:show, :edit, :update, :destroy]
   layout 'sell', except: [:index]
   def index
     @items = Item.all
