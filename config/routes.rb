@@ -17,14 +17,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  resources :creditcards, path:'jp/mypage/card/' do
-    collection do
-      get 'show', to: 'creditcards#show'
-      get 'new', to: 'creditcards#new'
-      post 'pay', to: 'creditcards#pay'
-      post 'delete', to: 'creditcards#delete'
-    end
-  end
+  resources :creditcards, path:'jp/mypage/card/', only: [:index, :create, :new, :destroy]
   
   devise_scope :user do 
     get '/jp/signup', to: "users/registrations#new_page"
