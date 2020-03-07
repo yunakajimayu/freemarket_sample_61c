@@ -1,9 +1,8 @@
 class CreditcardsController < ApplicationController
   require "payjp"
   before_action :set
-
   
-  def index
+  def index  #登録しているカードデータを表示
     if @credit.present?  #creditテーブルの情報をpayjpに送り、カード情報を取得する
       Payjp.api_key = "sk_test_06207c0e157a821b64f2bcdc"
       customer = Payjp::Customer.retrieve(@credit.customer_id)
@@ -54,17 +53,6 @@ class CreditcardsController < ApplicationController
     end
   end
 
-  # def show #Creditのデータをpayjpに送り情報を取り出す
-  #   credit = Credit.where(user_id: current_user.id).first
-  #   if credit.blank?
-  #     redirect_to action: "new"
-  #   else
-  #     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-  #     customer = Payjp::Customer.retrieve(credit.customer_id)
-  #     @default_card_information = customer.credit.retrieve(credit.credit_id)
-  #   end
-  # end
-
   def destroy #payjpとcreditデーブルの削除
     if @credit.blank?
       redirect_to action: "new"
@@ -73,18 +61,18 @@ class CreditcardsController < ApplicationController
       customer = Payjp::Customer.retrieve(@credit.customer_id)  #返ってくるデータを取得
       customer.delete
       @credit.delete
-      if @credit.destroy #削除に成功した時にポップアップを表示します。
+      if @credit.destroy
         redirect_to action: "index", alert: "削除しました"
-      else #削除に失敗した時にアラートを表示します。
+      else
         redirect_to action: "index", alert: "削除できませんでした"
       end
     end
   end
 
 
-  # private
+  private
 
-  def set
+  def set #現在のユーザーのCredit情報を取得
     @credit = Credit.where(user_id: current_user.id).first if Credit.where(user_id: current_user.id).exists?
   end
 

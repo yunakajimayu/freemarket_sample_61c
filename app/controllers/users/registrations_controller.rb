@@ -91,7 +91,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @address.save!
     end
     session[:id] = @user.id
-    # 入力された情報はpayjpに送り、その代わりとしてpayjp-tokenを取得。@creditに情報を保存。
+    # 入力された情報をpayjpに送り、その代わりとしてpayjp-tokenを取得。@creditに情報を保存。
     if params['payjp-token'].blank?
       redirect_to action: 'new'
     else

@@ -12,7 +12,6 @@ class ItemsController < ApplicationController
   end
 
   def purchase
-    # @price = Item.price
     Payjp.api_key = "sk_test_06207c0e157a821b64f2bcdc"
     Payjp::Charge.create(
       amount: 4000, # 決済する値段

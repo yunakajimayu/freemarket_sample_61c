@@ -9,8 +9,8 @@
   .credit-inner
     .inner-content
       %h2 クレジットカード一覧
-      -# クレジットカードが登録されている場合は一覧表示します
-      -# クレジットカードが登録されていない場合は新規作成ボタンを表示します
+      -# クレジットカードが登録されている場合は一覧表示
+      -# クレジットカードが登録されていない場合は新規作成ボタンを表示
       - if @credit.present?
         .creditcards-show
           %ul.creditcards-show__list
@@ -23,7 +23,7 @@
                   = "**** **** **** " + @card_information.last4
                 .creditcards-show__list--number
                   - exp_month = @card_information.exp_month.to_s
-                  - exp_year = @card_information.exp_year.to_s.slice(2,3) # 2023 → 23 となるように表示している
+                  - exp_year = @card_information.exp_year.to_s.slice(2,3) # 2023 → 23 となるように表示
                   = exp_month + " / " + exp_year
                 %input{type: "hidden", name: "card_id", value: "" }
                 =f.submit "削除する", {class: "delete-button"}
