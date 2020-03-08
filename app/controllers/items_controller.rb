@@ -30,6 +30,9 @@ class ItemsController < ApplicationController
     render layout: 'sell'
   end 
 
+  def product_detail
+  end
+
   private
 
   def set_categories

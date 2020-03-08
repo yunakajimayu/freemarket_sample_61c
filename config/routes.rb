@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   resource :items ,path:'/jp/' do
     get 'sell',on: :collection
     get 'transaction',on: :collection
+    get 'product_detail',on: :collection
   end
   
-  get 'item_id/' => 'items_details#index'
 
   devise_for :users, path: '', controllers: {
     registrations: 'users/registrations',
