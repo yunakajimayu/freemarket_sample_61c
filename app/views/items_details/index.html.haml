@@ -73,9 +73,7 @@
       (税込)
     %span.item-shipping-fee
       送料込み
-  = form_with url: purchase_items_path do
-    :plain
-      <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_dbe9d7a6d87dfb9ebf4b6c38"></script>
+    = link_to "購入画面に進む", transaction_items_path, method: :get, class: "item-buy-btn"
 
   .item-description
     %p.item-description-inner
