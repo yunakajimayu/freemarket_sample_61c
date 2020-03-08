@@ -1,7 +1,5 @@
 require 'rails_helper'
 describe ItemsController do
-  include CarrierWave::Test::Matchers
-
 
   describe 'GET #new' do
     it "正しいビューに遷移する" do
@@ -15,7 +13,9 @@ describe ItemsController do
   describe 'Post #create' do
     context "@itemが保存出来た時" do
       it "データベースに値が保存される" do
-        item = FactoryBot.create(:item, pictures: @pictures)
+
+        item = FactoryBot.create(:item, :with_picture)
+
         # get :show, params: { id: item }
       end
       it "商品詳細ページに遷移する" do
