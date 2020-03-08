@@ -19,10 +19,20 @@
     .item-photo{
       display: block;
       float: left;
-      min-width: 300px;
-      min-height: 375px;
+      max-width: 300px;
+      max-height: 420px;
       margin: 0 auto;
       background-color: gray;
+      .item-photo-mainbox{
+        width: 300px;
+        height: 300px;
+        background-color: #fafafa;
+      }
+      .item-photo-holder{
+        width: 300px;
+        height: 120px;
+        background-color: hotpink;
+      }
     }
     .item-detail-table{
       display: block;
@@ -105,7 +115,6 @@
     }
   }
   .item-description{
-    padding: 32px 0 0;
     line-height: 1.5;
     font-size: 18px;
     .item-description-inner{
