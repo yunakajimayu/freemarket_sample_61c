@@ -1,0 +1,11 @@
+-# メンズの部分テンプレートです
+.goods.animate{"data-animate": "fadeIn","data-duration":"1.0s","data-delay":"0.1s","data-offset":"100"}
+  - @mens.each do |item| 
+    %div{style: "margin: 0 20px 20px 0;"}
+      %div{style: "background: url(#{item.picture}) center; background-size: cover;"}
+        =link_to "", "#"
+        %span
+          ¥
+          = item.price
+      %div
+        = item.name
