@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resource :items ,path:'/jp/' do
     get 'sell',on: :collection
     get 'transaction',on: :collection
+    get 'edit'
   end
   
   get 'item_id/' => 'items_details#index'
