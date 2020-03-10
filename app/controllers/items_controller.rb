@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
   def edit
     render :edit
     @item = Item.find(params[:id])
+    gon.item = @item
     
   end
 
