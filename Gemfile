@@ -44,6 +44,7 @@ group :development, :test do
   gem 'capistrano3-unicorn'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -88,5 +89,4 @@ gem 'payjp'
 gem 'pry-rails'
 gem "gretel"
 gem 'rails-i18n', '~> 5.1'
-gem 'factory_bot_rails'
 gem 'gon'
