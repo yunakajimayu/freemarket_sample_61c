@@ -50,12 +50,12 @@
         .th
           商品のサイズ
         .td
-          24.5cm
+          = @item.size
       .tr
         .th
           商品の状態
         .td
-          目立った傷や汚れなし
+          = @item.condition
       .tr
         .th
           配送料の負担
@@ -70,7 +70,7 @@
         .th
           配送元地域
         .td
-          大阪府
+          = @item.prefecture
       .tr
         .th
           発送日の目安
@@ -78,7 +78,8 @@
           1~2で発送
   .item-price-box
     %span.item-price
-      ¥4,000
+      ¥ 
+      = @item.price
     %span.item-tax
       (税込)
     %span.item-shipping-fee
@@ -88,12 +89,7 @@
 
   .item-description
     %p.item-description-inner
-      2〜3度着用しましたが、
-      目立った汚れや擦れはありません。
-      ・箱なし
-      ※USED品になりますので、ご理解の上
-      ご購入よろしくお願いします。
-      その他の出品はコチラ↓
+      = @item.description
   .item-btn-container-clearfix
     .item-btn-left
       .like
