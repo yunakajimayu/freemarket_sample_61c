@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
   def sell
     render :new
   end
-
+  
   def purchase
     @credit = Credit.where(user_id: current_user.id).first if Credit.where(user_id: current_user.id).exists?
     Payjp.api_key = "sk_test_06207c0e157a821b64f2bcdc"
@@ -19,22 +19,18 @@ class ItemsController < ApplicationController
     )
     redirect_to action: "done"
   end
-
+  
   def new
     @item = Item.new
   end
 
   def create
-
     @item = Item.new(create_params)
     if @item.save
       redirect_to @item
     else
-
       render root
     end
-
-
   end
 
   def transaction
@@ -62,6 +58,10 @@ class ItemsController < ApplicationController
       end
     end
   end
+
+  def transaction
+    render layout: 'sell'
+  end 
 
   private
 

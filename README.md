@@ -71,11 +71,9 @@
 |------|----|-------|
 |name|string|null: false, add_index|
 |description|text|null: false|
-|prefecture|string|null: false|
 |price|integer|null: false|
 |size|integer|null: false|
 |status|string|null: false|
-|dalivery|reference|null: false, foreign_key: true|
 |picture|string|null: false|
 |saler_id|reference|null: false, foreign_key: true|
 |buyer_id|reference|foreign_key: true|
@@ -95,11 +93,9 @@
 ## Creditsテーブル
 |Colimn|Type|Options|
 |------|----|-------|
-|user|reference|null: false|
-|card_id|integer|null: false|
-|limit_month|date|null: false|
-|limit_year|date|null: false|
-|security_code|integer|null: false|
+|user_id|reference|null: false, foreign_key: true|
+|customer_id|string|null: false|
+|card_id|string|null: false|
 ### Association
 - belongs_to: user
 
@@ -127,6 +123,7 @@
 |------|----|-------|
 |delivery_day|date|null: false|
 |delivery_status|string|null: false|
+|derivery_area|string|null: false|
 |postage|integer|null: false|
 |postage_bearer|string|null: false|
 ### Association
