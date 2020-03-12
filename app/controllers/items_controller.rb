@@ -43,7 +43,6 @@ class ItemsController < ApplicationController
       Payjp.api_key = "sk_test_06207c0e157a821b64f2bcdc"
       customer = Payjp::Customer.retrieve(@credit.customer_id)
       @card_information = customer.cards.retrieve(@credit.card_id)
-
       @card_brand = @card_information.brand
       case @card_brand
       when "Visa"
