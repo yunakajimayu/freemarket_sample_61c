@@ -31,6 +31,7 @@ class ItemsController < ApplicationController
   end 
 
   def product_detail
+    @item = Item.find(6)
   end
 
   private

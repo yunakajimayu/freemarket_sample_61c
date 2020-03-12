@@ -1,5 +1,6 @@
 .item-box-container
-  %h1.item-name CCステッチココマーク オペラシューズ
+  %h1.item-name 
+    = @item.name
   .item-main-content-clearfix
     .item-photo
       .item-photo-mainbox
@@ -17,7 +18,7 @@
         .th
           出品者
         .td
-          = link_to 'nickname'
+          = link_to "#{@item.saler_id}"
           .user-rating
             .item-user-ratings
               .icon-good
