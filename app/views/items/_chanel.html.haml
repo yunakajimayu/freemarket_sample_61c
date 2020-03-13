@@ -1,7 +1,10 @@
 .goods.animate{"data-animate": "fadeIn","data-duration":"1.0s","data-delay":"0.1s","data-offset":"100"}
   - @chanels.each do |item| 
     %div{style: "margin: 0 20px 20px 0;"}
-      = image_tag item.pictures.to_s
+      - if item.pictures.present?
+        = image_tag "#{item.pictures}", class:'div'
+      - else
+        = image_tag "", class:'div'
       -# %div{style: "background: image_tag #{item.pictures.to_s} center; background-size: cover;"}
         =link_to "", "#"
         %span
