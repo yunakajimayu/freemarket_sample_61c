@@ -303,21 +303,27 @@
   }
   .sns-link{
     text-align: center;
-    line-height: 40px;
     .icon-box{
       display: inline-block;
       margin: 0 8px 8px 0;
       text-align: center;
       height: 40px;
       width: 40px;
-      background-color: gray;
-      .facebook{
+      .fab.fa-facebook-square{
+        font-size: 40px;
+        color: rgb(45, 52, 161);
       }
-      .twitter{
+      .fab.fa-twitter-square{
+        font-size: 40px;
+        color: rgb(91, 163, 245);
       }
-      .line{
+      .fab.fa-line{
+        font-size: 40px;
+        color: rgb(71, 235, 65);
       }
-      .pinterest{
+      .fab.fa-pinterest-square{
+        font-size: 40px;
+        color: rgb(226, 13, 13);
       }
     }
   }
