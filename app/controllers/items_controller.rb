@@ -47,17 +47,41 @@ class ItemsController < ApplicationController
     render layout: 'sell'
   end 
 
+
   private
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   def set_categories
     @categories = Category.all
   end
 
-  private
+  def set_delivery
+    @delivery = Delivery.find_by(item_id: @item)
+  end
 
-  def create_params
-    params.require(:item).permit(:name, :description,:price,:postage,:picture,:condition,:category_id).merge(seler_id: current_user.id)
+  def item_params
+    params.require(:item).
+    permit( :name, 
+            :description,
+            :price,
+            :size,
+            :status,
+            :condition,
+            :category_id,
+            {pictures: []},
+            [:delivery_attributes],
+              delivery_attributes:[
+                :id,
+                :delivery_status,
+                :delivery_method,
+                :delivery_area,
+                :delivery_day,
+                :postage,
+                :postage_bearer]).
+    merge(seller_id: current_user.id,buyer_id: nil)
   end
 
 end
-
