@@ -1,9 +1,13 @@
 -# おもちゃ・ホビー・グッズの部分テンプレートです
 .goods.animate{"data-animate": "fadeIn","data-duration":"1.0s","data-delay":"0.1s","data-offset":"100"}
   - @hobby.each do |item| 
-    %div{style: "margin: 0 20px 20px 0;"}
-      %div{style: "background: url(#{item.picture}) center; background-size: cover;"}
-        =link_to "", "#"
+    %div
+      %div
+        - if item.pictures.present?
+          = image_tag "#{item.pictures[0]}", class:'first-child', height: '180px;' , width:' 180px;' 
+        - else
+          = image_tag "", class:'first-child'
+        =link_to "", item_id(@hobby)
         %span
           ¥
           = item.price

@@ -6,10 +6,9 @@
           = image_tag "#{item.pictures[0]}", class:'first-child', height: '180px;' , width:' 180px;' 
         - else
           = image_tag "", class:'first-child'
-        =link_to "", "#"
+        =link_to "", item_id_path(@chanels)
         %span
           ¥
           = item.price
       %div
         = item.name
-        -# CCステッチココマーク オペラシューズ
