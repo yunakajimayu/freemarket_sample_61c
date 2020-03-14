@@ -12,12 +12,14 @@ class ItemsController < ApplicationController
   def edit
     render :edit
     @item = Item.find(params[:id])
-    gon.item = @item.item
+    #gem gonを使って変数をJavascriptのファイルと連動させる。
+    gon.item = @item
     gon.item_pictures = @item.item_pictures
 
     require 'base64'
     require 'aws-sdk'
 
+    #S3に保存している画像データを呼び出す
     gon.item_pictures_binary_datas = []
     if Rails.env.production?
       client = Aws::S3::client.new(
@@ -33,6 +35,7 @@ class ItemsController < ApplicationController
   end
 
   def update
+    #ブランド名がstringでparamsに入ってくるので、id番号に書き換え
     if brand = Brand.find_by(name: params[:item][:brand_id])
       params[:item][:brand_id] = brand.id
     else
@@ -41,10 +44,11 @@ class ItemsController < ApplicationController
 
     @item = Item.find(params[:id])
 
+    #登録済画像のidの配列を生成
     ids = @item.item_pictures.map{|pictures| picures.id }
-
+    #登録済画像のうち、編集後もまだ残っている画像のidの配列を生成(文字列から数値に変換)
     exist_ids = registered_pictures_params[:ids].map(&:to_i)
-
+    #登録済画像が残っていない場合(配列に0が格納されている)、配列を空にする
     exist_ids.clear if exist_ids[0] == 0
 
     if (exist_ids.length != 0 || new_pitures_params[:pictures][0] !=" ") && @item.update(item_params)
@@ -70,20 +74,6 @@ class ItemsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
 
-  end
-
-  private
-  def item_params
-    params.require(:item).permit(:name, :description, :category_id, :size, :buyer_id, :postage_bearer, :delivery_area, :delivery_day, :price)
-  end
-
-  def registered_pictures_params
-    params.require(:registered_pictures_ids).permit({ids: []})
-  end
-
-  def new_pictures_params
-    params.require(:new_pictures).permit({pictures: []})
-  end
   end
 
   def new
@@ -117,6 +107,18 @@ class ItemsController < ApplicationController
 
   def create_params
     params.require(:item).permit(:name, :description,:price,:postage,:picture,:condition,:category_id).merge(seler_id: current_user.id)
+  end
+
+  def item_params
+    params.require(:item).permit(:name, :description, :category_id, :size, :buyer_id, :postage_bearer, :delivery_area, :delivery_day, :price)
+  end
+
+  def registered_pictures_params
+    params.require(:registered_pictures_ids).permit({ids: []})
+  end
+
+  def new_pictures_params
+    params.require(:new_pictures).permit({pictures: []})
   end
 
 end
