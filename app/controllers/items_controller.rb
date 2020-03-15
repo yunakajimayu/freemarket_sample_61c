@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @items = Item.find(1)
+    @itemitem = Item.find(1)
   #   #gem gonを使って変数をJavascriptのファイルと連動させる。
   #   gon.item = @items
   #   gon.item_pictures = @items.item_pictures

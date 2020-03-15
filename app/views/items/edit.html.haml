@@ -1,7 +1,7 @@
 - content_for(:html_title) { '出品' } 
 .item__contents
   %div
-    = form_with model: @item,local: true,class: "dropzone",id: "upload-dropzone" do |f|
+    = form_with model: @itemitem,local: true,class: "dropzone",id: "upload-dropzone" do |f|
       %div
         %h1
           商品の情報を入力
@@ -28,11 +28,11 @@
           %h2 
             = f.label :name ,"商品名"
             %span.required 必須
-          = f.text_field :name , placeholder: "商品名（必須 40文字まで)"
+          = f.text_field :name, value:"item" , placeholder: "商品名（必須 40文字まで)"
           %h2
             = f.label :description, "商品の説明"
             %span.required 必須
-          = f.text_area :description , placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+          = f.text_area :description ,value:"新品未使用だとおもいますよ", placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
       %div
         %div
           %h3
