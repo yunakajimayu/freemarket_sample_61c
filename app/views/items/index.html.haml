@@ -99,7 +99,7 @@
       = link_to "" do
         もっとみる
   .best-category__contents
-    = render 'louis-vuitton'
+    = render partial: 'items', collection: @louisvuittons, as: 'item'
 
   .best-category__wrap
     .best-category__title
@@ -108,7 +108,7 @@
       = link_to "" do
         もっとみる
   .best-category__contents
-    = render 'supreme'
+    = render partial: 'items', collection: @supremes, as: 'item'
 
   .best-category__wrap
     .best-category__title
@@ -117,4 +117,4 @@
       = link_to "" do
         もっとみる
   .best-category__contents
-    = render 'nike'
+    = render partial: 'items', collection: @nikes, as: 'item'

@@ -5,7 +5,7 @@
     = link_to "" do
       もっとみる
 .best-category__contents
-  = render 'women'
+  = render partial: 'items', collection: @women, as: 'item'
 
 .best-category__wrap
   .best-category__title
@@ -14,7 +14,7 @@
     = link_to "" do
       もっとみる
 .best-category__contents
-  = render 'mens'
+  = render partial: 'items', collection: @mens, as: 'item'
 
 .best-category__wrap
   .best-category__title
@@ -23,7 +23,7 @@
     = link_to "" do
       もっとみる
 .best-category__contents
-  = render 'electric-items'
+  = render partial: 'items', collection: @electricitems, as: 'item'
 
 .best-category__wrap
   .best-category__title
@@ -32,4 +32,4 @@
     = link_to "" do
       もっとみる
 .best-category__contents
-  = render 'hobby'
+  = render partial: 'items', collection: @hobbies, as: 'item'
