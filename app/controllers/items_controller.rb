@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
 
   def purchase
     @credit = Credit.where(user_id: current_user.id).first if Credit.where(user_id: current_user.id).exists?
-    Payjp.api_key = "sk_test_06207c0e157a821b64f2bcdc"
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     Payjp::Charge.create(
       amount: 5400, # 決済する値段
       customer: @credit.customer_id, # フォームを送信すると作成・送信されてくるトークン
@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
   def transaction
     @credit = Credit.where(user_id: current_user.id).first if Credit.where(user_id: current_user.id).exists?
     if @credit.present?  #creditテーブルの情報をpayjpに送り、カード情報を取得する
-      Payjp.api_key = "sk_test_06207c0e157a821b64f2bcdc"
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(@credit.customer_id)
       @card_information = customer.cards.retrieve(@credit.card_id)
       @card_brand = @card_information.brand

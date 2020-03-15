@@ -89,3 +89,4 @@ gem 'enum_help'
 gem 'payjp'
 gem 'pry-rails'
 gem "gretel"
+gem 'dotenv-rails'

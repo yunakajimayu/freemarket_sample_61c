@@ -1,10 +1,10 @@
 class CreditcardsController < ApplicationController
   require "payjp"
-  before_action :set
+  before_action :set_credit
   
   def index  #登録しているカードデータを表示
     if @credit.present?  #creditテーブルの情報をpayjpに送り、カード情報を取得する
-      Payjp.api_key = "sk_test_06207c0e157a821b64f2bcdc"
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(@credit.customer_id)
       @card_information = customer.cards.retrieve(@credit.card_id)
 
@@ -36,7 +36,7 @@ class CreditcardsController < ApplicationController
   end
 
   def create #PayjpとCreditのDBを作成
-    Payjp.api_key = "sk_test_06207c0e157a821b64f2bcdc"
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     #"payjp_token"を受け取れればカード情報を登録、なければnewする
     if params['payjp-token'].blank?
       redirect_to action:"new"
@@ -57,7 +57,7 @@ class CreditcardsController < ApplicationController
     if @credit.blank?
       redirect_to action: "new"
     else
-      Payjp.api_key = "sk_test_06207c0e157a821b64f2bcdc"  #payjpにCreditデータを送る
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]  #payjpにCreditデータを送る
       customer = Payjp::Customer.retrieve(@credit.customer_id)  #返ってくるデータを取得
       customer.delete
       @credit.delete
@@ -72,7 +72,7 @@ class CreditcardsController < ApplicationController
 
   private
 
-  def set #現在のユーザーのCredit情報を取得
+  def set_credit #現在のユーザーのCredit情報を取得
     @credit = Credit.where(user_id: current_user.id).first if Credit.where(user_id: current_user.id).exists?
   end
 
