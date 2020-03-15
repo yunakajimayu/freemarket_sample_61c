@@ -23,75 +23,32 @@
       max-height: 420px;
       margin: 0 auto;
       background-color: gray;
-      .item-photo-mainbox{
+      #content{
         width: 300px;
         height: 300px;
         background-color: #fafafa;
-        .img{
+        #featured_img{
+          width: 300px;
+          height: 300px;
+          #img{
           height: 100%;
           width: 100%;
-          background-image: asset_url('product-details/1.jpg');
           background-repeat:  no-repeat;
           background-size: contain;
           background-position: center;
+          }
         }
       }
-      .item-photo-holder{
+      .photo-holder{
         width: 300px;
         height: 120px;
         background-color: #fafafa;
-        .img-clearfix{
-          .img1{
+        #thumb_img{
+          img{
             float: left;
             display: block;
             height: 60px;
             width: 60px;
-            background-image: asset_url('product-details/1.jpg');
-            background-repeat:  no-repeat;
-            background-size: cover;
-          }
-          .img2{
-            float: left;
-            display: block;
-            height: 60px;
-            width: 60px;
-            background-image: asset_url('product-details/2.jpg');
-            background-repeat:  no-repeat;
-            background-size: cover;
-          }
-          .img3{
-            float: left;
-            display: block;
-            height: 60px;
-            width: 60px;
-            background-image: asset_url('product-details/3.jpg');
-            background-repeat:  no-repeat;
-            background-size: cover;
-          }
-          .img4{
-            float: left;
-            display: block;
-            height: 60px;
-            width: 60px;
-            background-image: asset_url('product-details/4.jpg');
-            background-repeat:  no-repeat;
-            background-size: cover;
-          }
-          .img5{
-            float: left;
-            display: block;
-            height: 60px;
-            width: 60px;
-            background-image: asset_url('product-details/5.jpg');
-            background-repeat:  no-repeat;
-            background-size: cover;
-          }
-          .img6{
-            float: left;
-            display: block;
-            height: 60px;
-            width: 60px;
-            background-image: asset_url('product-details/6.jpg');
             background-repeat:  no-repeat;
             background-size: cover;
           }

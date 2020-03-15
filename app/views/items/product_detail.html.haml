@@ -3,22 +3,27 @@
     = @item.name
   .item-main-content-clearfix
     .item-photo
-      .item-photo-mainbox
-        .img
-      .item-photo-holder
-        .img-clearfix
-          .img1
-          .img2
-          .img3
-          .img4
-          .img5
-          .img6
+      #content
+        #featured_img
+          %img#img{:src => "https://www.imamura.biz/blog/wp-content/uploads/image01.png"}/
+        .photo-holder
+          #thumb_img.cf
+            %img.active{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image01.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image01_thumb.png"}
+            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
+            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image03.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image03_thumb.png"}
+            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
+            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
+            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
+            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
+            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
+            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
+            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
     .item-detail-table
       .tr
         .th
           出品者
         .td
-          = link_to "#{@item.saler_id}"
+          = link_to "#{@user.nickname}"
           .user-rating
             .item-user-ratings
               .icon-good
@@ -109,7 +114,7 @@
       .message-icon
         =link_to "●"
       .message-user-name
-         メルカリ君
+         #{@user.nickname}
       .message-body
         %p.message-body-text
           はじめまして、購入検討中なのですが、
@@ -144,7 +149,7 @@
         %i.fab.fa-pinterest-square
 .users-item-index
   %span
-    =link_to "nicknameさんのその他の出品"
+    =link_to "#{@user.nickname}のその他の出品"
   .item-box-index
     .item-box
       .item-box-photo
@@ -200,3 +205,11 @@
     .item-box-right
       .item-box-photo
       .item-box-body
+
+#content
+  #featured_img
+    %img#img{:src => "https://www.imamura.biz/blog/wp-content/uploads/image01.png"}/
+  #thumb_img.cf
+    %img.active{:onclick => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image01.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image01_thumb.png"}/
+    %img{:onclick => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}/
+    %img{:onclick => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image03.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image03_thumb.png"}/
