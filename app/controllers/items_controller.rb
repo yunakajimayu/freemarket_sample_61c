@@ -76,10 +76,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def transaction
-    render layout: 'sell'
-  end 
-
 
   private
 
