@@ -2,7 +2,24 @@ class ItemsController < ApplicationController
   before_action :set_categories
   layout 'sell', except: [:index]
   def index
-    @items = Item.all
+    # トップページの各カテゴリの商品情報を新着順に10件まで取り出します。category_idの割り振りはテキトーですので、商品出品が完成次第変更させます。
+    # ↓シャネルの新着商品10件
+    @chanels = Item.includes(:user).where(category_id: 1).limit(10).order("created_at DESC")
+    # ↓ルイヴィトンの新着商品10件
+    @louisvuittons =Item.includes(:user).where(category_id: 2).limit(10).order("created_at DESC")
+    # ↓シュプリームの新着商品10件
+    @supremes = Item.includes(:user).where(category_id: 3).limit(10).order("created_at DESC")
+    # ↓ナイキの新着商品10件
+    @nikes= Item.includes(:user).where(category_id: 4).limit(10).order("created_at DESC")
+    # ↓レディースの新着商品10件
+    @women = Item.includes(:user).where(category_id: 5).limit(10).order("created_at DESC")
+    # ↓メンズの新着商品10件
+    @mens = Item.includes(:user).where(category_id: 6).limit(10).order("created_at DESC")
+    # ↓家電・スマホ・カメラの新着商品10件
+    @electricitems = Item.includes(:user).where(category_id: 7).limit(10).order("created_at DESC")
+    # ↓おもちゃ・ホビー・グッズの新着情報10件
+    @hobbies = Item.includes(:user).where(category_id: 8).limit(10).order("created_at DESC")
+
   end
 
   def sell
@@ -30,17 +47,41 @@ class ItemsController < ApplicationController
     render layout: 'sell'
   end 
 
+
   private
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   def set_categories
     @categories = Category.all
   end
 
-  private
+  def set_delivery
+    @delivery = Delivery.find_by(item_id: @item)
+  end
 
-  def create_params
-    params.require(:item).permit(:name, :description,:price,:postage,:picture,:condition,:category_id).merge(seler_id: current_user.id)
+  def item_params
+    params.require(:item).
+    permit( :name, 
+            :description,
+            :price,
+            :size,
+            :status,
+            :condition,
+            :category_id,
+            {pictures: []},
+            [:delivery_attributes],
+              delivery_attributes:[
+                :id,
+                :delivery_status,
+                :delivery_method,
+                :delivery_area,
+                :delivery_day,
+                :postage,
+                :postage_bearer]).
+    merge(seller_id: current_user.id,buyer_id: nil)
   end
 
 end
-

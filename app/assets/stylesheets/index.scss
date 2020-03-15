@@ -893,13 +893,14 @@ li {
     width: min-content;
     position: relative;
     box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-
+    margin: 0 20px 20px 0;
     > div {
-
+      position: relative;
         &:first-child { // 商品の画像
           width:180px;
           height: 180px;
-          background-color: $deepgray;
+          
+
         }
 
         > a {
@@ -918,6 +919,10 @@ li {
         > span { // 金額
         @include pricetag;
         top: 60%;
+        z-index: 999;
+        position: absolute;
+        left: 0;
+        top: 130px;
         }
 
         + div { // 商品タイトル
@@ -974,7 +979,7 @@ li {
   &__contents{
 
     @include flex;
-
+   
   }
 }
 
