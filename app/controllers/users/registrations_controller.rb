@@ -78,7 +78,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create_credit
     # apiとこれまで受け取ってきた情報を全て取得
-    Payjp.api_key = "sk_test_06207c0e157a821b64f2bcdc"
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     @user = User.new(session["devise.regist_data"]["user"])
     @profile = Profile.new(session["devise.regist_data2"]["profile"])
     @authorization = Authorization.new(session["devise.regist_data3"]["authorization"])
