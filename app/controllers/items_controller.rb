@@ -6,19 +6,19 @@ class ItemsController < ApplicationController
     # ↓シャネルの新着商品10件
     @chanels = Item.includes(:user).where(category_id: 1).limit(10).order("created_at DESC")
     # ↓ルイヴィトンの新着商品10件
-    @louisvuitton =Item.includes(:user).where(category_id: 2).limit(10).order("created_at DESC")
+    @louisvuittons =Item.includes(:user).where(category_id: 2).limit(10).order("created_at DESC")
     # ↓シュプリームの新着商品10件
-    @supreme = Item.includes(:user).where(category_id: 3).limit(10).order("created_at DESC")
+    @supremes = Item.includes(:user).where(category_id: 3).limit(10).order("created_at DESC")
     # ↓ナイキの新着商品10件
-    @nike= Item.includes(:user).where(category_id: 4).limit(10).order("created_at DESC")
+    @nikes= Item.includes(:user).where(category_id: 4).limit(10).order("created_at DESC")
     # ↓レディースの新着商品10件
     @women = Item.includes(:user).where(category_id: 5).limit(10).order("created_at DESC")
     # ↓メンズの新着商品10件
     @mens = Item.includes(:user).where(category_id: 6).limit(10).order("created_at DESC")
     # ↓家電・スマホ・カメラの新着商品10件
-    @electricitem = Item.includes(:user).where(category_id: 7).limit(10).order("created_at DESC")
+    @electricitems = Item.includes(:user).where(category_id: 7).limit(10).order("created_at DESC")
     # ↓おもちゃ・ホビー・グッズの新着情報10件
-    @hobby = Item.includes(:user).where(category_id: 8).limit(10).order("created_at DESC")
+    @hobbies = Item.includes(:user).where(category_id: 8).limit(10).order("created_at DESC")
 
   end
 

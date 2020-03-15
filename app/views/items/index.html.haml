@@ -90,7 +90,7 @@
       = link_to "" do
         もっとみる
   .best-category__contents
-    = render 'chanel'
+    = render partial: 'items', collection: @chanels, as: 'item'
 
   .best-category__wrap
     .best-category__title
