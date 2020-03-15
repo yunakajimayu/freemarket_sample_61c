@@ -68,8 +68,7 @@
     おもちゃ・ホビー・グッズ
 .content
   = render 'popular-category'
-  = render 'popular-category'
-  = render 'popular-category'
+  
 
 
 .best-category.container
@@ -84,4 +83,38 @@
   =link_to "" do
     ナイキ
 .content
-  = render 'popular-category'
+  .best-category__wrap
+    .best-category__title
+      シャネルの新着アイテム
+    .best-category__more
+      = link_to "" do
+        もっとみる
+  .best-category__contents
+    = render partial: 'items', collection: @chanels, as: 'item'
+
+  .best-category__wrap
+    .best-category__title
+      ルイヴィトンの新着アイテム
+    .best-category__more
+      = link_to "" do
+        もっとみる
+  .best-category__contents
+    = render partial: 'items', collection: @louisvuittons, as: 'item'
+
+  .best-category__wrap
+    .best-category__title
+      シュプリームの新着アイテム
+    .best-category__more
+      = link_to "" do
+        もっとみる
+  .best-category__contents
+    = render partial: 'items', collection: @supremes, as: 'item'
+
+  .best-category__wrap
+    .best-category__title
+      ナイキの新着アイテム
+    .best-category__more
+      = link_to "" do
+        もっとみる
+  .best-category__contents
+    = render partial: 'items', collection: @nikes, as: 'item'
