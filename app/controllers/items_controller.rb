@@ -10,28 +10,27 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    render :edit
-    @item = Item.find(params[:id])
-    #gem gonを使って変数をJavascriptのファイルと連動させる。
-    gon.item = @item
-    gon.item_pictures = @item.item_pictures
+    @items = Item.find(1)
+  #   #gem gonを使って変数をJavascriptのファイルと連動させる。
+  #   gon.item = @items
+  #   gon.item_pictures = @items.item_pictures
 
-    require 'base64'
-    require 'aws-sdk'
+  #   require 'base64'
+  #   require 'aws-sdk'
 
-    #S3に保存している画像データを呼び出す
-    gon.item_pictures_binary_datas = []
-    if Rails.env.production?
-      client = Aws::S3::client.new(
-                            region: 'ap-northeast-1',
-                            access_key_id: Rails.application.credentials.aws[:access_key_id],
-                            secret_access_key: Rails.application.credentials.aws[:secret_access_key],
-                            )
-      @item.item_pictures.each do |picture|
-        binary_data = client.get_object(bucket: 'freemarket61c',key: pictures.pictures_url.file.path).body.read
-        gon.item_images_binary_datas << Base64.strict_encode64(binary_data)
-      end
-    end
+  #   #S3に保存している画像データを呼び出す
+  #   gon.item_pictures_binary_datas = []
+  #   if Rails.env.production?
+  #     client = Aws::S3::client.new(
+  #                           region: 'ap-northeast-1',
+  #                           access_key_id: Rails.application.credentials.aws[:access_key_id],
+  #                           secret_access_key: Rails.application.credentials.aws[:secret_access_key],
+  #                           )
+  #     @item.item_pictures.each do |picture|
+  #       binary_data = client.get_object(bucket: 'freemarket61c',key: pictures.pictures_url.file.path).body.read
+  #       gon.item_images_binary_datas << Base64.strict_encode64(binary_data)
+  #     end
+  #   end
   end
 
   def update
@@ -106,6 +105,10 @@ class ItemsController < ApplicationController
   private
 
   def create_params
+    params.require(:item).permit(:name, :description,:price,:postage,:picture,:condition,:category_id).merge(seler_id: current_user.id)
+  end
+
+  def edit
     params.require(:item).permit(:name, :description,:price,:postage,:picture,:condition,:category_id).merge(seler_id: current_user.id)
   end
 

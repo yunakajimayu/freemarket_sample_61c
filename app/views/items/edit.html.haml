@@ -6,23 +6,23 @@
         %h1
           商品の情報を入力
       %div
-        %div
-          %h2
-            = f.label :picture, "出品画像"
-            %span.required 必須
-          %p
-            最大10枚までアップロードできます
-          %div.item__contents--dropzone
+        -# %div
+        -#   %h2
+        -#     = f.label :picture, "出品画像"
+        -#     %span.required 必須
+        -#   %p
+        -#     最大10枚までアップロードできます
+        -#   %div.item__contents--dropzone
             
-            %div.item__contents--dropzone--upload-area
-              .preview
-              .dz-default.dz-message
-                %p
-                  ドラッグアンドドロップ<BR>
-                  またはクリックしてファイルをアップロード
-              .fallback
-                = f.file_field :file_name, multiple: true
-            .dz-error-message
+        -#     %div.item__contents--dropzone--upload-area
+        -#       .preview
+        -#       .dz-default.dz-message
+        -#         %p
+        -#           ドラッグアンドドロップ<BR>
+        -#           またはクリックしてファイルをアップロード
+        -#       .fallback
+        -#         = f.file_field :file_name, multiple: true
+        -#     .dz-error-message
       %div
         %div
           %h2 
