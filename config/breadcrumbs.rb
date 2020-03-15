@@ -21,15 +21,7 @@ crumb :identification do
   parent :mypage
 end
 
-# ↓以下のパンくずはマスターにマージ後にコメントアウトを外します。
-
-
-# crumb :creditcard do
-#   link "支払い方法", card_user_path
-#   parent :mypage
-# end
-
-# crumb :item do
-#   link "商品詳細",
-#   parent :root
-# end
+crumb :item do |item|
+  link #{item.name},item_id_path(item)
+  parent :root
+end
