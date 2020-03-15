@@ -69,7 +69,6 @@ class CreditcardsController < ApplicationController
     end
   end
 
-
   private
 
   def set_credit #現在のユーザーのCredit情報を取得

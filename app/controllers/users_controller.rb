@@ -18,5 +18,4 @@ class UsersController < ApplicationController
   def logout
     render layout: 'users'
   end
-
 end
