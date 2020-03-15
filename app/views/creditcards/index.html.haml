@@ -9,18 +9,30 @@
   .credit-inner
     .inner-content
       %h2 クレジットカード一覧
-      -# クレジットカードが登録されている場合は一覧表示します
-      -# サーバーサイドタスク「商品購入」が実装されたら行います。
-      -# クレジットカードが登録されていない場合は新規作成ボタンを表示します
+      -# クレジットカードが登録されている場合は一覧表示
+      -# クレジットカードが登録されていない場合は新規作成ボタンを表示
       - if @credit.present?
-        %ul
-          %li
+        .creditcards-show
+          %ul.creditcards-show__list
+            %li 
+              = form_with url: creditcard_path(@credit.id), method: :delete, local: true, id: "charge-form" do |f|
+                -# カードブランドの表示
+                %figure
+                  =image_tag "#{@card_src}", width: '34', height: '20', alt: @card_brand, id: "card_image"
+                .creditcards-show__list--number
+                  = "**** **** **** " + @card_information.last4
+                .creditcards-show__list--number
+                  - exp_month = @card_information.exp_month.to_s
+                  - exp_year = @card_information.exp_year.to_s.slice(2,3) # 2023 → 23 となるように表示
+                  = exp_month + " / " + exp_year
+                %input{type: "hidden", name: "card_id", value: "" }
+                =f.submit "削除する", {class: "delete-button"}
       - else
         .create-newcard
           .create-newcard__button
             = icon('far', 'credit-card', class: "create-newcard__button--icon")
-            = link_to "クレジットカードを追加する", "jp/mypage/card/create", class: "create-newcard__button--text"
+            = link_to "クレジットカードを追加する", new_creditcard_path , class: "create-newcard__button--text", method: :get
     .information
       .information__button
         = link_to "支払い方法について", "https://www.mercari.com/jp/help_center/category/6/", class: "information__button--text"
-        = icon('fas', 'chevron-right', class: "information__button--icon")
+        = icon('fas', 'chevron-right', class: "information__button--icon") 

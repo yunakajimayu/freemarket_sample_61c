@@ -1,14 +1,40 @@
 .transaction{
   width: 700px;
-  height: 770px;
+  height: auto;
   background-color: white;
   margin: auto;
+  padding-bottom: 32px; 
 }
-.transaction__header 
+.transaction__header {
   h1{
   text-align: center;
   font-size: 22px;
   padding: 32px;
+  }
+}
+
+.transaction__header--done {
+  background-color: $yellow;
+  padding: 30px;
+  .title {
+    display: block;
+    text-align: center;
+    padding-bottom: 15px;
+    .clock-icon {
+      display: inline-block;
+      color: $red;
+      font-size: 30px;
+    }
+    h2{
+      display: inline-block;
+      padding-left: 5px;
+      color: $red;
+      font-size: 22px;
+    }
+  }
+  p {
+    text-align: center;
+  }
 }
 
 .transaction__body{
@@ -102,6 +128,16 @@
 
 .transaction__bottom--link{
   margin-left: 480px;
+  display: inline;
+  a{
+    color: $blue;
+    font-size: 14px;
+  }
+}
+
+.transaction__bottom--link2{
+  margin-left: 320px;
+  display: inline;
   a{
     color: $blue;
     font-size: 14px;
@@ -118,17 +154,38 @@
 }
 
 .transaction__bottom--buy{
-  margin-bottom: 48px;
-  border-top: 1px solid $gray;
+  text-align: center;
   padding-top: 30px;
-  width: 343px;
-  margin: 0 auto;
-  button{
-    margin: 30 0 0 !important;
-    width: 343px;
-    height: 50px;
-    background-color:$deepgray;
-    color: $white;
-    font-size: 14px;
+  button {
+    background: none;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: $red;
+    font-size: 24px;
+    font-weight: 600;
+    height: 60px;
+    width: 620px;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+.transaction__bottom--button{
+  display: block;
+  text-align: center;
+  background-color: $red;
+  font-size: 24px;
+  font-weight: 600;
+  height: 60px;
+  width: 620px;
+  margin: 30px auto;
+  line-height: 60px;
+  color: #fff;
+  padding-bottom: 30px;
+  a{
+    color: inherit;
   }
 }

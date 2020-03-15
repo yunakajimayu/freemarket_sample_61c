@@ -3,7 +3,7 @@
     .new_resistration
       クレジットカード情報入力
     .contentsbox
-      = form_with url: jp_signup_credit_card_path, method: :post, id: 'charge-form', html: { name: "inputForm" } do |f| 
+      = form_with url: creditcards_path, method: :post, id: 'charge-form', html: { name: "inputForm" } do |f| 
         .field
           = f.label "カード番号"
           %span.required 必須

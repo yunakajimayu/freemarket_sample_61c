@@ -74,8 +74,7 @@
       (税込)
     %span.item-shipping-fee
       送料込み
-  .item-buy-btn
-    =link_to '購入画面に進む'
+    = link_to "購入画面に進む", transaction_items_path, method: :get, class: "item-buy-btn"
 
   .item-description
     %p.item-description-inner
@@ -101,7 +100,7 @@
       .message-icon
         =link_to "●"
       .message-user-name
-         メルカリ君
+        メルカリ君
       .message-body
         %p.message-body-text
           はじめまして、購入検討中なのですが、
@@ -191,4 +190,4 @@
       .item-box-body
     .item-box-right
       .item-box-photo
-      .item-box-body
+      .item-box-body 

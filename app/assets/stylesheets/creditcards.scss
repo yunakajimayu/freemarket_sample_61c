@@ -61,7 +61,6 @@
           .credit-container{
             margin: 0;
             width: 700px;
-            padding: 64px;
             .credit-head {
               line-height: 1.4;
               padding : 8px 24px;
@@ -90,6 +89,34 @@
                     }
                   }
                 }
+                .creditcards-show {
+                  max-width: 320px;
+                  margin: 0 auto;
+                  padding: 24px 0;
+                  .creditcards-show__list{
+                    list-style: none;
+                    position: relative;
+                    font-size: 16px;
+                    > li {
+                      border-bottom: none;
+                    }
+                    &--number {
+                      margin: 8px;
+                      font-size: 16px;
+                    }
+                    .delete-button {
+                      position: absolute;
+                      top: 0;
+                      right: 0;
+                      background: #fff;
+                      cursor: pointer;
+                      border-radius: 3px;
+                      border: 1px solid $red;
+                      color: $red;
+                    }
+                  }
+                }
+
                 .create-newcard {
                   max-width: 320px;
                   margin: 0 auto;
