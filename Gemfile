@@ -89,4 +89,6 @@ gem 'enum_help'
 gem 'payjp'
 gem 'pry-rails'
 gem "gretel"
+gem 'rails-i18n', '~> 5.1'
+gem 'gon'
 gem 'dotenv-rails'
