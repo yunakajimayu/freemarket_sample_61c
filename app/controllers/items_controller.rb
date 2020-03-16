@@ -77,6 +77,11 @@ class ItemsController < ApplicationController
   end
 
 
+  def product_detail
+    @item = Item.find(6)
+    @user = User.find(@item.saler_id)
+  end
+
   private
 
   def set_item
