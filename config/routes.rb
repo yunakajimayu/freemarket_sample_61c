@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     get 'transaction',on: :collection
     post 'purchase', on: :collection
     get 'done', on: :collection
-    get 'product_detail',on: :collection
   end
   
   resource :user,path: 'jp/mypage/' do
