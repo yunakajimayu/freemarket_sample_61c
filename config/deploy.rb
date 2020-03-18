@@ -31,13 +31,21 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 
+<<<<<<< HEAD
   desc 'upload credentials.yml.enc'
+=======
+  desc 'upload credentials.yml.enc',"env"
+>>>>>>> 1cb0534... Update deploy.rb
   task :upload do
     on roles(:app) do |host|
       if test "[ ! -d #{shared_path}/config ]"
         execute "mkdir -p #{shared_path}/config"
       end
+<<<<<<< HEAD
       upload!('config/credentials.yml.enc', "#{shared_path}/config/credentials.yml.enc")
+=======
+      upload!('config/credentials.yml.enc', "#{shared_path}/config/credentials.yml.enc"),("env")
+>>>>>>> 1cb0534... Update deploy.rb
     end
   end
   before :starting, 'deploy:upload'
