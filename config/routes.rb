@@ -6,11 +6,13 @@ Rails.application.routes.draw do
     get 'logout', on: :collection
   end
   
-  resource :items ,path:'/jp/' do
+  resource :items, only:[:show, :new, :edit, :create, :update, :destroy] ,path:'/jp/' do
     get 'sell',on: :collection
     get 'transaction',on: :collection
+    # get 'product_detail', on: :collection
     post 'purchase', on: :collection
     get 'done', on: :collection
+    delete  '/product_detail.:id'  => 'items#destroy'
   end
   
   resource :user,path: 'jp/mypage/' do
