@@ -28,6 +28,7 @@ module FreemarketSample61c
 
     config.time_zone = 'Tokyo'
     config.i18n.default_locale = :ja
+    config.autoload_paths += Dir["#{config.root}/app/validators"]
     
     
 
