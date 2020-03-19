@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :set_categories
+  before_action :set_categories,:set_delivery
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
   layout 'sell', except: [:index]
+
   def index
     @items = Item.all
   end
@@ -10,27 +12,8 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @itemitem = Item.find(1)
-  #   #gem gonを使って変数をJavascriptのファイルと連動させる。
-  #   gon.item = @items
-  #   gon.item_pictures = @items.item_pictures
+    @item = Item.find(1)
 
-  #   require 'base64'
-  #   require 'aws-sdk'
-
-  #   #S3に保存している画像データを呼び出す
-  #   gon.item_pictures_binary_datas = []
-  #   if Rails.env.production?
-  #     client = Aws::S3::client.new(
-  #                           region: 'ap-northeast-1',
-  #                           access_key_id: Rails.application.credentials.aws[:access_key_id],
-  #                           secret_access_key: Rails.application.credentials.aws[:secret_access_key],
-  #                           )
-  #     @item.item_pictures.each do |picture|
-  #       binary_data = client.get_object(bucket: 'freemarket61c',key: pictures.pictures_url.file.path).body.read
-  #       gon.item_images_binary_datas << Base64.strict_encode64(binary_data)
-  #     end
-  #   end
   end
 
   def update
@@ -98,29 +81,37 @@ class ItemsController < ApplicationController
 
   private
 
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
   def set_categories
     @categories = Category.all
   end
 
-  def create_params
-    params.require(:item).permit(:name, :description,:price,:postage,:picture,:condition,:category_id).merge(seler_id: current_user.id)
-  end
-
-  def edit
-    params.require(:item).permit(:name, :description,:price,:postage,:picture,:condition,:category_id).merge(seler_id: current_user.id)
+  def set_delivery
+    @delivery = Delivery.find_by(item_id: @item)
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :category_id, :size, :buyer_id, :postage_bearer, :delivery_area, :delivery_day, :price)
+    params.require(:item).
+    permit( :name, 
+            :description,
+            :price,
+            :size,
+            :status,
+            :condition,
+            :category_id,
+            {pictures: []},
+            [:delivery_attributes],
+              delivery_attributes:[
+                :id,
+                :delivery_status,
+                :delivery_method,
+                :delivery_area,
+                :delivery_day,
+                :postage,
+                :postage_bearer]).
+    merge(seller_id: current_user.id,buyer_id: nil)
   end
-
-  def registered_pictures_params
-    params.require(:registered_pictures_ids).permit({ids: []})
-  end
-
-  def new_pictures_params
-    params.require(:new_pictures).permit({pictures: []})
-  end
-
 end
-
