@@ -102,8 +102,6 @@ class ItemsController < ApplicationController
     @categories = Category.all
   end
 
-  private
-
   def create_params
     params.require(:item).permit(:name, :description,:price,:postage,:picture,:condition,:category_id).merge(seler_id: current_user.id)
   end
