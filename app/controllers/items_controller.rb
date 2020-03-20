@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_categories,:set_delivery
+  before_action :set_categories
+  # ,:set_delivery
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new] 
   layout 'sell', except: [:index]
@@ -16,7 +17,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item.build_delivery
+    # @item.build_delivery
   end
 
   def create
@@ -34,7 +35,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(1)
+    @item = Item.find(params[:id])
   end
 
   private
@@ -47,9 +48,9 @@ class ItemsController < ApplicationController
     @categories = Category.all
   end
 
-  def set_delivery
-    @delivery = Delivery.find_by(item_id: @item)
-  end
+  # def set_delivery
+  #   @delivery = Delivery.find_by(item_id: @item)
+  # end
 
   def item_params
     params.require(:item).
