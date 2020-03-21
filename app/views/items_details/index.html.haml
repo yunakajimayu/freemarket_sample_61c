@@ -1,0 +1,193 @@
+- breadcrumb :item
+.item-box-container
+  %h1.item-name CCステッチココマーク オペラシューズ
+  .item-main-content-clearfix
+    .item-photo
+      box
+    .item-detail-table
+      .tr
+        .th
+          出品者
+        .td
+          = link_to 'nickname'
+          .user-rating
+            .item-user-ratings
+              .icon-good
+              %span
+                0
+            .item-user-ratings
+              .icon-nomal
+              %span
+                0
+            .item-user-ratings
+              .icon-bad
+              %span
+                0
+      .tr
+        .th
+          カテゴリー
+        .td
+          =link_to 'レディース'
+          %br
+          =link_to '靴'
+          %br
+          =link_to 'スニーカー'
+      .tr
+        .th
+          ブランド
+        .td
+          =link_to 'シャネル'
+      .tr
+        .th
+          商品のサイズ
+        .td
+          24.5cm
+      .tr
+        .th
+          商品の状態
+        .td
+          目立った傷や汚れなし
+      .tr
+        .th
+          配送料の負担
+        .td
+          送料込み(出品者負担)
+      .tr
+        .th
+          配送の方法
+        .td
+          ゆうゆうメルカリ便
+      .tr
+        .th
+          配送元地域
+        .td
+          大阪府
+      .tr
+        .th
+          発送日の目安
+        .td
+          1~2で発送
+  .item-price-box
+    %span.item-price
+      ¥4,000
+    %span.item-tax
+      (税込)
+    %span.item-shipping-fee
+      送料込み
+    = link_to "購入画面に進む", transaction_items_path, method: :get, class: "item-buy-btn"
+
+  .item-description
+    %p.item-description-inner
+      2〜3度着用しましたが、
+      目立った汚れや擦れはありません。
+      ・箱なし
+      ※USED品になりますので、ご理解の上
+      ご購入よろしくお願いします。
+      その他の出品はコチラ↓
+  .item-btn-container-clearfix
+    .item-btn-left
+      .like
+        %span
+          ♡  いいね！
+      .report
+        %span
+          不適切な商品の報告
+    .item-btn-light
+      =link_to "鍵  あんしん・あんぜんへの取り組み"
+.item-detail-message
+  .message-container
+    .message-item
+      .message-icon
+        =link_to "●"
+      .message-user-name
+        メルカリ君
+      .message-body
+        %p.message-body-text
+          はじめまして、購入検討中なのですが、
+          お時間のある時に返信いただけたらありがたく思います。
+    .message-content
+      %form.message-form{:action => "https://www.mercari.com/jp/comment/add/", :method => "POST"}
+      %input{:name => "__csrf_value", :type => "hidden", :value => "df77c4d2310d61bbaca481c0d5bc740b9cb085cd8eac6c5fb6ab72b26984afb2dba9df8257c6870d8c2bb6acdeded52cffa2f55627fbc169bbbb14a6c1314def3"}/
+      %span 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      %input{:name => "item_id", :type => "hidden", :value => "m15171925306"}/
+      %input{:name => "redirect_url_key", :type => "hidden", :value => "item_detail"}/
+      %textarea.textarea-default{:name => "body", :type => "text", :value => ""}
+      %button.message-submit.btn-default.btn-gray{:type => "submit"}
+        %p コメントする
+.next-item
+  %span.left
+    =link_to "< CCステッチココマーク オペラシューズ"
+  %span.right
+    =link_to "CCステッチココマーク オペラシューズ >"
+.item-detail-message
+  .sns-link
+    .icon-box
+      .facebook
+        f
+    .icon-box
+      .twitter
+        t
+    .icon-box
+      .line
+        l
+    .icon-box
+      .pinterest
+        p
+.users-item-index
+  %span
+    =link_to "nicknameさんのその他の出品"
+  .item-box-index
+    .item-box
+      .item-box-photo
+      .item-box-body
+        .item-box-name
+          CCステッチココマーク オペラシューズ
+        .item-box-num
+          .item-box-price
+            ¥5,000
+          .item-box-like
+            ♡ 3
+    .item-box
+      .item-box-photo
+      .item-box-body
+    .item-box-right
+      .item-box-photo
+      .item-box-body
+    .item-box
+      .item-box-photo
+      .item-box-body
+    .item-box
+      .item-box-photo
+      .item-box-body
+    .item-box-right
+      .item-box-photo
+      .item-box-body
+.users-item-index
+  %span
+    =link_to "brand その他の出品"
+  .item-box-index
+    .item-box
+      .item-box-photo
+      .item-box-body
+        .item-box-name
+          CCステッチココマーク オペラシューズ
+        .item-box-num
+          .item-box-price
+            ¥5,000
+          .item-box-like
+            ♡ 3
+    .item-box
+      .item-box-photo
+      .item-box-body
+    .item-box-right
+      .item-box-photo
+      .item-box-body
+    .item-box
+      .item-box-photo
+      .item-box-body
+    .item-box
+      .item-box-photo
+      .item-box-body
+    .item-box-right
+      .item-box-photo
+      .item-box-body 

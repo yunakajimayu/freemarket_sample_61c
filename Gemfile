@@ -62,6 +62,8 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'webdrivers', '~> 4.0'
+  gem 'chromedriver-helper'
+  gem 'faker', "~> 2.8"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -82,10 +84,12 @@ gem 'ancestry'
 gem "jquery-rails"
 gem "haml-rails", "~> 2.0"
 gem 'font-awesome-sass', '~> 5.3.1'
-gem "bundler"
+gem "bundler", "2.0.2"
 gem "dropzonejs-rails"
 gem 'enum_help' 
 gem 'payjp'
 gem 'pry-rails'
 gem "gretel"
 gem 'rails-i18n', '~> 5.1'
+gem 'gon'
+gem 'dotenv-rails'

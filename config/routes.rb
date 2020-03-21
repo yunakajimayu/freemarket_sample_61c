@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root to: 'items#index'
   resource :user,path: '/mypage/' do
     get 'profile',on: :collection
@@ -9,14 +8,21 @@ Rails.application.routes.draw do
   
   resources :items ,path:'/jp/', except: :new do
   get "sell", to: "items#new" ,on: :collection
+  get 'transaction',on: :collection
+  post 'purchase', on: :collection
+  get 'done', on: :collection
   get ""=>"items#show",on: :member
   end
   
+  resource :user,path: 'jp/mypage/' do
+    get 'profile',on: :collection
+  end
+  get 'item_id/' => 'items_details#index'
   devise_for :users, path: '', controllers: {
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  
+  resources :creditcards, path:'jp/mypage/card/', only: [:index, :create, :new, :destroy]
   
   devise_scope :user do 
     get '/jp/signup', to: "users/registrations#new_page"

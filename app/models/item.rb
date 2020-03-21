@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   has_many :likes
   mount_uploaders :pictures, PicturesUploader
   serialize :pictures, JSON
+
   
   accepts_nested_attributes_for :delivery
   validates :name,presence: true,length: { maximum: 40 }
@@ -36,6 +37,5 @@ class Item < ApplicationRecord
       # :image_lengthにはエラー文が格納されている(ja.ymlで定義済み)
     end
   end
-
 
 end

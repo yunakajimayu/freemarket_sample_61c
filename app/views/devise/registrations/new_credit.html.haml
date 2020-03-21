@@ -1,30 +1,45 @@
 .main
   .container
     .new_resistration
-      カード
+      クレジットカード情報入力
     .contentsbox
-      = form_for(@credit, url: jp_signup_credit_card_path) do |f|
-        = render "devise/shared/error_messages", resource: @credit
+      = form_with url: jp_signup_credit_card_path, method: :post, id: 'charge-form', html: { name: "inputForm" } do |f| 
         .field
           = f.label "カード番号"
           %span.required 必須
           %br
-          = f.text_field :card_id, autofocus: true, placeholder: "半角数字のみ"
+          = f.text_field :card_number, type: 'text', class: 'input-number', placeholder: '半角数字のみ', maxlength: "16", id: "card_number"
+          %ul
+            %li
+              = image_tag 'visa.svg', width: '49', height: '20'
+            %li
+              = image_tag 'master-card.svg', width: '34', height: '20'
+            %li
+              = image_tag 'saison-card.svg', width: '30', height: '20'
+            %li
+              = image_tag 'jcb.svg', width: '32', height: '20'
+            %li
+              = image_tag 'american_express.svg', width: '21', height: '20'
+            %li
+              = image_tag 'dinersclub.svg', width: '32', height: '20'
+            %li
+              = image_tag 'discover.svg', width: '32', height: '20'
         .field
           = f.label "有効期限"
           %span.required 必須
           %br
-          = f.text_field :limit_month
-          = "月"
-          = f.text_field :limit_year
-          = "年"
+          = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{}
+          = icon 'fas', 'chevron-down'
+          %span 月
+          = f.select  :exp_year, [["19",2019],["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{}
+          = icon 'fas', 'chevron-down'
+          %span 年
+          %br
         .field
           = f.label "セキュリティーコード"
           %span.required 必須
           %br
-          = f.text_field :security_code, autofocus: true, placeholder: "カード背面4桁もしくは3桁の番号"
-        #help
-          = link_to "カード裏面の番号とは？"
-        %br
+          = f.text_field :cvc, type: 'text', class: 'input-number', placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "4"
         .actions
-          = f.submit "次へ進む"
+          #card_token
+          = f.submit '次へ進む', id: 'token_submit'

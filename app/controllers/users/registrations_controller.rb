@@ -1,5 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
+  require "payjp"
 
   def new_page
   end
@@ -35,7 +36,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @profile = @user.build_profile
       render :new_profile
     end
-    # super
   end
 
   def create_profile
@@ -73,36 +73,35 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new_address and return
     end
     session["devise.regist_data4"] = {address: @address.attributes}
-    @credit = @user.build_credit
     render :new_credit
   end
 
   def create_credit
+    # apiとこれまで受け取ってきた情報を全て取得
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     @user = User.new(session["devise.regist_data"]["user"])
     @profile = Profile.new(session["devise.regist_data2"]["profile"])
     @authorization = Authorization.new(session["devise.regist_data3"]["authorization"])
     @address = Address.new(session["devise.regist_data4"]["address"])
-    @credit = Credit.new(credit_params)
-    unless @credit.valid?
-      flash.now[:alert] = @credit.errors.full_messages
-      render :new_credit and return
-    end
-    @credit = @user.build_credit(@credit.attributes)
-
+    # transactionで全ての情報を同時にDBに保存
     User.transaction do
       @user.save!
       @profile.save!
       @authorization.save!
       @address.save!
-      @credit.save!
     end
-
-    @id = Credit.find(@credit.id)
-    @user.update(id: @id.user_id)
-    @profile.update(user_id: @id.user_id)
-    @authorization.update(user_id: @id.user_id)
-    @address.update(user_id: @id.user_id)
-    sign_in(:user, @user)
+    session[:id] = @user.id
+    # 入力された情報をpayjpに送り、その代わりとしてpayjp-tokenを取得。@creditに情報を保存。
+    if params['payjp-token'].blank?
+      redirect_to action: 'new'
+    else
+      customer = Payjp::Customer.create(
+        card: params['payjp-token'],
+        )
+        @credit = Credit.new(user_id: session[:id], customer_id: customer.id, card_id: customer.default_card)
+        @credit.save!
+    end
+    sign_in User.find(session[:id]) unless user_signed_in?
     render :done
   end
 
@@ -126,10 +125,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def address_params
     params.require(:address).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :zipcode, :prefecture, :city, :address, :address_building)
-  end
-
-  def credit_params
-    params.require(:credit).permit(:card_id, :limit_month, :limit_year, :security_code)
   end
 
 end

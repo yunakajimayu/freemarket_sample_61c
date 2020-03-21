@@ -9,6 +9,7 @@ $shadow-color :rgba(0, 0, 0, 0.167);//shadow-boxタグに使用している色�
 $fontawesome :"Font Awesome 5 Free";//fontawesome用のフォント指定です。仕様が変わって指定フォント名が変更される可能性を考慮して変数にしています。
 $gray-hover :rgba(0, 0, 0, 0.020);
 $black-hover :rgba(0, 0, 0, 0.50);
+$yellow: rgb(253, 235, 154);
 
 @mixin flex {
   display: flex;
