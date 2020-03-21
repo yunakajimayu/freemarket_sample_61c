@@ -399,7 +399,7 @@ PLATFORMS
 DEPENDENCIES
   ancestry
   bootsnap (>= 1.1.0)
-  bundler
+  bundler (= 2.0.2)
   capistrano
   capistrano-bundler
   capistrano-rails
@@ -450,4 +450,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   2.1.4
+   2.0.2
