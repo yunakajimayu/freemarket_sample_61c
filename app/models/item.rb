@@ -1,8 +1,8 @@
 class Item < ApplicationRecord
   belongs_to :category
-  belongs_to :user, foreign_key: "seller_id"
+  belongs_to :user, foreign_key: "seller_id", dependent: :destroy
   has_many :comments
-  has_one :delivery
+  has_one :delivery, dependent: :destroy
   has_one :user_rating
   has_many :likes
   # belongs_to :seller, class_name: "User",foreign_key: "seller_id"
