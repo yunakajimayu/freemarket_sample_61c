@@ -44,11 +44,9 @@ ActiveRecord::Schema.define(version: 2020_02_27_071747) do
   end
 
   create_table "credits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "card_id", null: false
-    t.integer "limit_month", null: false
-    t.integer "limit_year", null: false
-    t.integer "security_code"
-    t.bigint "user_id"
+    t.integer "user_id", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_credits_on_user_id"
@@ -71,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_071747) do
     t.string "name", null: false
     t.text "description", null: false
     t.integer "price", null: false
+    t.integer "postage", null: false
     t.integer "size", null: false
     t.string "status", null: false
     t.string "pictures", null: false
@@ -117,15 +116,6 @@ ActiveRecord::Schema.define(version: 2020_02_27_071747) do
     t.index ["user_id"], name: "index_sns_credentials_on_user_id"
   end
 
-  create_table "user_ratings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "rating_by_saler"
-    t.integer "rating_by_buyer"
-    t.bigint "item_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_user_ratings_on_item_id"
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", default: "", null: false
     t.string "email", default: "", null: false
@@ -149,10 +139,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_071747) do
   add_foreign_key "credits", "users"
   add_foreign_key "deliveries", "items"
   add_foreign_key "items", "users", column: "buyer_id"
-  add_foreign_key "items", "users", column: "seller_id"
-  add_foreign_key "likes", "items"
-  add_foreign_key "likes", "users"
+  add_foreign_key "items", "users", column: "saler_id"
   add_foreign_key "profiles", "users"
   add_foreign_key "sns_credentials", "users"
-  add_foreign_key "user_ratings", "items"
 end

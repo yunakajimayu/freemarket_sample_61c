@@ -6,9 +6,9 @@ class User < ApplicationRecord
   validates :nickname, :first_name, :last_name, :first_name_kana, :last_name_kana, :birth_date , presence: true
   has_one :authorization
   has_one :address
-  has_one :credit
   has_one :profile
 
+  has_many :credits
   has_many :sns_credentials
 
   def self.from_omniauth(auth)

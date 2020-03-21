@@ -1,0 +1,191 @@
+.transaction{
+  width: 700px;
+  height: auto;
+  background-color: white;
+  margin: auto;
+  padding-bottom: 32px; 
+}
+.transaction__header {
+  h1{
+  text-align: center;
+  font-size: 22px;
+  padding: 32px;
+  }
+}
+
+.transaction__header--done {
+  background-color: $yellow;
+  padding: 30px;
+  .title {
+    display: block;
+    text-align: center;
+    padding-bottom: 15px;
+    .clock-icon {
+      display: inline-block;
+      color: $red;
+      font-size: 30px;
+    }
+    h2{
+      display: inline-block;
+      padding-left: 5px;
+      color: $red;
+      font-size: 22px;
+    }
+  }
+  p {
+    text-align: center;
+  }
+}
+
+.transaction__body{
+  border-top: 1px solid $gray;
+  padding: 32px 16px;
+  p.img{
+    margin-left: 150px;
+    float: left;;
+    margin-right: 20px;
+  }
+  p.item-name{
+    display: block;
+    padding-left: 10px;
+    margin-bottom: 20px;
+    margin-right: 160px;
+  }
+  span.price{
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 15px;
+  }
+}
+.transaction__bottom{
+  border-top: 1px solid $gray;
+  margin-top: 20px;
+  p.pay-price{
+    margin-top:30px;
+    margin-left:160px;
+    margin-right: 200px;
+    float: left;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  p.value{
+    font-size: 28px;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  span.mark{
+    margin-top: 30px;
+    margin-left: 160px;
+    margin-right:5px;
+    color: gray;
+    float: left;
+    font-size: 20px;
+  }
+  p.mark{
+    font-size: 14px;
+    color: gray;
+    margin-top: 32px;
+    margin-bottom: 50px;
+  }
+}
+
+.transaction__bottom--way{
+  padding-top: 32px;
+  margin-right: 160px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 160px;
+  border-top: 1px solid $gray;
+  p.link{
+    color:$blue;
+  } 
+}
+
+.transaction__bottom--icon{
+  margin-left: 160px;
+  display: flexbox;
+  margin-top: 10px;
+  p.link{
+    color:$blue;
+    font-size: 14px;
+    display: inline-block;
+  }
+  p.icon{
+    display: inline-block;
+  }
+}
+.transaction__bottom--delivery{
+  p{
+    border-top: 1px solid $gray;
+    padding-top: 20px;
+    margin-left: 160px;
+    margin-top: 40px;
+    margin-right: 160px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+}
+
+.transaction__bottom--link{
+  margin-left: 480px;
+  display: inline;
+  a{
+    color: $blue;
+    font-size: 14px;
+  }
+}
+
+.transaction__bottom--link2{
+  margin-left: 320px;
+  display: inline;
+  a{
+    color: $blue;
+    font-size: 14px;
+  }
+}
+
+.transaction__bottom--customer{
+  margin-bottom: 20px;
+  p{
+    margin-left: 160px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+.transaction__bottom--buy{
+  text-align: center;
+  padding-top: 30px;
+  button {
+    background: none;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: $red;
+    font-size: 24px;
+    font-weight: 600;
+    height: 60px;
+    width: 620px;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+.transaction__bottom--button{
+  display: block;
+  text-align: center;
+  background-color: $red;
+  font-size: 24px;
+  font-weight: 600;
+  height: 60px;
+  width: 620px;
+  margin: 30px auto;
+  line-height: 60px;
+  color: #fff;
+  padding-bottom: 30px;
+  a{
+    color: inherit;
+  }
+}

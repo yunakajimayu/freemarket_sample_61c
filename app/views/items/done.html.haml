@@ -1,0 +1,25 @@
+.transaction
+  .transaction__header--done
+    .title
+      = icon('far', 'clock', class: "clock-icon")
+      %h2 発送をお待ちください
+    %p 出品者からの発送通知をお待ちください
+  .transaction__header
+    %h1 購入が完了しました
+  .transaction__body
+    %p.img
+      = image_tag 'product.jpg',width:"80px", height:"80px"
+    %p.item-name サンドベージュの靴。サンドベージュの靴です。
+    %span.price 5980円  （税込）送料込み
+  .transaction__bottom
+    %p.pay-price 支払い金額
+    %p.value ¥5980
+  .transaction__bottom--delivery
+    %p 配送先
+  .transaction__bottom--customer
+    %p 〒999-9999
+    %p 大阪府大阪市中央区１−１−１
+    %p サンプル太郎
+  .transaction__bottom--button
+    = link_to user_path do
+      マイページへ戻る
