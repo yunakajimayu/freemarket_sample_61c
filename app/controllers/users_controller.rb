@@ -3,10 +3,12 @@ class UsersController < ApplicationController
 
   def show
     render layout: 'users'
+    
   end
 
   def profile
     render layout: 'users'
+    
   end
   
     

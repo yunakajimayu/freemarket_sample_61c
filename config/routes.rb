@@ -6,11 +6,15 @@ Rails.application.routes.draw do
     get 'logout', on: :collection
   end
   
-  resource :items ,path:'/jp/' do
-    get 'sell',on: :collection
-    get 'transaction',on: :collection
-    post 'purchase', on: :collection
-    get 'done', on: :collection
+
+  resources :items ,path:'/jp',except: :new do
+    collection do
+      get 'sell'
+      get 'transaction'
+      post 'purchase'
+      get 'done'
+    end
+  
   end
   
   resource :user,path: 'jp/mypage/' do

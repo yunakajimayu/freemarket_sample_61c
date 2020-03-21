@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :set_categories
+  before_action :set_categories,:set_delivery
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new] 
   layout 'sell', except: [:index]
   def index
     # トップページの各カテゴリの商品情報を新着順に10件まで取り出します。category_idの割り振りはテキトーですので、商品出品が完成次第変更させます。
@@ -22,8 +24,11 @@ class ItemsController < ApplicationController
 
   end
 
-  def sell
-    render :new
+  def show
+    @delivery = Delivery.find_by(item_id: @item)
+    @items = Item.all
+    @deliveries = Delivery.all
+    @images = Item.find_by(pictures: params[:pictures])
   end
   
   def purchase
@@ -36,17 +41,23 @@ class ItemsController < ApplicationController
     )
     redirect_to action: "done"
   end
-  
-  def new
+
+  def sell
     @item = Item.new
+    @item.build_delivery
   end
 
   def create
-    @item = Item.new(create_params)
-    if @item.save
-      redirect_to @item
-    else
-      render root
+    @item = Item.new(item_params)
+
+    respond_to do |format|
+      if @item.save
+        format.html { redirect_to @item, notice: 'item was successfully created.' }
+        format.json { render :show, status: :created, location: @item }
+      else
+        format.html { render :new }
+        format.json { render json: @item.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -92,10 +103,6 @@ class ItemsController < ApplicationController
     @categories = Category.all
   end
 
-  def create_params
-    params.require(:item).permit(:name, :description,:price,:postage,:picture,:condition,:category_id).merge(seler_id: current_user.id)
-  end
-  
   def set_delivery
     @delivery = Delivery.find_by(item_id: @item)
   end
@@ -120,6 +127,11 @@ class ItemsController < ApplicationController
                 :postage,
                 :postage_bearer]).
     merge(seller_id: current_user.id,buyer_id: nil)
+
+  end
+  
+  def set_delivery
+    @delivery = Delivery.find_by(item_id: @item)
   end
 
 end

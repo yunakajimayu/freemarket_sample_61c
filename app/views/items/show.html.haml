@@ -1,0 +1,46 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @item.name
+%p
+  %b Images:
+  <BR>
+  
+  - for num in 0..10 do
+    - img_url = @item.pictures[num].to_s
+    -unless img_url.empty?
+      = image_tag img_url, size:"200x200"
+      = + "　"
+    
+%p
+  %b description:
+  = @item.description
+%p
+  %b conditon:
+  = @item.condition
+%p
+  %b price:
+  = @item.price
+%p
+  %b seller:
+  = @item.seller_id
+%p
+  %b buyer:
+  = @item.buyer_id
+%p
+  %b delivery_method:
+  = @delivery.delivery_method
+%p
+  %b delivery_day:
+  = @delivery.delivery_day
+%p
+  %b postage_bearer:
+  = @delivery.postage_bearer.to_i
+%p
+  %b delivery_area:
+  = @delivery.delivery_status
+
+= link_to 'Edit', edit_item_path(@item)
+\|
+= link_to 'Back', items_path
