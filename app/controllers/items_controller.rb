@@ -41,8 +41,8 @@ class ItemsController < ApplicationController
     )
     redirect_to action: "done"
   end
-  
-  def new
+
+  def sell
     @item = Item.new
     @item.build_delivery
   end

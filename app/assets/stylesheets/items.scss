@@ -158,9 +158,6 @@
         @include flex;
         div:nth-child(2) {
           > div {
-            // &.seller, &.buyer {
-            //   display: none;
-            // }
             div:first-child {
           width: 35%;
             }
