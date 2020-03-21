@@ -59,6 +59,7 @@ class ItemsController < ApplicationController
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
+  end
 
   def transaction
     @credit = Credit.where(user_id: current_user.id).first if Credit.where(user_id: current_user.id).exists?

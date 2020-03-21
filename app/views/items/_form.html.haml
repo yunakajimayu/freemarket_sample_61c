@@ -74,6 +74,7 @@
           %div.delivery-method{style:"display:none;"}
             %h2 
               配送の方法
+              
               %span.required 必須
             %div
               = d.select :delivery_method, Delivery.delivery_methods.keys.map{|k| [I18n.t("enum.delivery.delivery_method.#{k}"), k]}, prompt: true,class:"childlen"
