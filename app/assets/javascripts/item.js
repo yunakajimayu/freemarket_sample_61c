@@ -55,7 +55,6 @@ $(function(){
   var name = "[name*=item\\[delivery_attributes\\]\\[postage_bearer\\]]"
   
   $(name).change(function(){
-    var selectVal = $("#item_delivery_attributes_postage_bearer").val();
     $('.delivery-method').show()
     val = $(name).val()
     switch(val){
