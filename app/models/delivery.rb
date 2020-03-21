@@ -1,4 +1,4 @@
-class Delivery < ApplicationRecord
+class Deliveries < ApplicationRecord
   belongs_to :item,optional: true
 
   enum delivery_day: [

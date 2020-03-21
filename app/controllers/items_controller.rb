@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_categories
-  # ,:set_delivery
+  before_action :set_categories,:set_delivery
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new] 
   layout 'sell', except: [:index]
@@ -11,13 +10,13 @@ class ItemsController < ApplicationController
   def show
     @delivery = Delivery.find_by(item_id: @item)
     @items = Item.all
-    @deliveries = Delivery.all
+    # @deliveries = Delivery.all
     @images = Item.find_by(pictures: params[:pictures])
   end
 
   def new
     @item = Item.new
-    # @item.build_delivery
+    @item.build_delivery
   end
 
   def create
