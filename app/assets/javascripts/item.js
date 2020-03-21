@@ -33,25 +33,21 @@ $(function(){
       $('#sales').text("-")
     }
   })
-  // $('[name*="postage_bearer"]').change(function(){
-  //   var val = $(this).val();
-  //   console.log(val)
-  //   switch(val){
-  //     case "seller" :
-  //       $('.buyer').hide()
-  //       $('.seller').show()
-  //     break;
-  //     case "buyer" :
-  //       $('.seller').hide()
-  //       $('.buyer').show()
-  //     break;
-  //   }
-  // 配送料負担を選択した際のセレクトボックスを表示するために必要な記述です
-  // 後ほど実装しなおす予定なので記述をそのままにしています
-
-  // })
-
-
+  var name = "[name*=item\\[delivery_attributes\\]\\[postage_bearer\\]]"
+  
+  $(name).change(function(){
+    var selectVal = $("#item_delivery_attributes_postage_bearer").val();
+    $('.delivery-method').show()
+    val = $(name).val()
+    switch(val){
+      case 'buyer' :
+        $(`option[value="letter_pack"],
+          option[value="standard_mail"],
+          option[value="click_post"],
+          option[value="yu_packet"]`).hide()
+        break;
+    }
+  })
 
 })
 
