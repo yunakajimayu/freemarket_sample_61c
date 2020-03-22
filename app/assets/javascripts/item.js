@@ -52,24 +52,20 @@ $(function(){
       $('#sales').text("-")
     }
   })
-  $('[name*="delivery_fee"]').change(function(){
-    var val = $(this).val();
-    console.log(val)
+  var name = "[name*=item\\[delivery_attributes\\]\\[postage_bearer\\]]"
+  
+  $(name).change(function(){
+    $('.delivery-method').show()
+    val = $(name).val()
     switch(val){
-      case "seller" :
-        $('.buyer').hide()
-        $('.seller').show()
-      break;
-      case "buyer" :
-        $('.seller').hide()
-        $('.buyer').show()
-      break;
+      case 'buyer' :
+        $(`option[value="letter_pack"],
+          option[value="standard_mail"],
+          option[value="click_post"],
+          option[value="yu_packet"]`).hide()
+        break;
     }
-    
-
   })
-
-
 
 })
 

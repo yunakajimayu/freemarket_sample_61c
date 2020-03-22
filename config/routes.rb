@@ -6,13 +6,16 @@ Rails.application.routes.draw do
     get 'logout', on: :collection
   end
   
-  resources :items, only:[:show, :new, :edit, :create, :update, :destroy] ,path:'/jp/' do
-    get 'sell',on: :collection
-    get 'transaction',on: :collection
-    # get 'product_detail', on: :collection
-    post 'purchase', on: :collection
-    get 'done', on: :collection
-    # delete  '/product_detail.:id'  => 'items#destroy'
+
+
+  resources :items ,path:'/jp',except: :new do
+    collection do
+      get 'sell'
+      get 'transaction'
+      post 'purchase'
+      get 'done'
+    end
+
   end
   
   resource :user,path: 'jp/mypage/' do

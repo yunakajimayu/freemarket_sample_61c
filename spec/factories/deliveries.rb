@@ -1,12 +1,12 @@
 FactoryBot.define do
   factory :delivery do
-    delivery_day { 1 }
-    delivery_status { "MyString" }
-    delivery_method { 1 }
-    postage { 1 }
-    postage { 1 }
-    postage_bearer { 1 }
-    item_id { "" }
-    delivery_area { 1 }
+
+    delivery_status {0}
+    delivery_method {0}
+    delivery_area {27}
+    delivery_day {0}
+    postage {0}
+    postage_bearer {0}
+
   end
 end
