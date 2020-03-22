@@ -100,7 +100,7 @@
     %li
       = link_to '編集', "/jp/#{@itemshow.id}/edit", method: :get
     %li
-      = link_to '削除', "/jp/#{@itemshow.id}", method: :delete
+      = link_to '削除', item_path(id: @itemshow.id), method: :delete
 
   .item-description
     %p.item-description-inner
