@@ -82,9 +82,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @itemshow = Item.find(params[:id])
-    @itemshow.destroy if @itemshow.seller_id == current_user.id
-    binding.pry
+    item = Item.find(params[:id])
+    item.destroy if item.seller_id == current_user.id
   end
 
 
