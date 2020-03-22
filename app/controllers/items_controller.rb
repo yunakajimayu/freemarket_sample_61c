@@ -88,12 +88,10 @@ class ItemsController < ApplicationController
   end
 
   def show
-    set_item
     @user = User.find(@item.seller_id)
   end
 
   def destroy
-    set_item
     if @item.seller_id == current_user.id
       @item.destroy 
     else
