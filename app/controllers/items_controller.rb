@@ -88,12 +88,12 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    set_item
     @user = User.find(@item.seller_id)
   end
 
   def destroy
-    @item = Item.find(params[:id])
+    set_item
     if @item.seller_id == current_user.id
       @item.destroy 
     else
