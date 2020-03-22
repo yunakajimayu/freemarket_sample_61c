@@ -64,6 +64,21 @@ ActiveRecord::Schema.define(version: 2020_02_27_071747) do
     t.string "delivery_area", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
+    t.index ["user_id"], name: "index_credits_on_user_id"
+  end
+
+  create_table "deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "delivery_day", null: false
+    t.string "delivery_status", null: false
+    t.string "delivery_method", null: false
+    t.integer "postage", null: false
+    t.string "postage_bearer", null: false
+    t.bigint "item_id"
+    t.string "delivery_area", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+
     t.index ["item_id"], name: "index_deliveries_on_item_id"
   end
 
@@ -78,8 +93,10 @@ ActiveRecord::Schema.define(version: 2020_02_27_071747) do
     t.bigint "category_id"
     t.bigint "buyer_id"
     t.bigint "seller_id"
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
     t.bigint "like_id"
     t.bigint "user_rating_id"
     t.index ["buyer_id"], name: "index_items_on_buyer_id"

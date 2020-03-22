@@ -19,10 +19,41 @@
     .item-photo{
       display: block;
       float: left;
-      min-width: 300px;
-      min-height: 375px;
+      max-width: 300px;
+      max-height: 420px;
       margin: 0 auto;
       background-color: gray;
+      #content{
+        width: 300px;
+        height: 300px;
+        background-color: #fafafa;
+        #featured_img{
+          width: 300px;
+          height: 300px;
+          #img{
+          height: 100%;
+          width: 100%;
+          background-repeat:  no-repeat;
+          background-size: contain;
+          background-position: center;
+          }
+        }
+      }
+      .photo-holder{
+        width: 300px;
+        height: 120px;
+        background-color: #fafafa;
+        #thumb_img{
+          img{
+            float: left;
+            display: block;
+            height: 60px;
+            width: 60px;
+            background-repeat:  no-repeat;
+            background-size: cover;
+          }
+        }
+      }
     }
     .item-detail-table{
       display: block;
@@ -65,6 +96,15 @@
             .item-user-ratings{
               display: inline-block;
               margin: 0 20px 0 0;
+              .fas.fa-smile-beam{
+                color: hotpink;
+              }
+              .fas.fa-meh{
+                color: orange;
+              }
+              .fas.fa-frown{
+                color: rgb(63, 152, 224);
+              }
             }
           }
         }
@@ -105,7 +145,6 @@
     }
   }
   .item-description{
-    padding: 32px 0 0;
     line-height: 1.5;
     font-size: 18px;
     .item-description-inner{
@@ -221,21 +260,27 @@
   }
   .sns-link{
     text-align: center;
-    line-height: 40px;
     .icon-box{
       display: inline-block;
       margin: 0 8px 8px 0;
       text-align: center;
       height: 40px;
       width: 40px;
-      background-color: gray;
-      .facebook{
+      .fab.fa-facebook-square{
+        font-size: 40px;
+        color: rgb(45, 52, 161);
       }
-      .twitter{
+      .fab.fa-twitter-square{
+        font-size: 40px;
+        color: rgb(91, 163, 245);
       }
-      .line{
+      .fab.fa-line{
+        font-size: 40px;
+        color: rgb(71, 235, 65);
       }
-      .pinterest{
+      .fab.fa-pinterest-square{
+        font-size: 40px;
+        color: rgb(226, 13, 13);
       }
     }
   }

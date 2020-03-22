@@ -1,26 +1,23 @@
-
 .item-box-container
   %h1.item-name 
-    = @itemshow.name
+    = @item.name
   .item-main-content-clearfix
     .item-photo
-      .item-photo-mainbox
-        .img-main
-          #featured_img
-            %img#img{:src => "https://www.imamura.biz/blog/wp-content/uploads/image01.png"}/
-        .item-photo-holder
-          .img-clearfix
+      #content
+        #featured_img
+          %img#img{:src => "https://www.imamura.biz/blog/wp-content/uploads/image01.png"}/
+        .photo-holder
           #thumb_img.cf
-            #a.img.active{:onclick => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image01.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image01_thumb.png"}/
-            #b.img{:onclick => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}/
-            #c.img{:onclick => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image03.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image03_thumb.png"}/
-            #d.img
-            #e.img
-            #f.img
-            #g.img
-            #h.img
-            #i.img
-            #j.img
+            %img.active{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image01.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image01_thumb.png"}
+            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
+            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image03.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image03_thumb.png"}
+            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
+            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
+            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
+            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
+            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
+            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
+            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
     .item-detail-table
       .tr
         .th
@@ -61,12 +58,12 @@
         .th
           商品のサイズ
         .td
-          = @itemshow.size
+          = @item.size
       .tr
         .th
           商品の状態
         .td
-          = @itemshow.condition
+          = @item.condition
       .tr
         .th
           配送料の負担
@@ -81,7 +78,7 @@
         .th
           配送元地域
         .td
-          -# = @itemm.prefecture
+          = @item.prefecture
       .tr
         .th
           発送日の目安
@@ -90,22 +87,17 @@
   .item-price-box
     %span.item-price
       ¥ 
-      = @itemshow.price
+      = @item.price
     %span.item-tax
       (税込)
     %span.item-shipping-fee
       送料込み
   .item-buy-btn
     =link_to '購入画面に進む'
-  - if user_signed_in? && current_user.id == @itemshow.seller_id
-    %li
-      = link_to '編集', "/jp/#{@itemshow.id}/edit", method: :get
-    %li
-      = link_to '削除', item_path(id: @itemshow.id), method: :delete
 
   .item-description
     %p.item-description-inner
-      = @itemshow.description
+      = @item.description
   .item-btn-container-clearfix
     .item-btn-left
       .like
@@ -213,12 +205,3 @@
     .item-box-right
       .item-box-photo
       .item-box-body
-
-
-#content
-  #featured_img
-    %img#img{:src => "https://www.imamura.biz/blog/wp-content/uploads/image01.png"}/
-  #thumb_img.cf
-    %img.active{:onclick => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image01.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image01_thumb.png"}/
-    %img{:onclick => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}/
-    %img{:onclick => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image03.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image03_thumb.png"}/
