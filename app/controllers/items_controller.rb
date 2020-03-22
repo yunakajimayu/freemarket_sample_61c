@@ -97,7 +97,8 @@ class ItemsController < ApplicationController
     if @item.seller_id == current_user.id
       @item.destroy 
     else
-      redirect_to root_path, notice: '削除に失敗しました。'
+      flash[:notice] = "削除に失敗しました"
+      redirect_to root_path
     end
   end
 
