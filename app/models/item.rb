@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :user, foreign_key: "seller_id"
   has_many :comments
-  has_one :delivery
+  has_one :delivery, dependent: :destroy
   has_one :user_rating
   has_many :likes
   mount_uploaders :pictures, PicturesUploader

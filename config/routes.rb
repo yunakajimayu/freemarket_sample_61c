@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   
 
+
   resources :items ,path:'/jp',except: :new do
     collection do
       get 'sell'
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
       post 'purchase'
       get 'done'
     end
-  
+
   end
   
   resource :user,path: 'jp/mypage/' do
