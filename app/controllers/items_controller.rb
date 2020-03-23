@@ -87,6 +87,19 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(@item.seller_id)
+  end
+
+  def destroy
+    if @item.seller_id == current_user.id
+      @item.destroy 
+    else
+      flash[:notice] = "削除に失敗しました"
+      redirect_to root_path
+    end
+  end
+
 
   def product_detail
     @item = Item.find(6)

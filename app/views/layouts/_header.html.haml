@@ -274,10 +274,8 @@
                   = link_to "購入した商品 - 過去の取引","#" 
           - else
             %li.nav__right--signup
-              = link_to "新規会員登録",  '/jp/signup/'
+              = link_to "新規会員登録",  '/jp/signup/registration/'
             %li.nav__right--signin
               = link_to "ログイン", new_user_session_path
-            %li.nav__right--signin
-              = link_to "ログアウト", destroy_user_session_path, method: :delete
 
     = breadcrumbs separator: " &rsaquo; "
