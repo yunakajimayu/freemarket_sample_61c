@@ -64,20 +64,6 @@ ActiveRecord::Schema.define(version: 2020_02_27_071747) do
     t.string "delivery_area", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_credits_on_user_id"
-  end
-
-  create_table "deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "delivery_day", null: false
-    t.string "delivery_status", null: false
-    t.string "delivery_method", null: false
-    t.integer "postage", null: false
-    t.string "postage_bearer", null: false
-    t.bigint "item_id"
-    t.string "delivery_area", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-
     t.index ["item_id"], name: "index_deliveries_on_item_id"
   end
 
@@ -156,10 +142,13 @@ ActiveRecord::Schema.define(version: 2020_02_27_071747) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "addresses", "users"
   add_foreign_key "authorizations", "users"
+  add_foreign_key "credits", "users"
   add_foreign_key "deliveries", "items"
   add_foreign_key "items", "users", column: "buyer_id"
   add_foreign_key "items", "users", column: "seller_id"

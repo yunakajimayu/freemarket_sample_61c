@@ -24,6 +24,10 @@ class ItemsController < ApplicationController
 
   end
 
+  def edit
+    
+  end
+
   def show
     @delivery = Delivery.find_by(item_id: @item)
     @items = Item.all

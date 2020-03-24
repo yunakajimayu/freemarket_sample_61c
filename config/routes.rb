@@ -15,6 +15,9 @@ Rails.application.routes.draw do
       post 'purchase'
       get 'done'
     end
+    member do
+      get 'edit'
+    end
 
   end
   
