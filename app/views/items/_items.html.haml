@@ -3,7 +3,7 @@
   %div
     %div
       - if item.pictures.present?
-        = image_tag "#{item.pictures[0]}", class:'first-child', height: '180px;' , width:' 180px;' 
+        = image_tag "#{item.pictures[0]}", class:'first-child', height: '180px;' , width:' 180px;'
       - else
         = image_tag "", class:'first-child'
       =link_to "", item_path(item.id), method: :get

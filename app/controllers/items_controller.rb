@@ -25,7 +25,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    
+
+  end
+
+  def update
+    @item.update(item_params)
   end
 
   def show
@@ -144,11 +148,6 @@ class ItemsController < ApplicationController
                 :postage,
                 :postage_bearer]).
     merge(seller_id: current_user.id,buyer_id: nil)
-
-  end
-  
-  def set_delivery
-    @delivery = Delivery.find_by(item_id: @item)
   end
 
 end
