@@ -30,6 +30,7 @@ class ItemsController < ApplicationController
 
   def update
     @item.update(item_params)
+    redirect_to action: "show"
   end
 
   def show

@@ -15,11 +15,6 @@ Rails.application.routes.draw do
       post 'purchase'
       get 'done'
     end
-    member do
-      get 'edit'
-      patch 'update'
-    end
-
   end
   
   resource :user,path: 'jp/mypage/' do
