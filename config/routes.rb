@@ -14,7 +14,6 @@ Rails.application.routes.draw do
       get 'transaction'
       post 'purchase'
       get 'done'
-      get 'product_detail'
     end
 
   end
@@ -22,7 +21,6 @@ Rails.application.routes.draw do
   resource :user,path: 'jp/mypage/' do
     get 'profile',on: :collection
   end
-  get 'item_id/' => 'items_details#index'
   devise_for :users, path: '', controllers: {
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'

@@ -24,12 +24,13 @@ class ItemsController < ApplicationController
 
   end
 
-  def show
-    @delivery = Delivery.find_by(item_id: @item)
-    @items = Item.all
-    @deliveries = Delivery.all
-    @images = Item.find_by(pictures: params[:pictures])
-  end
+  # def show
+  #   @delivery = Delivery.find_by(item_id: @item)
+  #   @items = Item.all
+  #   @deliveries = Delivery.all
+  #   @images = Item.find_by(pictures: params[:pictures])
+  #   @categories = Category.find(items.category_id)
+  # end
   
   def purchase
     @credit = Credit.where(user_id: current_user.id).first if Credit.where(user_id: current_user.id).exists?
@@ -89,6 +90,8 @@ class ItemsController < ApplicationController
 
   def show
     @user = User.find(@item.seller_id)
+    @categories = Category.find(@item.category_id)
+    @deliveries = Delivery.find(2)
   end
 
   def destroy
@@ -98,12 +101,6 @@ class ItemsController < ApplicationController
       flash[:notice] = "削除に失敗しました"
       redirect_to root_path
     end
-  end
-
-
-  def product_detail
-    @item = Item.find(1)
-    @user = User.find(@item.seller_id)
   end
 
   private
