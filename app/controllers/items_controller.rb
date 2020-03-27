@@ -25,12 +25,15 @@ class ItemsController < ApplicationController
   end
 
   def edit
-
+    @delivery = Delivery.find_by(item_id: @item)
   end
 
   def update
-    @item.update(item_params)
-    redirect_to action: "show"
+    if @item.seller_id == current_user.id && @item.update(item_params)
+      redirect_to action: "show"
+    else
+      render :edit
+    end
   end
 
   def show
