@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get 'transaction'
       post 'purchase'
       get 'done'
+      get 'product_detail'
     end
 
   end

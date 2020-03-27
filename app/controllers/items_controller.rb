@@ -102,8 +102,8 @@ class ItemsController < ApplicationController
 
 
   def product_detail
-    @item = Item.find(6)
-    @user = User.find(@item.saler_id)
+    @item = Item.find(1)
+    @user = User.find(@item.seller_id)
   end
 
   private
