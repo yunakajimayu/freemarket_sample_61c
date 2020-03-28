@@ -50,7 +50,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'item was successfully created.' }
@@ -89,9 +88,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @user = User.find(@item.seller_id)
-    @categories = Category.find(@item.category_id)
-    @deliveries = Delivery.find(2)
+  @user = User.find(@item.seller_id)
+  @categories = Category.find(@item.category_id)
+  @deliveries = @item.delivery
   end
 
   def destroy
@@ -140,8 +139,4 @@ class ItemsController < ApplicationController
 
   end
   
-  def set_delivery
-    @delivery = Delivery.find_by(item_id: @item)
-  end
-
 end
