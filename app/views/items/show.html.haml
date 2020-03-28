@@ -102,11 +102,10 @@
     .item-buy-btn
       = link_to '編集', "/jp/#{@item.id}/edit", method: :get
     .item-buy-btn-delete
-      = link_to '削除', item_path(id: @item.id), method: :delete
+      = link_to '削除', item_path(id: @item.id), method: :delete, data:{confirm: "本当に削除しますか？\n削除した商品を元の状態に戻すことはできません。"}
   - else
     .item-buy-btn
       =link_to '購入画面に進む'
-
   .item-description
     %p.item-description-inner
       = @item.description
