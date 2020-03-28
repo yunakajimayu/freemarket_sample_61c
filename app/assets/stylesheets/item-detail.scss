@@ -129,6 +129,21 @@
       font-size: 16px;
     }
   }
+  .item-buy-btn-delete{
+    display: block;
+    text-align: center;
+    background-color: $deepgray;
+    font-size: 24px;
+    font-weight: 600;
+    height: 60px;
+    width: 620px;
+    margin-top: 16px;
+    line-height: 60px;
+    color: #fff;
+    a{
+      color: inherit;
+    }
+  }
   .item-buy-btn{
     display: block;
     text-align: center;
