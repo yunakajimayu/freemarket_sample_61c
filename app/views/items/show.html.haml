@@ -12,18 +12,10 @@
         .photo-holder
           #thumb_img.cf
             - if @item.pictures.present?
-              = image_tag "#{@item.pictures[0]}", class:'active', height: '180px;' , width:' 180px;' 
+              - @item.pictures.each_with_index do |picture, i|
+                = image_tag "#{picture}", class:'active', height: '180px;' , width:' 180px;' 
             - else
               = image_tag "", class:'active'
-            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
-            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image03.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image03_thumb.png"}
-            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
-            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
-            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
-            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
-            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
-            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
-            %img{:onmouseover => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}
     .item-detail-table
       .tr
         .th
