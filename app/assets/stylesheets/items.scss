@@ -91,6 +91,7 @@
         textarea {
           @include textarea;
           height:10em;
+          width: 620px;
         }
 
         input[type=submit] {
@@ -150,7 +151,7 @@
             margin: 10px 0 20px 0;
           }
           + input[type=text] {
-            width: 100%;
+            width: 620px;
           }
         }
 
