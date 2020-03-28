@@ -93,3 +93,4 @@ gem "gretel"
 gem 'rails-i18n', '~> 5.1'
 gem 'gon'
 gem 'dotenv-rails'
+gem 'rmagick', '4.0.0'

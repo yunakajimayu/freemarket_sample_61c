@@ -91,6 +91,7 @@
               > input[type=text] {
                 position: relative;
                 top: 7px;
+                width: 230px;
                 @include input-form;
               }
             }
