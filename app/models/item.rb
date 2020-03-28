@@ -40,8 +40,14 @@ class Item < ApplicationRecord
   end
 
   def price_range
-    if price < 300 || price > 9999999
+    if price.to_i < 300 || price.to_i > 9999999
       errors.add(:price, :price_range)
+    end
+  end
+
+  ActionView::Helpers::FormBuilder.module_eval do
+    def error_message(attribute)
+      @object.errors[attribute].map{|error| '<span class="error">' + error + '</span>'}.join("<br>").html_safe
     end
   end
 

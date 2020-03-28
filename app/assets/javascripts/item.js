@@ -1,42 +1,63 @@
 $(function(){
+
+    // // クリックで画像を選択する場合
+    $('#drop_area').on('click', function () {
+      $('#input_file').click();
+    });
   
-  Dropzone.autoDiscover = false;
-
-  $(".dropzone").dropzone({
-    autoProcessQueue:false, 
-    dictDefaultMessage: 'アップロードするファイルをここへドロップしてください',
-    previewsContainer:".preview",
-    thumbnailHeight:"120",
-    thumbnailWidth:"120",
-    thumbnailMethod:"contain",
-    maxFiles:"10",
-    addRemoveLinks:true,
-    dictRemoveFile:'削除'
-
-  });
-
-  $('submit').click(function(){
-    myDropzone.processQueue()
-  })
-
-  Dropzone.autoDiscover = false;
-
-  $(".dropzone").dropzone({
-    autoProcessQueue:false, 
-    dictDefaultMessage: 'アップロードするファイルをここへドロップしてください',
-    previewsContainer:".preview",
-    thumbnailHeight:"120",
-    thumbnailWidth:"120",
-    thumbnailMethod:"contain",
-    maxFiles:"10",
-    addRemoveLinks:true,
-    dictRemoveFile:'削除'
-    
-  });
-
-  $('submit').click(function(){
-    myDropzone.processQueue()
-  })
+    $('#drop_area').on('dragenter dragover', function (event) {
+      event.stopPropagation();
+      event.preventDefault();
+      $('#drop_area').css('border', '1px solid #333');  // 枠を実線にする
+    });
+    $('#drop_area').on('dragleave', function (event) {
+      event.stopPropagation();
+      event.preventDefault();
+      $('#drop_area').css('border', '1px dashed #aaa');  // 枠を点線に戻す
+    });
+  
+  
+    $('#drop_area').on('drop', function (event) {
+      event.preventDefault();
+  
+      $('#input_file').each(function(i) {
+        $('#input_file')[i].files = event.originalEvent.dataTransfer.files;
+        handleFiles($('#input_file')[i].files);
+      })
+      
+    });
+  
+      $('#input_file').change(function(){
+        
+        if ( !this.files.length ) {
+          return;
+        }
+        $('#preview_field').text('');
+     
+        var $files = $(this).prop('files');
+        var len = $files.length;
+        for ( var i = 0; i < len; i++ ) {
+          var file = $files[i];
+          var fr = new FileReader();
+     
+          fr.onload = function(e) {
+            var src = e.target.result;
+            var img = '<img src="'+ src +'">';
+            var html =  `<div class="preview_field" >
+                          <div class="preview_field--caption">
+                            ${img}
+                          </div>
+                        </div>`
+            $('.preview_field_wrap #preview_field').append(html);
+            // $('.item__contents--image-upload-container').css('height','400px');
+          }
+     
+          fr.readAsDataURL(file);
+        }
+        
+        $('.preview_field_wrap').css('display','block');
+      });
+  
 
   $('#price').keyup(function() {
     var s = $('#price').val();
@@ -69,3 +90,6 @@ $(function(){
 
 })
 
+
+
+    

@@ -49,13 +49,12 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
-        format.html { render :new }
+        format.html { render :sell }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
@@ -84,6 +83,19 @@ class ItemsController < ApplicationController
       when "Discover"
         @card_src = "discover.svg"
       end
+    end
+  end
+
+  def show
+    @user = User.find(@item.seller_id)
+  end
+
+  def destroy
+    if @item.seller_id == current_user.id
+      @item.destroy 
+    else
+      flash[:notice] = "削除に失敗しました"
+      redirect_to root_path
     end
   end
 

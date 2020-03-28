@@ -1,5 +1,10 @@
 class Delivery < ApplicationRecord
   belongs_to :item,optional: true
+  validates :delivery_day,presence: true
+  validates :postage_bearer,presence: true
+  validates :delivery_method,presence: true
+  validates :delivery_area,presence: true
+
 
   enum delivery_day: [
     :with_in_two_days,
