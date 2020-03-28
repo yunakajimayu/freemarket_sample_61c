@@ -67,5 +67,19 @@ $(function(){
     }
   })
 
+  $('#upload_file').on('change', function()
+    var strFileInfo = $(#upload_file)[0].files[0];
+    if(strFileInfo && strFileInfo.type.match('image.*')){
+      $('preview').remove();
+      $('.preview_area').append('<img id="preview" width="300" />');
+      fileReader = new FileReader(); // 解説⑥
+      fileReader.onload = function(event){
+        $('#preview').attr('src', event.target.result);
+      }
+
+      fileReader.readAsDataURL(strFileInfo); // 解説⑦
+    }
+  );
+
 })
 
