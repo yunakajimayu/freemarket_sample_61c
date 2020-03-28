@@ -19,25 +19,22 @@
           %p
           - if @item.pictures.present?
             = image_tag "#{@item.pictures[0]}", class:'first-child', height: "180px;" , width: "180px;"
-            = f.file_field :pictures, multiple: true, id: "upload_file", onchange="loadImage(this);"
-            -# = image_tag "#{@item.pictures[0]}", class:'first-child', height: "180px;" , width: "180px;"
-            -# = f.file_field :pictures[0]
-            -# - @item.pictures.each_with_index do |picture, i|
-            -#   = image_tag "#{picture}", class:'first-child', height: '180px;' , width:' 180px;'
+            = f.file_field :pictures, multiple: true
           - else
             = image_tag "", class:'first-child'
-
+        -# %p
         -#   最大10枚までアップロードできます
         -# %div.item__contents--dropzone
+          
         -#   %div.item__contents--dropzone--upload-area
-            #preview
-            -# .dz-default.dz-message
+        -#     .preview
+        -#     .dz-default.dz-message
         -#       %p
         -#         ドラッグアンドドロップ<BR>
         -#         またはクリックしてファイルをアップロード
         -#     .fallback
         -#       -# = f.file_field :file_name, multiple: true
-        -#   =f.file_field :pictures
+        -#   =f.file_field :pictures, multiple: true
         -#   .dz-error-message
     %div
       %div
