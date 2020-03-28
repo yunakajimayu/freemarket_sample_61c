@@ -1,4 +1,5 @@
 class Delivery < ApplicationRecord
+
   belongs_to :item,optional: true
   validates :delivery_day,presence: true
   validates :postage_bearer,presence: true
@@ -6,27 +7,27 @@ class Delivery < ApplicationRecord
   validates :delivery_area,presence: true
 
 
-  enum delivery_day: [
-    :with_in_two_days,
-    :with_in_three_days,
-    :with_in_one_week
-]
+  enum delivery_day: {
+    １〜２日で発送: 1,
+    ２〜３日で発送: 2,
+    ４〜７日で発送: 3
+}
 
-enum 	postage_bearer: [
-  :seller,
-  :buyer
-]
+enum 	postage_bearer: {
+  送料込み（出品者負担）: 1,
+  着払い（購入者負担）: 2
+}
 
-enum delivery_method:[
-  :undecided,
-  :yu_mail,
-  :letter_pack,
-  :standard_mail,
-  :kuromeko_yamato,
-  :yu_pack,
-  :click_post,
-  :yu_packet,
-]
+enum delivery_method:{
+  未定: 0,
+  ゆうメール: 1,
+  レターパック: 2,
+  普通郵便: 3,
+  クロネコヤマト: 4,
+  ゆうパック: 7,
+  クリックポスト: 8,
+  ゆうパケット: 9
+}
 
 
 enum delivery_area: {
@@ -39,5 +40,6 @@ enum delivery_area: {
   徳島県:36,香川県:37,愛媛県:38,高知県:39,
   福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
 }
+
 
 end

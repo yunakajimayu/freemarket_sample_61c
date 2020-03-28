@@ -24,13 +24,25 @@ class ItemsController < ApplicationController
 
   end
 
+  def edit
+    @delivery = Delivery.find_by(item_id: @item)
+  end
+
+  def update
+    if @item.seller_id == current_user.id && @item.update(item_params)
+      redirect_to action: "show"
+    else
+      render :edit
+    end
+  end
+
   def show
     @delivery = Delivery.find_by(item_id: @item)
     @items = Item.all
     @deliveries = Delivery.all
     @images = Item.find_by(pictures: params[:pictures])
   end
-  
+
   def purchase
     @credit = Credit.where(user_id: current_user.id).first if Credit.where(user_id: current_user.id).exists?
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
@@ -87,22 +99,21 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @user = User.find(@item.seller_id)
+
+  @user = User.find(@item.seller_id)
+  @categories = Category.find(@item.category_id)
+  @deliveries = @item.delivery
   end
+
 
   def destroy
     if @item.seller_id == current_user.id
       @item.destroy 
+      redirect_to root_path
     else
       flash[:notice] = "削除に失敗しました"
       redirect_to root_path
     end
-  end
-
-
-  def product_detail
-    @item = Item.find(6)
-    @user = User.find(@item.saler_id)
   end
 
   private
@@ -139,11 +150,6 @@ class ItemsController < ApplicationController
                 :postage,
                 :postage_bearer]).
     merge(seller_id: current_user.id,buyer_id: nil)
-
-  end
-  
-  def set_delivery
-    @delivery = Delivery.find_by(item_id: @item)
   end
 
 end
