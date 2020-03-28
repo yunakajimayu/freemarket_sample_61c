@@ -15,7 +15,6 @@ Rails.application.routes.draw do
       post 'purchase'
       get 'done'
     end
-
   end
   
   resource :user,path: 'jp/mypage/' do

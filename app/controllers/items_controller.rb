@@ -24,6 +24,18 @@ class ItemsController < ApplicationController
 
   end
 
+  def edit
+    @delivery = Delivery.find_by(item_id: @item)
+  end
+
+  def update
+    if @item.seller_id == current_user.id && @item.update(item_params)
+      redirect_to action: "show"
+    else
+      render :edit
+    end
+  end
+
   def show
     @delivery = Delivery.find_by(item_id: @item)
     @items = Item.all
@@ -141,11 +153,6 @@ class ItemsController < ApplicationController
                 :postage,
                 :postage_bearer]).
     merge(seller_id: current_user.id,buyer_id: nil)
-
-  end
-  
-  def set_delivery
-    @delivery = Delivery.find_by(item_id: @item)
   end
 
 end
