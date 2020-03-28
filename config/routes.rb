@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   
 
+
   resources :items ,path:'/jp',except: :new do
     collection do
       get 'sell'
@@ -14,13 +15,11 @@ Rails.application.routes.draw do
       post 'purchase'
       get 'done'
     end
-  
   end
   
   resource :user,path: 'jp/mypage/' do
     get 'profile',on: :collection
   end
-  get 'item_id/' => 'items_details#index'
   devise_for :users, path: '', controllers: {
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'

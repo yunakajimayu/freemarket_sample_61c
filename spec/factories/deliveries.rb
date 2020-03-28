@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :delivery do
+
     delivery_status {0}
     delivery_method {0}
     delivery_area {27}
