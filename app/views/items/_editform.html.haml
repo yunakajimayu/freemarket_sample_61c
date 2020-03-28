@@ -69,26 +69,26 @@
               配送料の負担
               %span.required 必須
             %div
-              = d.select :postage_bearer, Delivery.postage_bearers.keys.map{|k| [I18n.t("enum.delivery.postage_bearer.#{k}"), k]}, prompt: true,class:"parent"
+              = d.select :postage_bearer, Delivery.postage_bearers.keys.map{|k| [I18n.t("enum.delivery.postage_bearer.#{k}"), k]},class:"parent"
           %div.delivery-method{style:"display:none;"}
             %h2 
               配送の方法
               
               %span.required 必須
             %div
-              = d.select :delivery_method, Delivery.delivery_methods.keys.map{|k| [I18n.t("enum.delivery.delivery_method.#{k}"), k]}, prompt: true,class:"childlen"
+              = d.select :delivery_method, Delivery.delivery_methods.keys.map{|k| [I18n.t("enum.delivery.delivery_method.#{k}"), k]},class:"childlen"
           %div
             %h2 
               発送元の地域
               %span.required 必須
             %div
-              = d.select :delivery_area, Delivery.delivery_areas.keys, prompt: true
+              = d.select :delivery_area, Delivery.delivery_areas.keys
           %div
             %h2 
               発送までの日数
               %span.required 必須
             %div
-              = d.select :delivery_day, Delivery.delivery_days.keys.map{|k| [I18n.t("enum.delivery.delivery_day.#{k}"), k]}, prompt: true
+              = d.select :delivery_day, Delivery.delivery_days.keys.map{|k| [I18n.t("enum.delivery.delivery_day.#{k}"), k]}
             = d.hidden_field :postage,value: 0
             = d.hidden_field :delivery_status,value: "delivery_status"
 
