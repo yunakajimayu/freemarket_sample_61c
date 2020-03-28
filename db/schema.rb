@@ -52,13 +52,13 @@ ActiveRecord::Schema.define(version: 2020_02_27_071747) do
   end
 
   create_table "deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "delivery_day", null: false
-    t.string "delivery_status", null: false
-    t.string "delivery_method", null: false
+    t.integer "delivery_day", null: false
+    t.integer "delivery_status", null: false
+    t.integer "delivery_method", null: false
     t.integer "postage", null: false
-    t.string "postage_bearer", null: false
+    t.integer "postage_bearer", null: false
     t.bigint "item_id"
-    t.string "delivery_area", null: false
+    t.integer "delivery_area", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_deliveries_on_item_id"

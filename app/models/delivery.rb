@@ -2,27 +2,27 @@ class Delivery < ApplicationRecord
 
   belongs_to :item,optional: true
 
-  enum delivery_day: [
-    :with_in_two_days,
-    :with_in_three_days,
-    :with_in_one_week
-]
+  enum delivery_day: {
+    １〜２日で発送: 1,
+    ２〜３日で発送: 2,
+    ４〜７日で発送: 3
+}
 
-enum 	postage_bearer: [
-  :seller,
-  :buyer
-]
+enum 	postage_bearer: {
+  送料込み（出品者負担）: 1,
+  着払い（購入者負担）: 2
+}
 
-enum delivery_method:[
-  :undecided,
-  :yu_mail,
-  :letter_pack,
-  :standard_mail,
-  :kuromeko_yamato,
-  :yu_pack,
-  :click_post,
-  :yu_packet,
-]
+enum delivery_method:{
+  未定: 0,
+  ゆうメール: 1,
+  レターパック: 2,
+  普通郵便: 3,
+  クロネコヤマト: 4,
+  ゆうパック: 7,
+  クリックポスト: 8,
+  ゆうパケット: 9
+}
 
 
 enum delivery_area: {

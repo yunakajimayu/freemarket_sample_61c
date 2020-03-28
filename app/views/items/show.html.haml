@@ -1,26 +1,21 @@
-
 .item-box-container
   %h1.item-name 
     = @item.name
   .item-main-content-clearfix
     .item-photo
-      .item-photo-mainbox
-        .img-main
-          #featured_img
-            %img#img{:src => "https://www.imamura.biz/blog/wp-content/uploads/image01.png"}/
-        .item-photo-holder
-          .img-clearfix
+      #content
+        #featured_img
+          - if @item.pictures.present?
+            = image_tag "#{@item.pictures[0]}", class:'img', height: '300px;' , width:' 300px;' 
+          - else
+            = image_tag "", class:'active'
+        .photo-holder
           #thumb_img.cf
-            #a.img.active{:onclick => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image01.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image01_thumb.png"}/
-            #b.img{:onclick => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}/
-            #c.img{:onclick => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image03.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image03_thumb.png"}/
-            #d.img
-            #e.img
-            #f.img
-            #g.img
-            #h.img
-            #i.img
-            #j.img
+            - if @item.pictures.present?
+              - @item.pictures.each_with_index do |picture, i|
+                = image_tag "#{picture}", class:'active', height: '180px;' , width:' 180px;' 
+            - else
+              = image_tag "", class:'active'
     .item-detail-table
       .tr
         .th
@@ -47,7 +42,7 @@
         .th
           カテゴリー
         .td
-          =link_to 'レディース'
+          =link_to "#{@categories.name}"
           %br
           =link_to '靴'
           %br
@@ -76,17 +71,17 @@
         .th
           配送の方法
         .td
-          ゆうゆうメルカリ便
+          = @deliveries.delivery_method
       .tr
         .th
           配送元地域
         .td
-          -# = @itemm.prefecture
+          = @deliveries.delivery_day
       .tr
         .th
           発送日の目安
         .td
-          1~2で発送
+          = @deliveries.delivery_area
   .item-price-box
     %span.item-price
       ¥ 
@@ -95,14 +90,14 @@
       (税込)
     %span.item-shipping-fee
       送料込み
-  .item-buy-btn
-    =link_to '購入画面に進む'
   - if user_signed_in? && current_user.id == @item.seller_id
-    %li
+    .item-buy-btn
       = link_to '編集', "/jp/#{@item.id}/edit", method: :get
-    %li
+    .item-buy-btn-delete
       = link_to '削除', item_path(id: @item.id), method: :delete, data:{confirm: "本当に削除しますか？\n削除した商品を元の状態に戻すことはできません。"}
-
+  - else
+    .item-buy-btn
+      =link_to '購入画面に進む'
   .item-description
     %p.item-description-inner
       = @item.description
@@ -213,12 +208,3 @@
     .item-box-right
       .item-box-photo
       .item-box-body
-
-
-#content
-  #featured_img
-    %img#img{:src => "https://www.imamura.biz/blog/wp-content/uploads/image01.png"}/
-  #thumb_img.cf
-    %img.active{:onclick => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image01.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image01_thumb.png"}/
-    %img{:onclick => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image02.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image02_thumb.png"}/
-    %img{:onclick => "changeimg('https://www.imamura.biz/blog/wp-content/uploads/image03.png',this);", :src => "https://www.imamura.biz/blog/wp-content/uploads/image03_thumb.png"}/

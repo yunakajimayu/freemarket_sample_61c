@@ -42,7 +42,7 @@ class ItemsController < ApplicationController
     @deliveries = Delivery.all
     @images = Item.find_by(pictures: params[:pictures])
   end
-  
+
   def purchase
     @credit = Credit.where(user_id: current_user.id).first if Credit.where(user_id: current_user.id).exists?
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
@@ -61,7 +61,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'item was successfully created.' }
@@ -100,7 +99,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @user = User.find(@item.seller_id)
+  @user = User.find(@item.seller_id)
+  @categories = Category.find(@item.category_id)
+  @deliveries = @item.delivery
   end
 
   def destroy
@@ -111,12 +112,6 @@ class ItemsController < ApplicationController
       flash[:notice] = "削除に失敗しました"
       redirect_to root_path
     end
-  end
-
-
-  def product_detail
-    @item = Item.find(6)
-    @user = User.find(@item.saler_id)
   end
 
   private
