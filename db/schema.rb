@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_071747) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "authorizations", "users"
+  add_foreign_key "credits", "users"
   add_foreign_key "deliveries", "items"
   add_foreign_key "items", "users", column: "buyer_id"
   add_foreign_key "items", "users", column: "seller_id"
