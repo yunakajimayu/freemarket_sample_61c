@@ -14,22 +14,23 @@
                   = message
         %h2
           = f.label :pictures, "出品画像"
-          %div
           %span.required 必須
+          %div
+          %p
           - if @item.pictures.present?
             = image_tag "#{@item.pictures[0]}", class:'first-child', height: "180px;" , width: "180px;"
-            = f.file_field :pictures, multiple: true, id: "upload_file"
+            = f.file_field :pictures, multiple: true, id: "upload_file", onchange="loadImage(this);"
             -# = image_tag "#{@item.pictures[0]}", class:'first-child', height: "180px;" , width: "180px;"
             -# = f.file_field :pictures[0]
             -# - @item.pictures.each_with_index do |picture, i|
             -#   = image_tag "#{picture}", class:'first-child', height: '180px;' , width:' 180px;'
           - else
             = image_tag "", class:'first-child'
-        -# %p
+
         -#   最大10枚までアップロードできます
         -# %div.item__contents--dropzone
         -#   %div.item__contents--dropzone--upload-area
-            .preview
+            #preview
             -# .dz-default.dz-message
         -#       %p
         -#         ドラッグアンドドロップ<BR>
