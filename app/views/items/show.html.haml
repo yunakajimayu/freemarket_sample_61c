@@ -3,7 +3,11 @@
     = @item.name
   .item-main-content-clearfix
     .item-photo
+      .triangle
+        .text
+          sold
       #content
+        .traiangle
         #featured_img
           - if @item.pictures.present?
             = image_tag "#{@item.pictures[0]}", class:'img', height: '300px;' , width:' 300px;' 
