@@ -64,7 +64,7 @@
           %div
             = f.select :condition, Item.conditions.keys, prompt: true
     = f.fields_for :delivery do |d|
-      %div
+      %div.item__contents--regarding-delivery-container
         
         %div
           %h3
@@ -99,7 +99,7 @@
             = d.hidden_field :postage,value: 0
             = d.hidden_field :delivery_status,value: "delivery_status"
 
-    %div
+    %div.item__contents--price-container
       %div
         %h3
           販売価格(300〜9,999,999)
@@ -112,7 +112,7 @@
                 = f.label :price ,"価格"
                 %span.required 必須
               %div
-                ¥
+                .item__contents--price-container__yen-mark ¥
                 = f.text_field :price , placeholder: "例) 300", id: "price"
             %li
               %div 販売手数料 (10%)
