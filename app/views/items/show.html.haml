@@ -99,8 +99,8 @@
     .item-buy-btn
       =link_to '購入画面に進む', transaction_items_path(id: @item.id)
   - else
-    .item-buy-btn
-      売り切れです
+    .item-buy-btn-delete
+      売り切れました。
   .item-description
     %p.item-description-inner
       = @item.description
