@@ -3,12 +3,16 @@
     %h1 購入内容の確認
   .transaction__body
     %p.img
-      = image_tag 'product.jpg',width:"80px", height:"80px"
-    %p.item-name サンドベージュの靴。サンドベージュの靴です。
-    %span.price 5980円  （税込）送料込み
+      = image_tag "#{@item.pictures[0]}",width:"80px", height:"80px"
+    %p.item-name 
+      = "#{@item.description}"
+    %span.price 
+    =@item.price 
+    円  （税込）送料込み
   .transaction__bottom
     %p.pay-price 支払い金額
-    %p.value ¥5980
+    %p.value 
+      = "¥#{@item.price}"
     %span.mark ⬜️ 
     %p.mark ポイントを使用(所持ポイント:P0)
   .transaction__bottom--way
@@ -47,9 +51,12 @@
     = link_to  "" do
       変更する
   .transaction__bottom--customer
-    %p 〒999-9999
-    %p 大阪府大阪市中央区１−１−１
-    %p サンプル太郎
+    %p 
+      ="〒#{@buyer.zipcode}"
+    %p 
+      ="#{@buyer.prefecture}#{@buyer.city}#{@buyer.address}#{@buyer.address_building}"
+    %p
+      ="#{current_user.last_name}#{current_user.first_name}"
   .transaction__bottom--buy
     = form_tag(action: :purchase, method: :post) do
       %button 購入する
