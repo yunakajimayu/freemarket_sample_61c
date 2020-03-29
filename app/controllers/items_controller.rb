@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_categories,:set_delivery
-  before_action :set_item, only: [:show, :edit, :update, :destroy, :transaction]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :transaction, :done]
   before_action :authenticate_user!, only: [:new] 
   layout 'sell', except: [:index]
   def index
@@ -21,6 +21,10 @@ class ItemsController < ApplicationController
     @electricitems = Item.includes(:user).where(category_id: 7, buyer_id: nil).limit(10).order("created_at DESC")
     # ↓おもちゃ・ホビー・グッズの新着情報10件
     @hobbies = Item.includes(:user).where(category_id: 8, buyer_id: nil).limit(10).order("created_at DESC")
+
+  end
+
+  def done
 
   end
 
@@ -53,7 +57,8 @@ class ItemsController < ApplicationController
       currency: 'jpy'
     )
     @item.update(buyer_id: current_user.id)
-    redirect_to action: "done"
+    @buyer = Address.find_by(user_id: current_user.id)
+    render :done
   end
 
   def sell
