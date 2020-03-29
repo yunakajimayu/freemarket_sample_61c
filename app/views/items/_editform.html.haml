@@ -1,50 +1,44 @@
 %div
+
   = form_for @item,class: "dropzone",id: "upload-dropzone" do |f|
     %div
       %h1
         商品の情報を入力
-    %div
-      %div
-        - if @item.errors.any?
-          #error_explanation
-            %h2= "#{pluralize(@item.errors.count, "error")} prohibited this item from being saved:"
-            %ul
-              - @item.errors.full_messages.each do |message|
-                %li{style:'color:black;'}
-                  = message
-        %h2
-          = f.label :pictures, "出品画像"
+    - if @item.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@item.errors.count, "error")} prohibited this item from being saved:"
+        %ul
+          - @item.errors.full_messages.each do |message|
+            %li{style:'color:black;'}
+              = message
+    %div.item__contents--image-upload-container
+      %h2
+        = f.label :pictures do 
+          出品画像
           %span.required 必須
-          %div
-          %p
-          - if @item.pictures.present?
-            = image_tag "#{@item.pictures[0]}", class:'first-child', height: "180px;" , width: "180px;"
-            = f.file_field :pictures, multiple: true
-          - else
-            = image_tag "", class:'first-child'
-        -# %p
-        -#   最大10枚までアップロードできます
-        -# %div.item__contents--dropzone
-          
-        -#   %div.item__contents--dropzone--upload-area
-        -#     .preview
-        -#     .dz-default.dz-message
-        -#       %p
-        -#         ドラッグアンドドロップ<BR>
-        -#         またはクリックしてファイルをアップロード
-        -#     .fallback
-        -#       -# = f.file_field :file_name, multiple: true
-        -#   =f.file_field :pictures, multiple: true
-        -#   .dz-error-message
-    %div
+        %p
+          最大10枚までアップロードできます
+      .item__contents--image-upload-container--wrap
+        = f.file_field :pictures, multiple: true,id: "input_file"
+      #drop_area
+        %p
+          = icon('fas','camera')
+        %p クリックしてファイルをアップロード
+        
+      .preview_field_wrap
+        %ul#preview_field
+          = image_tag "#{@item.pictures[0]}"
+    %div.item__contents--description-container
       %div
         %h2 
-          = f.label :name ,"商品名"
-          %span.required 必須
-        = f.text_field :name , placeholder: "商品名（必須 40文字まで)"
+          = f.label :name do
+            商品名
+            %span.required 必須
+        = f.text_field :name , placeholder: "商品名（必須 40文字まで)",class: "item__contents--description-container__name"
         %h2
-          = f.label :description, "商品の説明"
-          %span.required 必須
+          = f.label :description do
+            商品の説明
+            %span.required 必須
         = f.text_area :description , placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
     %div.item__contents--details-container
       %div
@@ -53,14 +47,16 @@
       %div
         %div
           %h2 
-            = f.label :category, "カテゴリー"
-            %span.required 必須
+            = f.label :category do 
+              カテゴリー
+              %span.required 必須
           %div
             = f.collection_select :category_id, @categories, :id, :name, class: "user_class", prompt: true
         %div
           %h2 
-            = f.label :condition,"商品の状態"
-            %span.required 必須
+            = f.label :condition do 
+              商品の状態
+              %span.required 必須
           %div
             = f.select :condition, Item.conditions.keys, prompt: true
     = f.fields_for :delivery do |d|
@@ -76,14 +72,14 @@
               配送料の負担
               %span.required 必須
             %div
-              = d.select :postage_bearer, Delivery.postage_bearers.keys,class:"parent"
-          %div.delivery-method{style:"display:none;"}
+              = d.select :postage_bearer, Delivery.postage_bearers.keys
+          .delivery-method{style:"display:none;"}
             %h2 
               配送の方法
-              
+
               %span.required 必須
             %div
-              = d.select :delivery_method, Delivery.delivery_methods.keys,class:"childlen"
+              = d.select :delivery_method, Delivery.delivery_methods.keys
           %div
             %h2 
               発送元の地域
@@ -109,8 +105,9 @@
           %ul
             %li
               %div
-                = f.label :price ,"価格"
-                %span.required 必須
+                = f.label :price do 
+                  価格
+                  %span.required 必須
               %div
                 .item__contents--price-container__yen-mark ¥
                 = f.text_field :price , placeholder: "例) 300", id: "price"
@@ -130,4 +127,5 @@
       = f.hidden_field :size,value: 0
       = f.hidden_field :status,value: 0
       = f.submit "編集する"
-      = link_to "もどる", root_path
+      .back-page
+        = link_to "もどる", root_path
