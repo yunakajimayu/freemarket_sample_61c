@@ -102,6 +102,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
         @credit = Credit.new(user_id: session[:id], customer_id: customer.id, card_id: customer.default_card)
         @credit.save!
     end
+    @id = Credit.find(@credit.id)
+    @user.update(id: @id.user_id)
+    @profile.update(user_id: @id.user_id)
+    @authorization.update(user_id: @id.user_id)
+    @address.update(user_id: @id.user_id)
     sign_in User.find(session[:id]) unless user_signed_in?
     render :done
   end
