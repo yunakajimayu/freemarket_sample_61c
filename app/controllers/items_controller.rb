@@ -44,14 +44,15 @@ class ItemsController < ApplicationController
   end
 
   def purchase
+    @item = Item.find(params[:id])
     @credit = Credit.where(user_id: current_user.id).first if Credit.where(user_id: current_user.id).exists?
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     Payjp::Charge.create(
-      amount: 5400, # 決済する値段
+      amount: @item.price, # 決済する値段
       customer: @credit.customer_id, # フォームを送信すると作成・送信されてくるトークン
       currency: 'jpy'
     )
-    # @item_buyer.update(buyer_id: current_user.id)
+    @item.update(buyer_id: current_user.id)
     redirect_to action: "done"
   end
 
@@ -97,8 +98,7 @@ class ItemsController < ApplicationController
         @card_src = "discover.svg"
       end
     end
-    @buyer = Address.find(current_user.id)
-    @item.update(buyer_id: current_user.id)
+    @buyer = Address.find_by(user_id: current_user.id)
   end
 
   def show

@@ -58,6 +58,6 @@
     %p
       ="#{current_user.last_name}#{current_user.first_name}"
   .transaction__bottom--buy
-    = form_tag(action: :purchase, method: :post) do
-      
-      %button 購入する
+    -# = form_tag(action: :purchase, method: :post) do
+    %button 
+    = link_to "購入する", purchase_items_path(id: @item.id), method: :post
