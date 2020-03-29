@@ -1,26 +1,26 @@
 class ItemsController < ApplicationController
   before_action :set_categories,:set_delivery
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :transaction]
   before_action :authenticate_user!, only: [:new] 
   layout 'sell', except: [:index]
   def index
     # トップページの各カテゴリの商品情報を新着順に10件まで取り出します。category_idの割り振りはテキトーですので、商品出品が完成次第変更させます。
     # ↓シャネルの新着商品10件
-    @chanels = Item.includes(:user).where(category_id: 1).limit(10).order("created_at DESC")
+    @chanels = Item.includes(:user).where(category_id: 1, buyer_id: nil).limit(10).order("created_at DESC")
     # ↓ルイヴィトンの新着商品10件
-    @louisvuittons =Item.includes(:user).where(category_id: 2).limit(10).order("created_at DESC")
+    @louisvuittons =Item.includes(:user).where(category_id: 2, buyer_id: nil).limit(10).order("created_at DESC")
     # ↓シュプリームの新着商品10件
-    @supremes = Item.includes(:user).where(category_id: 3).limit(10).order("created_at DESC")
+    @supremes = Item.includes(:user).where(category_id: 3, buyer_id: nil).limit(10).order("created_at DESC")
     # ↓ナイキの新着商品10件
-    @nikes= Item.includes(:user).where(category_id: 4).limit(10).order("created_at DESC")
+    @nikes= Item.includes(:user).where(category_id: 4, buyer_id: nil).limit(10).order("created_at DESC")
     # ↓レディースの新着商品10件
-    @women = Item.includes(:user).where(category_id: 5).limit(10).order("created_at DESC")
+    @women = Item.includes(:user).where(category_id: 5, buyer_id: nil).limit(10).order("created_at DESC")
     # ↓メンズの新着商品10件
-    @mens = Item.includes(:user).where(category_id: 6).limit(10).order("created_at DESC")
+    @mens = Item.includes(:user).where(category_id: 6, buyer_id: nil).limit(10).order("created_at DESC")
     # ↓家電・スマホ・カメラの新着商品10件
-    @electricitems = Item.includes(:user).where(category_id: 7).limit(10).order("created_at DESC")
+    @electricitems = Item.includes(:user).where(category_id: 7, buyer_id: nil).limit(10).order("created_at DESC")
     # ↓おもちゃ・ホビー・グッズの新着情報10件
-    @hobbies = Item.includes(:user).where(category_id: 8).limit(10).order("created_at DESC")
+    @hobbies = Item.includes(:user).where(category_id: 8, buyer_id: nil).limit(10).order("created_at DESC")
 
   end
 
@@ -51,6 +51,7 @@ class ItemsController < ApplicationController
       customer: @credit.customer_id, # フォームを送信すると作成・送信されてくるトークン
       currency: 'jpy'
     )
+    # @item_buyer.update(buyer_id: current_user.id)
     redirect_to action: "done"
   end
 
@@ -96,15 +97,15 @@ class ItemsController < ApplicationController
         @card_src = "discover.svg"
       end
     end
+    @buyer = Address.find(current_user.id)
+    @item.update(buyer_id: current_user.id)
   end
 
   def show
-
-  @user = User.find(@item.seller_id)
-  @categories = Category.find(@item.category_id)
-  @deliveries = @item.delivery
+    @user = User.find(@item.seller_id)
+    @categories = Category.find(@item.category_id)
+    @deliveries = @item.delivery
   end
-
 
   def destroy
     if @item.seller_id == current_user.id
