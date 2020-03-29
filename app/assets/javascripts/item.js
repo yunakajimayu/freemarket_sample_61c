@@ -23,6 +23,8 @@ $(function(){
       $('#input_file').each(function(i) {
         $('#input_file')[i].files = event.originalEvent.dataTransfer.files;
         handleFiles($('#input_file')[i].files);
+
+        $('.preview_field_wrap #preview_field').append(html);
       })
       
     });
@@ -33,19 +35,22 @@ $(function(){
           return;
         }
         $('#preview_field').text('');
-     
         var $files = $(this).prop('files');
         var len = $files.length;
         for ( var i = 0; i < len; i++ ) {
           var file = $files[i];
           var fr = new FileReader();
-     
           fr.onload = function(e) {
             var src = e.target.result;
             var img = '<img src="'+ src +'">';
             var html =  `<div class="preview_field" >
                           <div class="preview_field--caption">
                             ${img}
+                          </div>
+                          <div class="preview_field--option">
+                            <div class="preview_field--option--list">
+                              <a class="preview_field--option--list--tag">削除</a>
+                            </div>
                           </div>
                         </div>`
             $('.preview_field_wrap #preview_field').append(html);

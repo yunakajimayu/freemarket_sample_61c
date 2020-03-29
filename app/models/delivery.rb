@@ -13,7 +13,7 @@ class Delivery < ApplicationRecord
     ４〜７日で発送: 3
 }
 
-enum 	postage_bearer: {
+enum postage_bearer: {
   送料込み（出品者負担）: 1,
   着払い（購入者負担）: 2
 }
