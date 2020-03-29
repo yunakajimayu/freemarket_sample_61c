@@ -66,7 +66,7 @@ class ItemsController < ApplicationController
         format.html { redirect_to @item, notice: 'item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
-        format.html { render :new }
+        format.html { render :sell }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
@@ -99,10 +99,12 @@ class ItemsController < ApplicationController
   end
 
   def show
+
   @user = User.find(@item.seller_id)
   @categories = Category.find(@item.category_id)
   @deliveries = @item.delivery
   end
+
 
   def destroy
     if @item.seller_id == current_user.id
