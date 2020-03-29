@@ -58,7 +58,7 @@
               商品の状態
               %span.required 必須
           %div
-            = f.select :condition, Item.conditions.keys.map{|k| [I18n.t("enum.item.condition.#{k}"), k]}, prompt: true
+            = f.select :condition, Item.conditions.keys, prompt: true
     = f.fields_for :delivery do |d|
       %div.item__contents--regarding-delivery-container
         
@@ -72,14 +72,14 @@
               配送料の負担
               %span.required 必須
             %div
-              = d.select :postage_bearer, Delivery.postage_bearers.keys.map{|k| [I18n.t("enum.delivery.postage_bearer.#{k}"), k]}, prompt: true,class:"parent"
+              = d.select :postage_bearer, Delivery.postage_bearers.keys, prompt: true
           .delivery-method{style:"display:none;"}
             %h2 
               配送の方法
 
               %span.required 必須
             %div
-              = d.select :delivery_method, Delivery.delivery_methods.keys.map{|k| [I18n.t("enum.delivery.delivery_method.#{k}"), k]}, prompt: true,class:"childlen"
+              = d.select :delivery_method, Delivery.delivery_methods.keys, prompt: true
           %div
             %h2 
               発送元の地域
@@ -91,7 +91,7 @@
               発送までの日数
               %span.required 必須
             %div
-              = d.select :delivery_day, Delivery.delivery_days.keys.map{|k| [I18n.t("enum.delivery.delivery_day.#{k}"), k]}, prompt: true
+              = d.select :delivery_day, Delivery.delivery_days.keys, prompt: true
             = d.hidden_field :postage,value: 0
             = d.hidden_field :delivery_status,value: "delivery_status"
 
@@ -129,6 +129,3 @@
       = f.submit "出品する"
       .back-page
         = link_to "もどる", root_path
-
-
-
