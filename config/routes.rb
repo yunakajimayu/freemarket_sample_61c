@@ -5,7 +5,6 @@ Rails.application.routes.draw do
     get 'identification',on: :collection
     get 'logout', on: :collection
   end
-  
 
 
   resources :items ,path:'/jp',except: :new do
