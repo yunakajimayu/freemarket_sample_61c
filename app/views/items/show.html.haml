@@ -3,9 +3,10 @@
     = @item.name
   .item-main-content-clearfix
     .item-photo
-      .triangle
-        .text
-          sold
+      - if @item.buyer_id != nil
+        .triangle
+          .text
+            sold
       #content
         .traiangle
         #featured_img
