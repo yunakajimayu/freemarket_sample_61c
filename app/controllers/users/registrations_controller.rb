@@ -3,6 +3,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   require "payjp"
 
   def new_page
+    
   end
 
   def new

@@ -4,15 +4,24 @@
 .swiper-container
   .swiper-wrapper
     .swiper-slide.banner__header
-      %div 
-      スマホで かんたん
-      %BR
-      フリマアプリ
-      %BR
-      = icon("fab", "apple",class:"fa-lg  fa-fw")
-      = icon("fab", "google-play",class:"fa-fw") 
-    .swiper-slide
-      Slide 2
+      .swiper-slide.banner__header--1
+        %div 
+        スマホで かんたん
+        %BR
+        フリマアプリ
+        %BR
+        = icon("fab", "apple",class:"fa-lg  fa-fw")
+        = icon("fab", "google-play",class:"fa-fw") 
+    .swiper-slide.banner__header
+      .swiper-slide.banner__header--2
+        %div 
+        スマホで かんたん
+        %BR
+        フリマアプリ
+        %BR
+        = icon("fab", "apple",class:"fa-lg  fa-fw")
+        = icon("fab", "google-play",class:"fa-fw") 
+      
   .swiper-pagination.swiper-pagination-white
   .swiper-button-prev.swiper-button-white
   .swiper-button-next.swiper-button-white
