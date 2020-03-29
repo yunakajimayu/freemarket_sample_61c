@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   resources :creditcards, path:'jp/mypage/card/', only: [:index, :create, :new, :destroy]
   
   devise_scope :user do 
-    get '/jp/signup', to: "users/registrations#new_page"
+    get '/jp/signup/new/', to: "users/registrations#new_page"
     get '/jp/signup/registration/', to: 'users/registrations#new'
     post'/jp/signup/registration/', to: 'users/registrations#create'
     get '/jp/signup/sms_confirmation/', to: 'users/registrations#new_profile'
