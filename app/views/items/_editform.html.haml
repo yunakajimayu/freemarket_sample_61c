@@ -46,7 +46,7 @@
           = f.label :description, "商品の説明"
           %span.required 必須
         = f.text_area :description , placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
-    %div
+    %div.item__contents--details-container
       %div
         %h3
           商品の詳細
@@ -64,7 +64,7 @@
           %div
             = f.select :condition, Item.conditions.keys, prompt: true
     = f.fields_for :delivery do |d|
-      %div
+      %div.item__contents--regarding-delivery-container
         
         %div
           %h3
@@ -99,7 +99,7 @@
             = d.hidden_field :postage,value: 0
             = d.hidden_field :delivery_status,value: "delivery_status"
 
-    %div
+    %div.item__contents--price-container
       %div
         %h3
           販売価格(300〜9,999,999)
@@ -112,7 +112,7 @@
                 = f.label :price ,"価格"
                 %span.required 必須
               %div
-                ¥
+                .item__contents--price-container__yen-mark ¥
                 = f.text_field :price , placeholder: "例) 300", id: "price"
             %li
               %div 販売手数料 (10%)
